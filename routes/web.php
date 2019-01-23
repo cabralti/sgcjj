@@ -23,6 +23,7 @@ Route::get('/admin', function(){
 Route::get('/admin/login', ['as' => 'admin.login', function(){
     return view('admin.login.login');
 }]);
+
 Route::get('/admin', ['as' => 'admin.principal', function(){
     return view('admin.principal.index');
 }]);

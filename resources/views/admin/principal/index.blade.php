@@ -8,7 +8,7 @@
         <div class="right-wrapper pull-right">
             <ol class="breadcrumbs">
                 <li>
-                    <a href="index.html">
+                    <a href="{{ route('admin.principal') }}">
                         <i class="fa fa-home"></i>
                     </a>
                 </li>
@@ -23,7 +23,7 @@
     <div class="row">
         <div class="col-md-6 col-lg-12 col-xl-6">
             <div class="row">
-                <div class="col-md-12 col-lg-6 col-xl-6">
+                <div class="col-md-12 col-lg-4 col-xl-4">
                     <section class="panel panel-featured-left panel-featured-primary">
                         <div class="panel-body">
                             <div class="widget-summary">
@@ -36,18 +36,18 @@
                                     <div class="summary">
                                         <h4 class="title">Professores</h4>
                                         <div class="info">
-                                            <strong class="amount">120</strong>
+                                            <strong class="amount">0</strong>
                                         </div>
                                     </div>
                                     <div class="summary-footer">
-                                        <a class="text-muted text-uppercase">(ver todos)</a>
+                                        <a href="#" class="text-muted text-uppercase">(ver todos)</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </section>
                 </div>
-                <div class="col-md-12 col-lg-6 col-xl-6">
+                <div class="col-md-12 col-lg-4 col-xl-4">
                     <section class="panel panel-featured-left panel-featured-secondary">
                         <div class="panel-body">
                             <div class="widget-summary">
@@ -60,18 +60,18 @@
                                     <div class="summary">
                                         <h4 class="title">Academias</h4>
                                         <div class="info">
-                                            <strong class="amount">15</strong>
+                                            <strong class="amount">0</strong>
                                         </div>
                                     </div>
                                     <div class="summary-footer">
-                                        <a class="text-muted text-uppercase">(ver todos)</a>
+                                        <a href="#" class="text-muted text-uppercase">(ver todos)</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </section>
                 </div>
-                <div class="col-md-12 col-lg-6 col-xl-6">
+                <div class="col-md-12 col-lg-4 col-xl-4">
                     <section class="panel panel-featured-left panel-featured-quartenary">
                         <div class="panel-body">
                             <div class="widget-summary">
@@ -84,11 +84,11 @@
                                     <div class="summary">
                                         <h4 class="title">Atletas</h4>
                                         <div class="info">
-                                            <strong class="amount">3765</strong>
+                                            <strong class="amount">0</strong>
                                         </div>
                                     </div>
                                     <div class="summary-footer">
-                                        <a class="text-muted text-uppercase">(ver todos)</a>
+                                        <a href="#" class="text-muted text-uppercase">(ver todos)</a>
                                     </div>
                                 </div>
                             </div>

@@ -73,7 +73,6 @@
                     <div class="form-group mb-lg">
                         <div class="clearfix">
                             <label class="pull-left">Senha</label>
-                            <a href="pages-recover-password.html" class="pull-right">Esqueceu sua senha?</a>
                         </div>
                         <div class="input-group input-group-icon">
                             <input name="password" type="password" class="form-control input-lg" placeholder="Informe sua senha"/>
@@ -83,6 +82,8 @@
                                 </span>
                             </span>
                         </div>
+
+                        <a href="#" class="pull-right">Esqueceu sua senha?</a>
                     </div>
 
                     <div class="row">

@@ -48,7 +48,7 @@
         <div class="panel panel-sign">
             <div class="panel-title-sign mt-xl text-right">
                 <h2 class="title text-uppercase text-bold m-none">
-                    <i class="fa fa-user mr-xs"></i> Efetuar Login
+                    Efetuar Login
                 </h2>
             </div>
             <div class="panel-body">
@@ -82,8 +82,10 @@
                                 </span>
                             </span>
                         </div>
+                    </div>
 
-                        <a href="#" class="pull-right">Esqueceu sua senha?</a>
+                    <div class="clearfix">
+                        <a href="#">Esqueceu sua senha?</a>
                     </div>
 
                     <div class="row">

@@ -26,8 +26,8 @@
 					},
 					{
 						sExtends: 'print',
-						sButtonText: 'Print',
-						sInfo: 'Please press CTR+P to print or ESC to quit'
+						sButtonText: 'Imprimir',
+						sInfo: 'Por favor, pressione CTR + P para imprimir ou ESC para sair\n'
 					}
 				]
 			}

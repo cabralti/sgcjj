@@ -31,6 +31,8 @@
     <link rel="stylesheet" href="{{asset('/vendor/jquery-ui/css/ui-lightness/jquery-ui-1.10.4.custom.css')}}"/>
     <link rel="stylesheet" href="{{asset('/vendor/bootstrap-multiselect/bootstrap-multiselect.css')}}"/>
     <link rel="stylesheet" href="{{asset('/vendor/morris/morris.css')}}"/>
+    <link rel="stylesheet" href="{{asset('/vendor/select2/select2.css')}}" />
+    <link rel="stylesheet" href="{{asset('/vendor/jquery-datatables-bs3/assets/css/datatables.css')}}" /><!-- vou precisar -->
 
     <!-- Theme CSS -->
     <link rel="stylesheet" href="{{asset('/css/admin/theme.css')}}"/>
@@ -277,6 +279,12 @@
 <script src="{{ asset('/vendor/jqvmap/maps/continents/jquery.vmap.north-america.js')}}"></script>
 <script src="{{ asset('/vendor/jqvmap/maps/continents/jquery.vmap.south-america.js')}}"></script>
 
+<!-- Table -->
+<script src="{{ asset('vendor/select2/select2.js')}}"></script>
+<script src="{{ asset('vendor/jquery-datatables/media/js/jquery.dataTables.js')}}"></script><!-- vou precisar -->
+<script src="{{ asset('vendor/jquery-datatables/extras/TableTools/js/dataTables.tableTools.min.js')}}"></script><!-- vou precisar -->
+<script src="{{ asset('vendor/jquery-datatables-bs3/assets/js/datatables.js')}}"></script><!-- vou precisar -->
+
 <!-- Theme Base, Components and Settings -->
 <script src="{{ asset('/js/admin/theme.js') }}"></script>
 
@@ -286,8 +294,10 @@
 <!-- Theme Initialization Files -->
 <script src="{{ asset('/js/admin/theme.init.js') }}"></script>
 
-
 <!-- Examples -->
-<script src="{{ asset('/js/admin/dashboard/examples.dashboard.js') }}"></script>
+{{--<script src="{{ asset('/js/admin/tables/examples.datatables.default.js')}}"></script>--}}
+{{--<script src="{{ asset('/js/admin/tables/examples.datatables.row.with.details.js')}}"></script>--}}
+<script src="{{ asset('/js/admin/tables/examples.datatables.tabletools.js')}}"></script> <!-- vou precisar -->
+{{--<script src="{{ asset('/js/admin/dashboard/examples.dashboard.js') }}"></script>--}}
 </body>
 </html>

@@ -25,7 +25,7 @@
     <link id="sleek-css" rel="stylesheet" href="{{asset('/css/admin/sleek.css')}}"/>
 
     <!-- FAVICON -->
-    <link href="{{ asset('/images/favicon.ico')}}" rel="shortcut icon" />
+    <link href="{{ asset('/images/favicon.ico')}}" rel="shortcut icon"/>
 
 <!--
     <link href="{{ asset('/img/favicon.png')}}'" rel="shortcut icon" />
@@ -50,8 +50,9 @@
 
 <div class="wrapper">
 
-    @include('layouts.admin._sidebar')
+@include('layouts.admin._sidebar')
 
+    <!-- start: page-wrapper -->
     <div class="page-wrapper">
 
         <!-- start: header -->
@@ -68,7 +69,7 @@
                             <i class="mdi mdi-magnify"></i>
                         </button>
                         <input type="text" name="query" id="search-input" class="form-control"
-                               placeholder="'button', 'chart' etc."
+                               placeholder="Pesquisar..."
                                autofocus autocomplete="off"/>
                     </div>
                     <div id="search-results-container">
@@ -140,9 +141,11 @@
         </header>
         <!-- end: header -->
 
+        <!-- start: content-wrapper -->
         <div class="content-wrapper">
             @yield('content')
         </div>
+        <!-- end: content-wrapper -->
 
         <footer class="footer mt-auto">
             <div class="copyright bg-white">
@@ -160,6 +163,8 @@
         </footer>
 
     </div>
+    <!-- end: page-wrapper -->
+
 </div>
 
 

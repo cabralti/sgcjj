@@ -88,10 +88,8 @@
   }
 }
 .breadcrumb-item+.breadcrumb-item::before {
-  content: '\f763';
+  content: '\f13e';
   font-family: $font-family-icon;
-  transform: rotate(45deg);
-  font-size: 7px;
+  font-size: 15px;
   color: $secondary;
-
 }

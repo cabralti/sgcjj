@@ -29,7 +29,7 @@
                 </li>
 
                 <li class="has-sub">
-                    <a href="{{route('admin.professor.index')}}" class="sidenav-item-link">
+                    <a href="{{route('professor.index')}}" class="sidenav-item-link">
                         <i class="mdi mdi-account-outline"></i>
                         <span class="nav-text">Professores</span> <b class="caret"></b>
                     </a>

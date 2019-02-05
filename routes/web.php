@@ -28,6 +28,8 @@ Route::get('/admin', ['as' => 'admin.principal', function(){
     return view('admin.principal.index');
 }]);
 
-Route::get('/admin/professor', ['as' => 'admin.professor.index', function(){
-    return view('admin.professor.index');
-}]);
+//Route::get('/admin/professor', ['as' => 'admin.professor.index', function(){
+////    return view('admin.professor.index');
+////}]);
+
+Route::resource('/admin/professor', 'ProfessorController');

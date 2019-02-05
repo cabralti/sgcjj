@@ -27,9 +27,20 @@
             <div class="col-12">
                 <!-- Recent Order Table -->
                 <div class="card card-table-border-none" id="recent-orders">
-                    <div class="card-header justify-content-between">
-                        <h2>Lista de todos os professores cadastrados</h2>
-                        <a href="#" class="btn btn-primary"><span class="mdi mdi-account-plus"></span> Novo</a>
+                    <div class="card-header card-header-border-bottom justify-content-end">
+                        <!-- <h2>Lista de todos os professores cadastrados</h2> -->
+
+                        <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+                            <a href="#" class="btn btn-primary"><span class="mdi mdi-account-plus"></span> Novo</a>
+
+                            <div class="btn-group show" role="group">
+                                <button id="btnGroupDrop1" type="button" class="btn btn-outline-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="btnGroupDrop1" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 41px, 0px); top: 0px; left: 0px; will-change: transform;">
+                                    <a class="dropdown-item" href="#"><span class="mdi mdi-printer"></span> Imprimir</a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="card-body pt-0 pb-5">
                         <table class="table card-table table-responsive table-responsive-large" style="width:100%">

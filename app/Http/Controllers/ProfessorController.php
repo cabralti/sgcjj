@@ -14,8 +14,8 @@ class ProfessorController extends Controller
      */
     public function index()
     {
-//        echo "Listagem";
-        return view('admin.professor.index');
+        $registros = Professor::all();
+        return view('admin.professor.index', compact('registros'));
     }
 
     /**
@@ -25,7 +25,7 @@ class ProfessorController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.professor.create');
     }
 
     /**

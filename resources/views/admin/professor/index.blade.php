@@ -31,12 +31,15 @@
                         <!-- <h2>Lista de todos os professores cadastrados</h2> -->
 
                         <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
-                            <a href="{{route('professor.create')}}" class="btn btn-primary"><span class="mdi mdi-account-plus"></span> Novo</a>
+                            <a href="{{route('professor.create')}}" class="btn btn-primary"><span
+                                        class="mdi mdi-account-plus"></span> Novo</a>
 
                             <div class="btn-group show" role="group">
-                                <button id="btnGroupDrop1" type="button" class="btn btn-outline-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                <button id="btnGroupDrop1" type="button" class="btn btn-outline-primary dropdown-toggle"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                                 </button>
-                                <div class="dropdown-menu" aria-labelledby="btnGroupDrop1" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 41px, 0px); top: 0px; left: 0px; will-change: transform;">
+                                <div class="dropdown-menu" aria-labelledby="btnGroupDrop1" x-placement="bottom-start"
+                                     style="position: absolute; transform: translate3d(0px, 41px, 0px); top: 0px; left: 0px; will-change: transform;">
                                     <a class="dropdown-item" href="#"><span class="mdi mdi-printer"></span> Imprimir</a>
                                 </div>
                             </div>
@@ -65,7 +68,12 @@
                                     <td class="d-none d-md-table-cell">{{ $registro->celular }}</td>
                                     <td class="d-none d-md-table-cell">Cícero Costa</td>
                                     <td>
-                                        <span class="badge badge-success">{{ $registro->status }}</span>
+                                        @if($registro->status == 0)
+                                            <span class="badge badge-danger">Inativo</span>
+                                        @else
+                                            <span class="badge badge-success">Ativo</span>
+                                        @endif
+
                                     </td>
                                     <td class="text-right">
                                         <div class="dropdown show d-inline-block widget-dropdown">

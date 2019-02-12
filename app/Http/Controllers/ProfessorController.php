@@ -36,7 +36,18 @@ class ProfessorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        /** @var Professor $registro */
+        $registro = new Professor();
+
+        $registro->nome = $request->nome;
+        $registro->email = $request->email;
+        $registro->cpf = $request->cpf;
+        $registro->celular = $request->celular;
+        $registro->faixa = $request->faixa;
+
+        $registro->save();
+
+        return redirect()->route('professor.index');
     }
 
     /**

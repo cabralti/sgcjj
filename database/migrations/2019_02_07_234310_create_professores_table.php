@@ -17,9 +17,9 @@ class CreateProfessoresTable extends Migration
             $table->increments('id');
             $table->string('nome');
             $table->string('email');
-            $table->string('faixa');
-            $table->string('celular');
             $table->string('cpf');
+            $table->string('celular');
+            $table->string('faixa');
             $table->string('status')->default('0');
             $table->timestamps();
         });

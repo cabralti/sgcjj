@@ -31,7 +31,7 @@ class ProfessorController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -53,41 +53,55 @@ class ProfessorController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Professor  $professor
+     * @param  \App\Professor $professor
      * @return \Illuminate\Http\Response
      */
     public function show(Professor $professor)
     {
-        //
+        $registro = Professor::find($professor)->first();
+
+        return view('admin.professor.show', compact('registro'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Professor  $professor
+     * @param  \App\Professor $professor
      * @return \Illuminate\Http\Response
      */
     public function edit(Professor $professor)
     {
-        //
+        $registro = Professor::find($professor)->first();
+        return view('admin.professor.edit', compact('registro'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Professor  $professor
+     * @param  \Illuminate\Http\Request $request
+     * @param  \App\Professor $professor
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Professor $professor)
     {
-        //
+        /** @var Professor $registro */
+        $registro = Professor::find($professor->id);
+
+        $registro->nome = $request->nome;
+        $registro->email = $request->email;
+        $registro->cpf = $request->cpf;
+        $registro->celular = $request->celular;
+        $registro->faixa = $request->faixa;
+
+        $registro->update();
+        
+        return redirect()->route('professor.index');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Professor  $professor
+     * @param  \App\Professor $professor
      * @return \Illuminate\Http\Response
      */
     public function destroy(Professor $professor)

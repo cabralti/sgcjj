@@ -11,5 +11,5 @@ class Professor extends Model
     protected $table = 'professores';
 
     /** @var array  */
-    protected $fillable = [''];
+//    protected $fillable = ['nome', ];
 }

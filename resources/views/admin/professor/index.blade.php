@@ -63,7 +63,7 @@
                                 <tr>
                                     <td>{{ $registro->id }}</td>
                                     <td>
-                                        <a class="text-dark" href=""> {{ $registro->nome }}</a>
+                                        <a class="text-dark" href="{{route('professor.show', $registro->id)}}"> {{ $registro->nome }}</a>
                                     </td>
                                     <td class="d-none d-md-table-cell">{{ $registro->celular }}</td>
                                     <td class="d-none d-md-table-cell">Cícero Costa</td>
@@ -83,10 +83,10 @@
                                             <ul class="dropdown-menu dropdown-menu-right"
                                                 aria-labelledby="dropdown-recent-order1">
                                                 <li class="dropdown-item">
-                                                    <a href="#"><span class="mdi mdi-eye-outline"></span> Ver</a>
+                                                    <a href="{{route('professor.show', $registro->id)}}"><span class="mdi mdi-eye-outline"></span> Ver</a>
                                                 </li>
                                                 <li class="dropdown-item">
-                                                    <a href="#"><span class="mdi mdi-square-edit-outline"></span> Editar</a>
+                                                    <a href="{{route('professor.edit', $registro->id)}}"><span class="mdi mdi-square-edit-outline"></span> Editar</a>
                                                 </li>
                                                 <li class="dropdown-item">
                                                     <a href="#"><span class="mdi mdi-trash-can-outline"></span> Remover</a>

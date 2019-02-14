@@ -29,6 +29,16 @@
 
         <!-- row -->
         <div class="row">
+
+            <div class="col-12 mb-2">
+                <a href="{{route('professor.index')}}" class="btn btn-light">
+                   <span class="mdi mdi-chevron-left"></span> Voltar
+                </a>
+                <a href="{{route('professor.edit', $registro->id)}}" class="btn btn-primary">
+                    <span class="mdi mdi-square-edit-outline"></span> Editar
+                </a>
+            </div>
+
             <div class="col-12">
                 <div class="bg-white border rounded">
                     <div class="row no-gutters">
@@ -55,7 +65,8 @@
                                     <li class="nav-item">
                                         <a class="nav-link active" id="dados-pessoais-tab" data-toggle="tab"
                                            href="#dados-pessoais"
-                                           role="tab" aria-controls="dados-pessoais" aria-selected="true">Dados Pessoais</a>
+                                           role="tab" aria-controls="dados-pessoais" aria-selected="true">Dados
+                                            Pessoais</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" id="profile-tab" data-toggle="tab" href="#anexos"
@@ -69,13 +80,17 @@
                                             <div class="col-sm-6">
                                                 <div class="form-group">
                                                     <label for="nome">Nome:</label>
-                                                    <input type="text" name="nome" id="nome" class="form-control-plaintext" value="{{$registro->nome}}" readonly>
+                                                    <input type="text" name="nome" id="nome"
+                                                           class="form-control-plaintext" value="{{$registro->nome}}"
+                                                           readonly>
                                                 </div>
                                             </div>
                                             <div class="col-sm-6">
                                                 <div class="form-group">
                                                     <label for="email">E-mail:</label>
-                                                    <input type="email" name="email" id="email" class="form-control-plaintext" value="{{$registro->email}}" readonly>
+                                                    <input type="email" name="email" id="email"
+                                                           class="form-control-plaintext" value="{{$registro->email}}"
+                                                           readonly>
                                                 </div>
                                             </div>
                                         </div>
@@ -83,13 +98,17 @@
                                             <div class="col-sm-6">
                                                 <div class="form-group">
                                                     <label for="nome">CPF:</label>
-                                                    <input type="text" name="cpf" id="cpf" class="form-control-plaintext" value="{{$registro->cpf}}" readonly>
+                                                    <input type="text" name="cpf" id="cpf"
+                                                           class="form-control-plaintext" value="{{$registro->cpf}}"
+                                                           readonly>
                                                 </div>
                                             </div>
                                             <div class="col-sm-6">
                                                 <div class="form-group">
                                                     <label for="email">Celular:</label>
-                                                    <input type="text" name="celular" id="celular" class="form-control-plaintext" value="{{$registro->celular}}" readonly>
+                                                    <input type="text" name="celular" id="celular"
+                                                           class="form-control-plaintext" value="{{$registro->celular}}"
+                                                           readonly>
                                                 </div>
                                             </div>
                                         </div>
@@ -97,7 +116,9 @@
                                             <div class="col-sm-6">
                                                 <div class="form-group">
                                                     <label for="nome">Faixa:</label>
-                                                    <input type="text" name="faixa" id="faixa" class="form-control-plaintext" value="{{$registro->faixa}}" readonly>
+                                                    <input type="text" name="faixa" id="faixa"
+                                                           class="form-control-plaintext" value="{{$registro->faixa}}"
+                                                           readonly>
                                                 </div>
                                             </div>
                                         </div>

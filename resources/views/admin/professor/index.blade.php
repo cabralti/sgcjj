@@ -24,29 +24,34 @@
 
         <!-- row -->
         <div class="row">
+
+            <div class="col-12 mb-2">
+                <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+                    <a href="{{route('professor.create')}}" class="btn btn-primary"><span
+                                class="mdi mdi-account-plus"></span> Novo</a>
+
+                    <div class="btn-group show" role="group">
+                        <button id="btnGroupDrop1" type="button" class="btn btn-outline-primary dropdown-toggle"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="btnGroupDrop1" x-placement="bottom-start"
+                             style="position: absolute; transform: translate3d(0px, 41px, 0px); top: 0px; left: 0px; will-change: transform;">
+                            <a class="dropdown-item" href="#"><span class="mdi mdi-printer"></span> Imprimir</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div class="col-12">
                 <!-- Recent Order Table -->
                 <div class="card card-table-border-none" id="recent-orders">
-                    <div class="card-header card-header-border-bottom justify-content-end">
-                        <!-- <h2>Lista de todos os professores cadastrados</h2> -->
+                    {{--<div class="card-header card-header-border-bottom justify-content-end">--}}
+                        {{--<!-- <h2>Lista de todos os professores cadastrados</h2> -->--}}
 
-                        <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
-                            <a href="{{route('professor.create')}}" class="btn btn-primary"><span
-                                        class="mdi mdi-account-plus"></span> Novo</a>
 
-                            <div class="btn-group show" role="group">
-                                <button id="btnGroupDrop1" type="button" class="btn btn-outline-primary dropdown-toggle"
-                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                </button>
-                                <div class="dropdown-menu" aria-labelledby="btnGroupDrop1" x-placement="bottom-start"
-                                     style="position: absolute; transform: translate3d(0px, 41px, 0px); top: 0px; left: 0px; will-change: transform;">
-                                    <a class="dropdown-item" href="#"><span class="mdi mdi-printer"></span> Imprimir</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    {{--</div>--}}
                     <div class="card-body pt-0 pb-5">
-                        <table class="table card-table table-responsive table-responsive-large" style="width:100%">
+                        <table class="table card-table table-responsive table-responsive-large">
                             <thead>
                             <tr>
                                 <th>ID</th>
@@ -89,7 +94,7 @@
                                                     <a href="{{route('professor.edit', $registro->id)}}"><span class="mdi mdi-square-edit-outline"></span> Editar</a>
                                                 </li>
                                                 <li class="dropdown-item">
-                                                    <a href="#"><span class="mdi mdi-trash-can-outline"></span> Remover</a>
+                                                    <a href="#" data-id="{{$registro->id}}" class="btn-remover"><span class="mdi mdi-trash-can-outline"></span> Remover</a>
                                                 </li>
                                             </ul>
                                         </div>
@@ -107,5 +112,7 @@
 
     </div>
     <!-- end: content -->
+
+    <div class="modal-confirm"></div>
 
 @endsection

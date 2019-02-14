@@ -188,6 +188,7 @@
 <script src="{{asset('/js/admin/date-range.js')}}"></script>
 <script src="{{asset('/js/admin/map.js')}}"></script>
 <script src="{{asset('/js/admin/custom.js')}}"></script>
+<script src="{{asset('/js/admin/script.js')}}"></script>
 
 
 </body>

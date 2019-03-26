@@ -94,7 +94,9 @@
                                                     <a href="{{route('professor.edit', $registro->id)}}"><span class="mdi mdi-square-edit-outline"></span> Editar</a>
                                                 </li>
                                                 <li class="dropdown-item">
-                                                    <a href="#" data-id="{{$registro->id}}" class="btn-remover"><span class="mdi mdi-trash-can-outline"></span> Remover</a>
+                                                    <a href="javascript: if(confirm('Deletar esse registro?')){
+                                                    window.location.href = '{{ route('professor.destroy', $registro->id) }}'
+                                                    }" ><span class="mdi mdi-trash-can-outline"></span> Remover</a>
                                                 </li>
                                             </ul>
                                         </div>

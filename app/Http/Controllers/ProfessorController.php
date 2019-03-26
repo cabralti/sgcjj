@@ -104,8 +104,10 @@ class ProfessorController extends Controller
      * @param  \App\Professor $professor
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Professor $professor)
+    public function destroy($professor)
     {
-        //
+        Professor::find($professor)->delete();
+
+        return redirect()->route('professor.index');
     }
 }

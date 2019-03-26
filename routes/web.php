@@ -33,3 +33,5 @@ Route::get('/admin', ['as' => 'admin.principal', function(){
 ////}]);
 
 Route::resource('/admin/professor', 'ProfessorController');
+
+Route::get('/admin/professor/destroy/{id}', ['as' => 'professor.destroy', 'uses' => 'ProfessorController@destroy']);

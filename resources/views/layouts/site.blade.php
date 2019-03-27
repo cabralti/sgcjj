@@ -6,7 +6,11 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
+    <!-- Title -->
     <title>{{config('app.name', 'LPJJ')}}</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="{{asset('images/favicon.ico')}}">
 
     <link rel="stylesheet" href="{{asset('crose/style.css')}}">
 </head>
@@ -32,8 +36,7 @@
                             <!-- start: social fnfo -->
                             <div class="top-social-info">
                                 <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                                <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                                <a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+                                <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
                             </div>
                             <!-- end: social fnfo -->
                         </div>
@@ -60,7 +63,10 @@
                 <nav class="classy-navbar justify-content-between" id="croseNav">
 
                     <!-- Nav brand -->
-                    <a href="index.html" class="nav-brand"><img src="img/core-img/logo.png" alt=""></a>
+                    <a href="{{ route('site.home') }}" class="nav-brand">
+                        {{--<img src="{{asset('images/site/logomarca_lpjj.jpeg')}}" alt="">--}}
+                        LPJJ
+                    </a>
 
                     <!-- Navbar Toggler -->
                     <div class="classy-navbar-toggler">
@@ -78,7 +84,7 @@
                         <!-- Nav Start -->
                         <div class="classynav">
                             <ul>
-                                <li><a href="index.html">Home</a></li>
+                                <li><a href="{{ route('site.home') }}">Home</a></li>
                                 <li>
                                     <a href="#">A Liga</a>
                                     <ul class="dropdown">
@@ -103,7 +109,7 @@
                                 <li>
                                     <a href="#">Campeonatos</a>
                                     <ul class="dropdown">
-                                        <li><a href="index.html">Calendário</a></li>
+                                        <li><a href="index.html">Calendário 2019</a></li>
                                         <li><a href="about.html">Inscrições abertas</a></li>
                                     </ul>
                                 </li>
@@ -147,26 +153,267 @@
 </header>
 <!-- end: header area -->
 
-<!-- ##### Hero Area Start ##### -->
+<!-- start: slide area -->
 <section class="hero-area hero-post-slides owl-carousel">
     <!-- Single Hero Slide -->
     <div class="single-hero-slide bg-img bg-overlay d-flex align-items-center justify-content-center"
-         style="background-image: url(img/bg-img/1.jpg);">
+         style="background-image: url({{asset('uploads/slide1.jpg')}});">
         <!-- Post Content -->
         <div class="container">
             <div class="row">
                 <div class="col-12">
                     <div class="hero-slides-content">
-                        <h2 data-animation="fadeInUp" data-delay="100ms">Liga Paraense de Jiu-Jitsu</h2>
+                        <h2 data-animation="fadeInUp" data-delay="100ms">Filiação</h2>
+                        <p data-animation="fadeInUp" data-delay="300ms">Seja um atleta filiado à LPJJ</p>
+                        <a href="#" class="btn crose-btn" data-animation="fadeInUp" data-delay="500ms">Realizar
+                            Filiação</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
-<!-- ##### Hero Area End ##### -->
+<!-- end: slide area -->
 
-<!-- ##### Footer Area Start ##### -->
+<!-- start: campeonatos area -->
+<section class="latest-sermons-area section-padding-100-0">
+    <div class="container">
+        <div class="row">
+            <!-- Section Heading -->
+            <div class="col-12">
+                <div class="section-heading">
+                    <h2>Campeonatos em Destaque</h2>
+                    <p>Fique ligado nos próximos campeonatos e realize sua inscrição</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- start: row -->
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="single-latest-sermons mb-100">
+                    <div class="sermons-thumbnail">
+                        <img src="{{asset('uploads/campeonato.jpeg')}}" alt="">
+                        <!-- Date -->
+                        <div class="sermons-date">
+                            <h6><span>01</span>ABR</h6>
+                        </div>
+                    </div>
+                    <div class="sermons-content">
+                        <h4>Título do Campeonato</h4>
+                        <div class="sermons-meta-data">
+                            <p><i class="fa fa-calendar" aria-hidden="true"></i> Data do Evento: <span>01/04/2019</span>
+                            </p>
+                            <p><i class="fa fa-map-marker" aria-hidden="true"></i> Local: <span>Belém, PA</span></p>
+                            <p><i class="fa fa-clock-o" aria-hidden="true"></i> Inscrições até
+                                <span>31 de Março de 2019 às 18:00</span></p>
+                        </div>
+                        <a href="#" class="btn crose-btn btn-block mt-3" data-animation="fadeInUp" data-delay="500ms">Inscrever-se</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="single-latest-sermons mb-100">
+                    <div class="sermons-thumbnail">
+                        <img src="{{asset('uploads/campeonato.jpeg')}}" alt="">
+                        <!-- Date -->
+                        <div class="sermons-date">
+                            <h6><span>01</span>ABR</h6>
+                        </div>
+                    </div>
+                    <div class="sermons-content">
+                        <h4>Título do Campeonato</h4>
+                        <div class="sermons-meta-data">
+                            <p><i class="fa fa-calendar" aria-hidden="true"></i> Data do Evento: <span>01/04/2019</span>
+                            </p>
+                            <p><i class="fa fa-map-marker" aria-hidden="true"></i> Local: <span>Belém, PA</span></p>
+                            <p><i class="fa fa-clock-o" aria-hidden="true"></i> Inscrições até
+                                <span>31 de Março de 2019 às 18:00</span></p>
+                        </div>
+                        <a href="#" class="btn crose-btn btn-block mt-3" data-animation="fadeInUp" data-delay="500ms">Inscrever-se</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="single-latest-sermons mb-100">
+                    <div class="sermons-thumbnail">
+                        <img src="{{asset('uploads/campeonato.jpeg')}}" alt="">
+                        <!-- Date -->
+                        <div class="sermons-date">
+                            <h6><span>01</span>ABR</h6>
+                        </div>
+                    </div>
+                    <div class="sermons-content">
+                        <h4>Título do Campeonato</h4>
+                        <div class="sermons-meta-data">
+                            <p><i class="fa fa-calendar" aria-hidden="true"></i> Data do Evento: <span>01/04/2019</span>
+                            </p>
+                            <p><i class="fa fa-map-marker" aria-hidden="true"></i> Local: <span>Belém, PA</span></p>
+                            <p><i class="fa fa-clock-o" aria-hidden="true"></i> Inscrições até
+                                <span>31 de Março de 2019 às 18:00</span></p>
+                        </div>
+                        <a href="#" class="btn crose-btn btn-block mt-3" data-animation="fadeInUp" data-delay="500ms">Inscrever-se</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end: row -->
+    </div>
+</section>
+<!-- end: campeonatos area -->
+
+<!-- start: gallery area -->
+<div class="gallery-area d-flex flex-wrap">
+    <!-- Single Gallery Area -->
+    <div class="single-gallery-area">
+        <a href="{{asset('uploads/galeria1.jpeg')}}" class="gallery-img" title="Imagem 1">
+            <img src="{{asset('uploads/galeria1.jpeg')}}" alt="">
+        </a>
+    </div>
+
+    <!-- Single Gallery Area -->
+    <div class="single-gallery-area">
+        <a href="{{asset('uploads/galeria7.jpg')}}" class="gallery-img" title="Imagem 2">
+            <img src="{{asset('uploads/galeria7.jpg')}}" alt="">
+        </a>
+    </div>
+
+    <!-- Single Gallery Area -->
+    <div class="single-gallery-area">
+        <a href="{{asset('uploads/galeria3.jpeg')}}" class="gallery-img" title="Imagem 3">
+            <img src="{{asset('uploads/galeria3.jpeg')}}" alt="">
+        </a>
+    </div>
+
+    <!-- Single Gallery Area -->
+    <div class="single-gallery-area">
+        <a href="{{asset('uploads/galeria4.jpeg')}}" class="gallery-img" title="Imagem 4">
+            <img src="{{asset('uploads/galeria4.jpeg')}}" alt="">
+        </a>
+    </div>
+
+    <!-- Single Gallery Area -->
+    <div class="single-gallery-area">
+        <a href="{{asset('uploads/galeria5.jpeg')}}" class="gallery-img" title="Imagem 5">
+            <img src="{{asset('uploads/galeria5.jpeg')}}" alt="">
+        </a>
+    </div>
+
+    <!-- Single Gallery Area -->
+    <div class="single-gallery-area">
+        <a href="{{asset('uploads/galeria7.jpg')}}" class="gallery-img" title="Imagem 2">
+            <img src="{{asset('uploads/galeria7.jpg')}}" alt="">
+        </a>
+    </div>
+
+    <!-- Single Gallery Area -->
+    <div class="single-gallery-area">
+        <a href="{{asset('uploads/galeria1.jpeg')}}" class="gallery-img" title="Imagem 1">
+            <img src="{{asset('uploads/galeria1.jpeg')}}" alt="">
+        </a>
+    </div>
+
+    <!-- Single Gallery Area -->
+    <div class="single-gallery-area">
+        <a href="{{asset('uploads/galeria5.jpeg')}}" class="gallery-img" title="Imagem 5">
+            <img src="{{asset('uploads/galeria5.jpeg')}}" alt="">
+        </a>
+    </div>
+
+    <!-- Single Gallery Area -->
+    <div class="single-gallery-area">
+        <a href="{{asset('uploads/galeria3.jpeg')}}" class="gallery-img" title="Imagem 3">
+            <img src="{{asset('uploads/galeria3.jpeg')}}" alt="">
+        </a>
+    </div>
+
+    <!-- Single Gallery Area -->
+    <div class="single-gallery-area">
+        <a href="{{asset('uploads/galeria4.jpeg')}}" class="gallery-img" title="Imagem 4">
+            <img src="{{asset('uploads/galeria4.jpeg')}}" alt="">
+        </a>
+    </div>
+</div>
+<!-- end: gallery area -->
+
+<!-- start: parceiros area -->
+<div class="team-members-area bg-gray section-padding-100-0">
+    <div class="container">
+        <div class="row">
+            <!-- Section Heading -->
+            <div class="col-12">
+                <div class="section-heading">
+                    <h2>Parceiros</h2>
+                    <p>Algumas parcerias que ajudam na realização de eventos cada vez mais TOP'S</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Team Members Area -->
+            <div class="col-12 col-sm-6 col-lg-3">
+                <div class="single-team-members text-center">
+                    <div class="team-thumb"
+                         style="background-image: url({{asset('images/site/parceiros/joker.png')}}); background-size: cover;">
+                        <div class="team-social-info">
+                            <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                        </div>
+                    </div>
+                    <h6>Jocker</h6>
+                </div>
+            </div>
+
+            <!-- Team Members Area -->
+            <div class="col-12 col-sm-6 col-lg-3">
+                <div class="single-team-members text-center mb-100">
+                    <div class="team-thumb"
+                         style="background-image: url({{asset('images/site/parceiros/drill_fight.jpg')}});background-repeat: no-repeat; ;">
+                        <div class="team-social-info">
+                            <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                        </div>
+                    </div>
+                    <h6>Drill Fight Company</h6>
+                </div>
+            </div>
+
+            <!-- Team Members Area -->
+            <div class="col-12 col-sm-6 col-lg-3">
+                <div class="single-team-members text-center mb-100">
+                    <div class="team-thumb"
+                         style="background-image: url(http://fsjjp.herokuapp.com/img/parceria/tatame_cia.png); background-size: cover;">
+                        <div class="team-social-info">
+                            <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                        </div>
+                    </div>
+                    <h6>Tatame & CIA</h6>
+                </div>
+            </div>
+
+            <!-- Team Members Area -->
+            <div class="col-12 col-sm-6 col-lg-3">
+                <div class="single-team-members text-center mb-100">
+                    <div class="team-thumb"
+                         style="background-image: url(http://fsjjp.herokuapp.com/img/parceria/vinicius_chaves.png); background-size: cover;">
+                        <div class="team-social-info">
+                            <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                        </div>
+                    </div>
+                    <h6>Vinicius Chaves Design</h6>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end: parceiros area -->
+
+<section class="subscribe-area">
+    <div class="container">
+    </div>
+</section>
+
+<!-- start: footer area -->
 <footer class="footer-area">
     <!-- Main Footer Area -->
     <div class="main-footer-area">
@@ -188,18 +435,35 @@
                         <h5 class="widget-title">Link Rápido</h5>
                         <nav class="footer-menu">
                             <ul>
-                                <li><a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Home</a>
+                                <li>
+                                    <a href="{{route('site.home')}}">
+                                        <i class="fa fa-angle-double-right" aria-hidden="true"></i> Home
+                                    </a>
                                 </li>
-                                <li><a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Campeonatos</a>
+                                <li>
+                                    <a href="#">
+                                        <i class="fa fa-angle-double-right" aria-hidden="true"></i> Campeonatos
+                                    </a>
                                 </li>
-                                <li><a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Sobre
-                                        Nós</a>
+                                <li>
+                                    <a href="#">
+                                        <i class="fa fa-angle-double-right" aria-hidden="true"></i>Sobre Nós
+                                    </a>
                                 </li>
-                                <li><a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Contato</a>
+                                <li>
+                                    <a href="#">
+                                        <i class="fa fa-angle-double-right" aria-hidden="true"></i> Contato
+                                    </a>
                                 </li>
-                                <li><a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Blogs</a>
+                                <li>
+                                    <a href="#">
+                                        <i class="fa fa-angle-double-right" aria-hidden="true"></i> Blog
+                                    </a>
                                 </li>
-                                <li><a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Login</a>
+                                <li>
+                                    <a href="#">
+                                        <i class="fa fa-angle-double-right" aria-hidden="true"></i> Login
+                                    </a>
                                 </li>
                             </ul>
                         </nav>
@@ -256,7 +520,7 @@
                     <div class="copywrite-text">
                         <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                             Copyright &copy;<script>document.write(new Date().getFullYear());</script>
-                            Todos os direitos reservados
+                            Todos os direitos reservados | LPJJ
                         </p>
                     </div>
                 </div>
@@ -265,16 +529,14 @@
                 <div class="col-12 col-md-6">
                     <div class="footer-social-icon">
                         <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                        <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                        <a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
-                        <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                        <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </footer>
-<!-- ##### Footer Area End ##### -->
+<!-- end: footer area -->
 
 <!-- ##### All Javascript Script ##### -->
 <!-- jQuery-2.2.4 js -->

@@ -34,8 +34,8 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#">
-                                        <i class="fa fa-angle-double-right" aria-hidden="true"></i> Campeonatos
+                                    <a href="{{route('site.eventos')}}">
+                                        <i class="fa fa-angle-double-right" aria-hidden="true"></i> Eventos
                                     </a>
                                 </li>
                                 <li>

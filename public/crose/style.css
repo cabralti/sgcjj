@@ -995,7 +995,7 @@ img {
     .single-upcoming-events-area .upcoming-events-thumbnail img {
       border-radius: 5px;
       box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.15);
-      width: 100%; }
+      width: 80%; }
   .single-upcoming-events-area .upcoming-events-content {
     -webkit-box-flex: 0;
     -ms-flex: 0 0 calc(100% - 300px);
@@ -1568,7 +1568,7 @@ img {
     font-size: 18px;
     margin-bottom: 10px;
     font-weight: 600; }
-  .event-search-form input {
+  .event-search-form input, .event-search-form select{
     width: 100%;
     height: 45px;
     border-radius: 2px;
@@ -1719,7 +1719,7 @@ img {
   z-index: 1;
   margin-bottom: 50px; }
   .single-post-details-area img {
-    width: 100%; }
+    width: 60%; }
   .single-post-details-area .post-content .post-title {
     -webkit-transition-duration: 500ms;
     transition-duration: 500ms;

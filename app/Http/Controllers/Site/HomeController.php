@@ -22,6 +22,16 @@ class HomeController extends Controller
         //        return view('site.table-weights');
     }
 
+    public function events()
+    {
+        return view('site.events');
+    }
+
+    public function eventsDetails()
+    {
+        return view('site.events-details');
+    }
+
     public function news()
     {
         return view('site.news');

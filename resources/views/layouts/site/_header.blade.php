@@ -82,9 +82,9 @@
                                     </ul>
                                 </li>
                                 <li>
-                                    <a href="#">Campeonatos</a>
+                                    <a href="#">Eventos</a>
                                     <ul class="dropdown">
-                                        <li><a href="index.html">Calendário 2019</a></li>
+                                        <li><a href="{{route('site.eventos')}}">Calendário 2019</a></li>
                                         <li><a href="about.html">Inscrições abertas</a></li>
                                     </ul>
                                 </li>

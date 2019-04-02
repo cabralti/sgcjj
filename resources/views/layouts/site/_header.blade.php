@@ -10,8 +10,8 @@
                         <div class="top-header-meta d-flex flex-wrap">
                             <!-- start: social fnfo -->
                             <div class="top-social-info">
-                                <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                                <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                                <a href="https://www.facebook.com/eltoncostaataide.ataide" target="_blank" title="Facebook (Abre em nova guia)"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                                <a href="https://www.instagram.com/lpjj_oficial/" target="_blank" title="Instagram (Abre em nova guia)"><i class="fa fa-instagram" aria-hidden="true"></i></a>
                             </div>
                             <!-- end: social fnfo -->
                         </div>
@@ -63,8 +63,8 @@
                                 <li>
                                     <a href="#">A Liga</a>
                                     <ul class="dropdown">
-                                        <li><a href="{{ route('site.sobre') }}">Quem Somos</a></li>
-                                        <li><a href="{{ route('site.tabela-pesos') }}">Tabela de Pesos</a></li>
+                                        <li><a href="{{ route('site.a-liga.sobre') }}">Sobre</a></li>
+                                        <li><a href="{{ route('site.a-liga.informacoes') }}">Informações</a></li>
                                     </ul>
                                 </li>
                                 <li>

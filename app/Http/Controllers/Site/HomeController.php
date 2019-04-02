@@ -17,9 +17,9 @@ class HomeController extends Controller
         return view('site.about');
     }
 
-    public function tableWeights()
+    public function information()
     {
-        //        return view('site.table-weights');
+        return view('site.information');
     }
 
     public function events()

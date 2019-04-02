@@ -14,7 +14,9 @@
                 <div class="col-12 col-sm-6 col-lg-3">
                     <div class="single-footer-widget mb-70">
                         <a href="{{route('site.home')}}" class="footer-logo">
-                            <img src="{{asset('images/site/logomarca_lpjj.jpeg')}}" class="img-fluid rounded mx-auto d-block" width="30%" alt="">
+                            <img src="{{asset('images/lpjj_oficial.png')}}" title="Liga Paraense de Jiu-Jitsu"
+                                 alt="Liga Paraense de Jiu-Jitsu" class="img-fluid rounded mx-auto d-block" width="40%"
+                                 alt="">
                         </a>
                         <p>
                             Somos a maior Liga de Jiu-Jitsu do Norte do Brasil
@@ -39,8 +41,8 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="{{route('site.sobre')}}">
-                                        <i class="fa fa-angle-double-right" aria-hidden="true"></i> Quem Somos
+                                    <a href="{{route('site.a-liga.sobre')}}">
+                                        <i class="fa fa-angle-double-right" aria-hidden="true"></i> Sobre
                                     </a>
                                 </li>
                                 <li>
@@ -121,8 +123,10 @@
                 <!-- Footer Social Icon -->
                 <div class="col-12 col-md-6">
                     <div class="footer-social-icon">
-                        <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                        <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                        <a href="https://www.facebook.com/eltoncostaataide.ataide" target="_blank"
+                           title="Facebook (Abre em nova guia)"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                        <a href="https://www.instagram.com/lpjj_oficial/" target="_blank"
+                           title="Instagram (Abre em nova guia)"><i class="fa fa-instagram" aria-hidden="true"></i></a>
                     </div>
                 </div>
             </div>

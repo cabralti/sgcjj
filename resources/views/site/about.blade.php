@@ -11,7 +11,7 @@
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{ route('site.home') }}"><i class="fa fa-home"></i> Home</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Quem Somos</li>
+                            <li class="breadcrumb-item active" aria-current="page">Sobre</li>
                         </ol>
                     </nav>
                 </div>
@@ -37,7 +37,7 @@
                             <!-- Opening Hours -->
                             <div class="opening-hours">
                                 <h6><i class="fa fa-envelope"></i> E-mails</h6>
-                                <p> ligaparaensejj@gmail.com <br> suporte@lpjj.com.br <br> presidente@lpjj.com.br </p>
+                                <p> lpjjoficial@gmail.com <br> suporte@lpjj.com.br <br> presidente@lpjj.com.br </p>
                             </div>
                             <!-- Location -->
                             <div class="location">
@@ -49,7 +49,7 @@
                 </div>
                 <div class="col-12 col-lg-6">
                     <div class="text-center">
-                        <img src="{{ asset('images/site/logomarca_lpjj.jpeg') }}" class="img-thumbnail" alt=""
+                        <img src="{{ asset('images/liga_oficial.png') }}" alt="Logomarca da Liga Paraense de Jiu-Jitsu"
                              width="50%">
                     </div>
                 </div>
@@ -75,11 +75,9 @@
                 <!-- Team Members Area -->
                 <div class="col-12 col-sm-6 col-lg-3">
                     <div class="single-team-members text-center mb-100">
-                        <div class="team-thumb" style="background-image: url({{asset('crose/img/bg-img/33.jpg')}});">
+                        <div class="team-thumb" style="background-image: url({{ asset('images/site/elton_ataide.jpg')}}); background-size: cover;">
                             <div class="team-social-info">
-                                <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                                <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                                <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                                <a href="https://www.facebook.com/eltoncostaataide.ataide" target="_blank" title="Facebook (Abre em nova guia)"><i class="fa fa-facebook" aria-hidden="true"></i></a>
                             </div>
                         </div>
                         <h6>Elton Ataide</h6>
@@ -90,11 +88,9 @@
                 <!-- Team Members Area -->
                 <div class="col-12 col-sm-6 col-lg-3">
                     <div class="single-team-members text-center mb-100">
-                        <div class="team-thumb" style="background-image: url({{ asset('images/site/elane.jpg')}}); background-size: cover;">
+                        <div class="team-thumb" style="background-image: url({{ asset('images/site/elaine.jpg')}}); background-size: cover;">
                             <div class="team-social-info">
-                                <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                                <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                                <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                                <a href="https://www.facebook.com/elaine.farias.9655" target="_blank" title="Facebook (Abre em nova guia)"><i class="fa fa-facebook" aria-hidden="true"></i></a>
                             </div>
                         </div>
                         <h6>Elaine Ataide</h6>
@@ -107,12 +103,10 @@
                     <div class="single-team-members text-center mb-100">
                         <div class="team-thumb" style="background-image: url({{ asset('images/site/raul.jpg')}}); background-size: cover;">
                             <div class="team-social-info">
-                                <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                                <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                                <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                                <a href="https://www.facebook.com/raul.carvalho.357" target="_blank" title="Facebook (Abre em nova guia)"><i class="fa fa-facebook" aria-hidden="true"></i></a>
                             </div>
                         </div>
-                        <h6>Raul</h6>
+                        <h6>Raul Carvalho</h6>
                         <span>Líder Técnico</span>
                     </div>
                 </div>

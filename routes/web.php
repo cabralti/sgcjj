@@ -12,8 +12,8 @@
 */
 
 Route::get('/', ['as' => 'site.home', 'uses' => 'Site\HomeController@index']);
-Route::get('/sobre', ['as' => 'site.sobre', 'uses' => 'Site\HomeController@about']);
-Route::get('/tabela-pesos', ['as' => 'site.tabela-pesos', 'uses' => 'Site\HomeController@tableWeights']);
+Route::get('/a-liga/sobre', ['as' => 'site.a-liga.sobre', 'uses' => 'Site\HomeController@about']);
+Route::get('/a-liga/informacoes', ['as' => 'site.a-liga.informacoes', 'uses' => 'Site\HomeController@information']);
 Route::get('/eventos', ['as' => 'site.eventos', 'uses' => 'Site\HomeController@events']);
 Route::get('/eventos/{id}', ['as' => 'site.eventos.detalhes', 'uses' => 'Site\HomeController@eventsDetails']);
 Route::get('/noticias', ['as' => 'site.noticias', 'uses' => 'Site\HomeController@news']);

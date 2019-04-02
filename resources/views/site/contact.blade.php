@@ -39,6 +39,7 @@
                                 <div class="contact-content contact-information">
                                     <h4>Contato</h4>
                                     <p>contato@lpjj.com.br</p>
+                                    <p>lpjjoficial@gmail.com</p>
                                     <p>+55 91 8029-6770</p>
                                 </div>
                             </div>

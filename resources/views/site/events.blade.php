@@ -33,20 +33,34 @@
                             <div class="row align-items-end">
                                 <div class="col-12 col-md">
                                     <div class="form-group mb-0">
-                                        <label for="eventDate">Eventos em</label>
-                                        <input type="date" class="form-control" id="eventDate" placeholder="Event In">
+                                        <label for="event_month">Eventos em</label>
+                                        <select name="event_month" id="event_month" class="form-control">
+                                            <option value="">Selecione...</option>
+                                            <option value="01">Janeiro</option>
+                                            <option value="02">Fevereiro</option>
+                                            <option value="03">Março</option>
+                                            <option value="04">Abril</option>
+                                            <option value="05">Maio</option>
+                                            <option value="06">Junho</option>
+                                            <option value="07">Julho</option>
+                                            <option value="08">Agosto</option>
+                                            <option value="09">Setembro</option>
+                                            <option value="10">Outubro</option>
+                                            <option value="11">Novembro</option>
+                                            <option value="12">Dezembro</option>
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="col-12 col-md">
                                     <div class="form-group mb-0">
-                                        <label for="eventLocation">Próximo a</label>
-                                        <input type="text" class="form-control" id="eventLocation"
+                                        <label for="event_location">Próximo a</label>
+                                        <input type="text" name="event_location" id="event_location" class="form-control"
                                                placeholder="Localização">
                                     </div>
                                 </div>
                                 <div class="col-12 col-md">
                                     <div class="form-group mb-0">
-                                        <label for="eventKeyword">Tipo</label>
+                                        <label for="event_type">Tipo</label>
                                         <select name="event_type" id="event_type" class="form-control">
                                             <option value="">Selecione...</option>
                                             <option value="campeonato">Campeonato</option>

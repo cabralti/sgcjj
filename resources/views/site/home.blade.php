@@ -12,7 +12,7 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="hero-slides-content">
-                            <h2 data-animation="fadeInUp" data-delay="100ms">Filiação</h2>
+                            <h2 data-animation="fadeInUp" data-delay="100ms">Filiação TESTTE</h2>
                             <p data-animation="fadeInUp" data-delay="300ms">Seja um atleta filiado à LPJJ</p>
                             <a href="#" class="btn crose-btn" data-animation="fadeInUp" data-delay="500ms">Realizar
                                 Filiação</a>

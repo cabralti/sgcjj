@@ -70,22 +70,22 @@
                                 <li>
                                     <a href="#">Atletas</a>
                                     <ul class="dropdown">
-                                        <li><a href="index.html">Como se Filiar</a></li>
-                                        <li><a href="about.html">Realizar Filiação</a></li>
+                                        <li><a href="{{route('site.atletas.como-registrar-atleta')}}">Como se Registrar</a></li>
+                                        <li><a href="{{route('site.atletas.registrar-atleta')}}">Registrar Atleta</a></li>
                                     </ul>
                                 </li>
                                 <li>
                                     <a href="#">Academias</a>
                                     <ul class="dropdown">
-                                        <li><a href="index.html">Como se Filiar</a></li>
-                                        <li><a href="about.html">Realizar Filiação</a></li>
+                                        <li><a href="{{route('site.academias.registrar-academia')}}">Como Registrar</a></li>
+                                        <li><a href="{{route('site.academias.como-registrar-academia')}}">Registrar Academia</a></li>
                                     </ul>
                                 </li>
                                 <li>
                                     <a href="#">Eventos</a>
                                     <ul class="dropdown">
                                         <li><a href="{{route('site.eventos')}}">Calendário 2019</a></li>
-                                        <li><a href="about.html">Inscrições abertas</a></li>
+{{--                                        <li><a href="about.html">Inscrições abertas</a></li>--}}
                                     </ul>
                                 </li>
                                 <li><a href="{{route('site.noticias')}}">Notícias</a></li>

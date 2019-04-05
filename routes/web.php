@@ -11,25 +11,31 @@
 |
 */
 
-Route::get('/', ['as' => 'site.home', 'uses' => 'Site\HomeController@index']);
-Route::get('/a-liga/sobre', ['as' => 'site.a-liga.sobre', 'uses' => 'Site\HomeController@about']);
-Route::get('/a-liga/informacoes', ['as' => 'site.a-liga.informacoes', 'uses' => 'Site\HomeController@information']);
-Route::get('/eventos', ['as' => 'site.eventos', 'uses' => 'Site\HomeController@events']);
-Route::get('/eventos/{id}', ['as' => 'site.eventos.detalhes', 'uses' => 'Site\HomeController@eventsDetails']);
-Route::get('/noticias', ['as' => 'site.noticias', 'uses' => 'Site\HomeController@news']);
-Route::get('/contato', ['as' => 'site.contato', 'uses' => 'Site\HomeController@contact']);
+Route::get('/', 'Site\WebController@index')->name('site.home');
+Route::get('/a-liga/sobre', 'Site\WebController@about')->name('site.a-liga.sobre');
+Route::get('/a-liga/informacoes', 'Site\WebController@information')->name('site.a-liga.informacoes');
+
+Route::get('/atletas/como-registrar-atleta', 'Site\WebController@howRegisterAthlete')->name('site.atletas.como-registrar-atleta');
+Route::get('/atletas/registrar-atleta', 'Site\WebController@registerAthlete')->name('site.atletas.registrar-atleta');
+
+Route::get('/academias/como-registrar-academia', 'Site\WebController@howRegisterAcademy')->name('site.academias.como-registrar-academia');
+Route::get('/academias/registrar-academia', 'Site\WebController@registerAcademy')->name('site.academias.registrar-academia');
+
+Route::get('/eventos', 'Site\WebController@events')->name('site.eventos');
+Route::get('/eventos/{uri}', 'Site\WebController@eventsDetails')->name('site.eventos.detalhes');
+Route::get('/noticias', 'Site\WebController@news')->name('site.noticias');
+Route::get('/contato', 'Site\WebController@contact')->name('site.contato');
 
 
-
-Route::get('/admin', function(){
+Route::get('/admin', function () {
     return view('home');
 });
 
-Route::get('/admin/login', ['as' => 'admin.login', function(){
+Route::get('/admin/login', ['as' => 'admin.login', function () {
     return view('admin.login.login');
 }]);
 
-Route::get('/admin', ['as' => 'admin.principal', function(){
+Route::get('/admin', ['as' => 'admin.principal', function () {
     return view('admin.principal.index');
 }]);
 

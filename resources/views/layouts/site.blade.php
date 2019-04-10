@@ -15,6 +15,7 @@
 
     @section('css')
         <link rel="stylesheet" href="{{asset('crose/style.css')}}">
+        <link rel="stylesheet" href="{{asset('css/site/custom.css')}}">
 
     @show
 </head>

@@ -77,8 +77,8 @@
                                 <li>
                                     <a href="#">Academias</a>
                                     <ul class="dropdown">
-                                        <li><a href="{{route('site.academias.registrar-academia')}}">Como Registrar</a></li>
-                                        <li><a href="{{route('site.academias.como-registrar-academia')}}">Registrar Academia</a></li>
+                                        <li><a href="{{route('site.academias.como-registrar-academia')}}">Como Registrar</a></li>
+                                        <li><a href="{{route('site.academias.registrar-academia')}}">Registrar Academia</a></li>
                                     </ul>
                                 </li>
                                 <li>

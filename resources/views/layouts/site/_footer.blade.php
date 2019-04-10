@@ -15,10 +15,9 @@
                     <div class="single-footer-widget mb-70">
                         <a href="{{route('site.home')}}" class="footer-logo">
                             <img src="{{asset('images/lpjj_oficial.png')}}" title="Liga Paraense de Jiu-Jitsu"
-                                 alt="Liga Paraense de Jiu-Jitsu" class="img-fluid rounded mx-auto d-block" width="40%"
-                                 alt="">
+                                 alt="Liga Paraense de Jiu-Jitsu" class="img-fluid rounded mx-auto d-block" width="40%">
                         </a>
-                        <p>
+                        <p class="text-center">
                             Somos a maior Liga de Jiu-Jitsu do Norte do Brasil
                         </p>
                     </div>
@@ -114,7 +113,7 @@
                 <div class="col-12 col-md-6">
                     <div class="copywrite-text">
                         <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                            Copyright &copy;<script>document.write(new Date().getFullYear());</script>
+                            Copyright &copy; <script>document.write(new Date().getFullYear());</script>
                             Todos os direitos reservados | LPJJ
                         </p>
                     </div>

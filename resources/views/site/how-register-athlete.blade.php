@@ -1,6 +1,6 @@
 @extends('layouts.site')
 
-@section('title', ' | Como Registar Atleta')
+@section('title', ' | Como Registar Atletas')
 
 @section('content')
 
@@ -14,7 +14,7 @@
                             <li class="breadcrumb-item"><a href="{{ route('site.home') }}"><i class="fa fa-home"></i>
                                     Home</a></li>
                             <li class="breadcrumb-item active" aria-current="page">Atletas</li>
-                            <li class="breadcrumb-item active" aria-current="page">Como se Registrar</li>
+                            <li class="breadcrumb-item active" aria-current="page">Como se registrar</li>
                         </ol>
                     </nav>
                 </div>
@@ -23,7 +23,7 @@
     </div>
     <!-- end: breadcrumb area -->
 
-    <section class="about-area section-padding-100-0">
+    <section class="about-area my-5">
         <div class="container">
             <div class="row">
                 <!-- Section Heading -->

@@ -24,15 +24,15 @@
     </section>
     <!-- end: slide area -->
 
-    <!-- start: campeonatos area -->
+    <!-- start: eventos area -->
     <section class="latest-sermons-area section-padding-100-0">
         <div class="container">
             <div class="row">
                 <!-- Section Heading -->
                 <div class="col-12">
                     <div class="section-heading">
-                        <h2>Campeonatos em Destaque</h2>
-                        <p>Fique ligado nos próximos campeonatos e realize sua inscrição</p>
+                        <h2>Eventos em Destaque</h2>
+                        <p>Fique ligado nos próximos eventos e realize sua inscrição</p>
                     </div>
                 </div>
             </div>
@@ -49,7 +49,7 @@
                             </div>
                         </div>
                         <div class="sermons-content">
-                            <h4>Título do Campeonato</h4>
+                            <h4>Título do Evento</h4>
                             <div class="sermons-meta-data">
                                 <p><i class="fa fa-calendar" aria-hidden="true"></i> Data do Evento: <span>01/04/2019</span>
                                 </p>
@@ -72,7 +72,7 @@
                             </div>
                         </div>
                         <div class="sermons-content">
-                            <h4>Título do Campeonato</h4>
+                            <h4>Título do Evento</h4>
                             <div class="sermons-meta-data">
                                 <p><i class="fa fa-calendar" aria-hidden="true"></i> Data do Evento: <span>01/04/2019</span>
                                 </p>
@@ -95,7 +95,7 @@
                             </div>
                         </div>
                         <div class="sermons-content">
-                            <h4>Título do Campeonato</h4>
+                            <h4>Título do Evento</h4>
                             <div class="sermons-meta-data">
                                 <p><i class="fa fa-calendar" aria-hidden="true"></i> Data do Evento: <span>01/04/2019</span>
                                 </p>
@@ -111,7 +111,7 @@
             <!-- end: row -->
         </div>
     </section>
-    <!-- end: campeonatos area -->
+    <!-- end: eventos area -->
 
     <!-- start: gallery area -->
     <div class="gallery-area d-flex flex-wrap">

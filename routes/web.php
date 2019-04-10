@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', 'Site\WebController@index')->name('site.home');
+Route::get('/', 'Site\WebController@home')->name('site.home');
 Route::get('/a-liga/sobre', 'Site\WebController@about')->name('site.a-liga.sobre');
 Route::get('/a-liga/informacoes', 'Site\WebController@information')->name('site.a-liga.informacoes');
 

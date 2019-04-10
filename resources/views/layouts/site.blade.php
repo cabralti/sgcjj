@@ -7,8 +7,7 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <!-- Title -->
-    <title>LPJJ @yield('title')</title>
+    {!! $head ?? '' !!}
 
     <!-- Favicon -->
     <link rel="icon" href="{{asset('images/favicon.ico')}}">
@@ -23,8 +22,8 @@
 <body>
 <!-- star: preloader -->
 {{--<div class="preloader d-flex align-items-center justify-content-center">--}}
-    {{--<!-- Line -->--}}
-    {{--<div class="line-preloader"></div>--}}
+{{--    <!-- Line -->--}}
+{{--    <div class="line-preloader"></div>--}}
 {{--</div>--}}
 <!-- stop: preloader -->
 

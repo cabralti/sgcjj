@@ -21,7 +21,7 @@
     <!-- end: breadcrumb area -->
 
     <!-- start: about area -->
-    <div class="about-us-area about-page section-padding-100">
+    <div class="about-us-area about-page my-5">
         <div class="container">
             <div class="row align-items-center justify-content-between">
                 <div class="col-12 col-lg-5">

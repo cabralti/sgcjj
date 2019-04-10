@@ -105,14 +105,13 @@
         </div>
     </div>
 
-    <!-- Copwrite Area -->
+    <!-- start: copwrite area -->
     <div class="copywrite-area">
         <div class="container h-100">
             <div class="row h-100 align-items-center flex-wrap">
-                <!-- Copywrite Text -->
                 <div class="col-12 col-md-6">
                     <div class="copywrite-text">
-                        <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        <p>
                             Copyright &copy; <script>document.write(new Date().getFullYear());</script>
                             Todos os direitos reservados | LPJJ
                         </p>
@@ -131,5 +130,6 @@
             </div>
         </div>
     </div>
+    <!-- end: copwrite area -->
 </footer>
 <!-- end: footer area -->

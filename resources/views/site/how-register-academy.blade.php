@@ -32,9 +32,8 @@
                         <h2>Como Registrar Academias</h2>
                         <p>
                             A <b>Liga Paraense de Jiu-Jitsu (LPJJ)</b>, no ano de 2019, criou um novo processo de <code>
-                                Registro on-line</code>
-                            para facilitar a inclusão de novos atletas e academias, para registrar sua academia é
-                            importante seguir os passos descritos a seguir:
+                                Registro on-line</code> para facilitar a inclusão de novos atletas e academias, para
+                            registrar sua academia é importante seguir os passos descritos a seguir:
                         </p>
                     </div>
                 </div>
@@ -62,7 +61,6 @@
                                 <a href="{{route('site.academias.registrar-academia')}}" class="btn btn-outline-danger">
                                     Registrar Academia
                                 </a>
-
                                 <div class="alert alert-warning bounceInDown animated mt-4">
                                     <code>IMPORTANTE:</code> As academias só poderão ter atletas vinculados a ela na <b>Liga
                                         Paraense de Jiu-Jitsu,</b> caso as mesmas estejam devidamente agremiadas a esta
@@ -118,7 +116,7 @@
 
                         <div class="timeline-item">
                             <div class="timeline-icon text-center text-white">
-                                <i class="fa fa-search"></i>
+                                <i class="fa fa-eye"></i>
                             </div>
                             <div class="timeline-content right">
                                 <h4>4º Passo</h4>

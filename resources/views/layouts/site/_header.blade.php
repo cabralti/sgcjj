@@ -10,17 +10,27 @@
                         <div class="top-header-meta d-flex flex-wrap">
                             <!-- start: social fnfo -->
                             <div class="top-social-info">
-                                <a href="https://www.facebook.com/eltoncostaataide.ataide" target="_blank" title="Facebook (Abre em nova guia)"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                                <a href="https://www.instagram.com/lpjj_oficial/" target="_blank" title="Instagram (Abre em nova guia)"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                                <a href="https://www.facebook.com/eltoncostaataide.ataide" target="_blank"
+                                   title="Facebook (Abre em nova guia)">
+                                    <i class="fa fa-facebook" aria-hidden="true"></i>
+                                </a>
+                                <a href="https://www.instagram.com/lpjj_oficial/" target="_blank"
+                                   title="Instagram (Abre em nova guia)">
+                                    <i class="fa fa-instagram" aria-hidden="true"></i>
+                                </a>
                             </div>
                             <!-- end: social fnfo -->
                         </div>
                         <!-- start: top header meta -->
                         <div class="top-header-meta">
-                            <a href="mailto:info.deercreative@gmail.com" class="email-address">
+                            <a href="mailto:contato@lpjj.com" title="contato@lpjj.com" data-toggle="tooltip"
+                               class="email-address">
                                 <i class="fa fa-envelope" aria-hidden="true"></i>
-                                <span>contato@lpjj.com</span></a>
-                            <a href="#" class="phone"><i class="fa fa-phone" aria-hidden="true"></i> <span>+55 91 8029-6770</span></a>
+                                <span>contato@lpjj.com</span>
+                            </a>
+                            <a href="#" class="phone" title="+55 91 8029-6770" data-toggle="tooltip">
+                                <i class="fa fa-phone" aria-hidden="true"></i> <span>+55 91 8029-6770</span>
+                            </a>
                         </div>
                         <!-- end: top header meta -->
                     </div>
@@ -39,8 +49,10 @@
 
                     <!-- Nav brand -->
                     <a href="{{ route('site.home') }}" class="nav-brand">
-                        {{--<img src="{{asset('images/site/logomarca_lpjj.jpeg')}}" alt="">--}}
-                        LPJJ
+                        <img src="{{asset('images/liga_oficial.png')}}" title="Liga Paraense de Jiu-Jitsu"
+                             data-toggle="tooltip"
+                             alt="Logomarca da LPJJ" class="img-responsive" style="width: 65px; height: 80px;">
+                        {{--                        LPJJ--}}
                     </a>
 
                     <!-- Navbar Toggler -->
@@ -70,22 +82,26 @@
                                 <li>
                                     <a href="#">Atletas</a>
                                     <ul class="dropdown">
-                                        <li><a href="{{route('site.atletas.como-registrar-atleta')}}">Como se Registrar</a></li>
-                                        <li><a href="{{route('site.atletas.registrar-atleta')}}">Registrar Atleta</a></li>
+                                        <li><a href="{{route('site.atletas.como-registrar-atleta')}}">Como se
+                                                Registrar</a></li>
+                                        <li><a href="{{route('site.atletas.registrar-atleta')}}">Registrar Atleta</a>
+                                        </li>
                                     </ul>
                                 </li>
                                 <li>
                                     <a href="#">Academias</a>
                                     <ul class="dropdown">
-                                        <li><a href="{{route('site.academias.como-registrar-academia')}}">Como Registrar</a></li>
-                                        <li><a href="{{route('site.academias.registrar-academia')}}">Registrar Academia</a></li>
+                                        <li><a href="{{route('site.academias.como-registrar-academia')}}">Como
+                                                Registrar</a></li>
+                                        <li><a href="{{route('site.academias.registrar-academia')}}">Registrar
+                                                Academia</a></li>
                                     </ul>
                                 </li>
                                 <li>
                                     <a href="#">Eventos</a>
                                     <ul class="dropdown">
                                         <li><a href="{{route('site.eventos')}}">Calendário 2019</a></li>
-{{--                                        <li><a href="about.html">Inscrições abertas</a></li>--}}
+                                        {{--                                        <li><a href="about.html">Inscrições abertas</a></li>--}}
                                     </ul>
                                 </li>
                                 <li><a href="{{route('site.noticias')}}">Notícias</a></li>
@@ -93,7 +109,9 @@
                             </ul>
 
                             <!-- Search Button -->
-                            <div id="header-search"><i class="fa fa-search" aria-hidden="true"></i></div>
+                            <div id="header-search">
+                                {{--                                <i class="fa fa-search" aria-hidden="true"></i>--}}
+                            </div>
 
                             <!-- login button -->
                             <a href="#" class="btn crose-btn header-btn">Login</a>

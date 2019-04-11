@@ -13,8 +13,8 @@
                     <div class="col-12">
                         <div class="hero-slides-content">
                             <h2 data-animation="fadeInUp" data-delay="100ms">Filiação</h2>
-                            <p data-animation="fadeInUp" data-delay="300ms">Seja um atleta filiado à LPJJ</p>
-                            <a href="{{route('site.atletas.registrar-atleta')}}" class="btn crose-btn" data-animation="fadeInUp" data-delay="500ms">Realizar
+                            <p data-animation="fadeInUp" data-delay="100ms">Seja um atleta filiado à LPJJ</p>
+                            <a href="{{route('site.atletas.registrar-atleta')}}" class="btn crose-btn" data-animation="fadeInUp" data-delay="100ms">Realizar
                                 Filiação</a>
                         </div>
                     </div>
@@ -57,7 +57,7 @@
                                 <p><i class="fa fa-clock-o" aria-hidden="true"></i> Inscrições até
                                     <span>31 de Março de 2019 às 18:00</span></p>
                             </div>
-                            <a href="#" class="btn crose-btn btn-block mt-3" data-animation="fadeInUp" data-delay="500ms">Inscrever-se</a>
+                            <a href="#" class="btn crose-btn btn-block mt-3">Inscrever-se</a>
                         </div>
                     </div>
                 </div>
@@ -80,7 +80,7 @@
                                 <p><i class="fa fa-clock-o" aria-hidden="true"></i> Inscrições até
                                     <span>31 de Março de 2019 às 18:00</span></p>
                             </div>
-                            <a href="#" class="btn crose-btn btn-block mt-3" data-animation="fadeInUp" data-delay="500ms">Inscrever-se</a>
+                            <a href="#" class="btn crose-btn btn-block mt-3">Inscrever-se</a>
                         </div>
                     </div>
                 </div>
@@ -103,7 +103,7 @@
                                 <p><i class="fa fa-clock-o" aria-hidden="true"></i> Inscrições até
                                     <span>31 de Março de 2019 às 18:00</span></p>
                             </div>
-                            <a href="#" class="btn crose-btn btn-block mt-3" data-animation="fadeInUp" data-delay="500ms">Inscrever-se</a>
+                            <a href="#" class="btn crose-btn btn-block mt-3">Inscrever-se</a>
                         </div>
                     </div>
                 </div>
@@ -118,70 +118,70 @@
         <!-- Single Gallery Area -->
         <div class="single-gallery-area">
             <a href="{{asset('uploads/galeria1.jpeg')}}" class="gallery-img" title="Imagem 1">
-                <img src="{{asset('uploads/galeria1.jpeg')}}" alt="">
+                <img src="{{\Illuminate\Support\Facades\Storage::url(\App\Support\Cropper::thumb('gallery/galeria1.jpeg', 800, 450 ))}}" alt="">
             </a>
         </div>
 
         <!-- Single Gallery Area -->
         <div class="single-gallery-area">
             <a href="{{asset('uploads/galeria7.jpg')}}" class="gallery-img" title="Imagem 2">
-                <img src="{{asset('uploads/galeria7.jpg')}}" alt="">
+                <img src="{{\Illuminate\Support\Facades\Storage::url(\App\Support\Cropper::thumb('gallery/galeria7.jpg', 800, 450 ))}}" alt="">
             </a>
         </div>
 
         <!-- Single Gallery Area -->
         <div class="single-gallery-area">
             <a href="{{asset('uploads/galeria3.jpeg')}}" class="gallery-img" title="Imagem 3">
-                <img src="{{asset('uploads/galeria3.jpeg')}}" alt="">
+                <img src="{{\Illuminate\Support\Facades\Storage::url(\App\Support\Cropper::thumb('gallery/galeria3.jpeg', 800, 450 ))}}" alt="">
             </a>
         </div>
 
         <!-- Single Gallery Area -->
         <div class="single-gallery-area">
             <a href="{{asset('uploads/galeria4.jpeg')}}" class="gallery-img" title="Imagem 4">
-                <img src="{{asset('uploads/galeria4.jpeg')}}" alt="">
+                <img src="{{\Illuminate\Support\Facades\Storage::url(\App\Support\Cropper::thumb('gallery/galeria4.jpeg', 800, 450 ))}}" alt="">
             </a>
         </div>
 
         <!-- Single Gallery Area -->
         <div class="single-gallery-area">
             <a href="{{asset('uploads/galeria5.jpeg')}}" class="gallery-img" title="Imagem 5">
-                <img src="{{asset('uploads/galeria5.jpeg')}}" alt="">
+                <img src="{{\Illuminate\Support\Facades\Storage::url(\App\Support\Cropper::thumb('gallery/galeria5.jpeg', 800, 450 ))}}" alt="">
             </a>
         </div>
 
         <!-- Single Gallery Area -->
         <div class="single-gallery-area">
             <a href="{{asset('uploads/galeria7.jpg')}}" class="gallery-img" title="Imagem 2">
-                <img src="{{asset('uploads/galeria7.jpg')}}" alt="">
+                <img src="{{\Illuminate\Support\Facades\Storage::url(\App\Support\Cropper::thumb('gallery/galeria7.jpg', 800, 450 ))}}" alt="">
             </a>
         </div>
 
         <!-- Single Gallery Area -->
         <div class="single-gallery-area">
             <a href="{{asset('uploads/galeria1.jpeg')}}" class="gallery-img" title="Imagem 1">
-                <img src="{{asset('uploads/galeria1.jpeg')}}" alt="">
+                <img src="{{\Illuminate\Support\Facades\Storage::url(\App\Support\Cropper::thumb('gallery/galeria1.jpeg', 800, 450 ))}}" alt="">
             </a>
         </div>
 
         <!-- Single Gallery Area -->
         <div class="single-gallery-area">
             <a href="{{asset('uploads/galeria5.jpeg')}}" class="gallery-img" title="Imagem 5">
-                <img src="{{asset('uploads/galeria5.jpeg')}}" alt="">
+                <img src="{{\Illuminate\Support\Facades\Storage::url(\App\Support\Cropper::thumb('gallery/galeria5.jpeg', 800, 450 ))}}" alt="">
             </a>
         </div>
 
         <!-- Single Gallery Area -->
         <div class="single-gallery-area">
             <a href="{{asset('uploads/galeria3.jpeg')}}" class="gallery-img" title="Imagem 3">
-                <img src="{{asset('uploads/galeria3.jpeg')}}" alt="">
+                <img src="{{\Illuminate\Support\Facades\Storage::url(\App\Support\Cropper::thumb('gallery/galeria3.jpeg', 800, 450 ))}}" alt="">
             </a>
         </div>
 
         <!-- Single Gallery Area -->
         <div class="single-gallery-area">
             <a href="{{asset('uploads/galeria4.jpeg')}}" class="gallery-img" title="Imagem 4">
-                <img src="{{asset('uploads/galeria4.jpeg')}}" alt="">
+                <img src="{{\Illuminate\Support\Facades\Storage::url(\App\Support\Cropper::thumb('gallery/galeria4.jpeg', 800, 450 ))}}" alt="">
             </a>
         </div>
     </div>

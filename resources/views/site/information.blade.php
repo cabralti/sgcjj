@@ -64,7 +64,7 @@
                             </h4>
 
                             <div class="sermons-thumbnail text-center">
-                                <img src="{{asset('uploads/[LPJJ] - Tabela_De_Pesos.jpeg')}}" alt="">
+                                <img src="{{asset('uploads/tabela_de_pesos.jpeg')}}" alt="">
                             </div>
                             <hr>
                             <div class="sermons-cata">

@@ -51,7 +51,7 @@
                     <a href="{{ route('site.home') }}" class="nav-brand">
                         <img src="{{asset('images/liga_oficial.png')}}" title="Liga Paraense de Jiu-Jitsu"
                              data-toggle="tooltip"
-                             alt="Logomarca da LPJJ" class="img-responsive" style="width: 65px; height: 80px;">
+                             alt="Logomarca da LPJJ" class="img-responsive" style="width: 60px; height: 80px;">
                         {{--                        LPJJ--}}
                     </a>
 

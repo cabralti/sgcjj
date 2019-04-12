@@ -83,7 +83,16 @@ class WebController extends Controller
 
     public function registerAcademy()
     {
-        return view('site.register-academy');
+        $head = $this->seo->render(
+            env('APP_NAME') . ' | Registrar Academia',
+            'Realize seu registro de filiação à Liga Paraense de Jiu-Jitsu (LPJJ) preenchendo o formulário com os dados solicitados',
+            route('site.academias.registrar-academia'),
+            asset('images/lpjj_oficial.png')
+        );
+
+        return view('site.register-academy', [
+            'head' => $head
+        ]);
     }
 
     public function events()

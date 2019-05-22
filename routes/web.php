@@ -11,6 +11,7 @@
 |
 */
 
+/** SITE */
 Route::get('/', 'Site\WebController@home')->name('site.home');
 Route::get('/a-liga/sobre', 'Site\WebController@about')->name('site.a-liga.sobre');
 Route::get('/a-liga/informacoes', 'Site\WebController@information')->name('site.a-liga.informacoes');
@@ -26,23 +27,19 @@ Route::get('/eventos/{uri}', 'Site\WebController@eventsDetails')->name('site.eve
 Route::get('/noticias', 'Site\WebController@news')->name('site.noticias');
 Route::get('/contato', 'Site\WebController@contact')->name('site.contato');
 
+/** ADMIN */
+Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin.'], function () {
 
-Route::get('/admin', function () {
-    return view('home');
+    /** Login */
+    Route::get('/', 'AuthController@showLoginForm')->name('login');
+    Route::post('login', 'AuthController@login')->name('login.do');
+
+    /** Rotas protegias */
+    Route::group(['middleware' => ['auth']], function () {
+        /** Dashboard */
+        Route::get('home', 'AuthController@home')->name('home');
+    });
+
+    /** Logout */
+    Route::get('logout', 'AuthController@logout')->name('logout');
 });
-
-Route::get('/admin/login', ['as' => 'admin.login', function () {
-    return view('admin.login.login');
-}]);
-
-Route::get('/admin', ['as' => 'admin.principal', function () {
-    return view('admin.principal.index');
-}]);
-
-//Route::get('/admin/professor', ['as' => 'admin.professor.index', function(){
-////    return view('admin.professor.index');
-////}]);
-
-Route::resource('/admin/professor', 'ProfessorController');
-
-Route::get('/admin/professor/destroy/{id}', ['as' => 'professor.destroy', 'uses' => 'ProfessorController@destroy']);

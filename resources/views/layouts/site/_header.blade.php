@@ -114,7 +114,7 @@
                             </div>
 
                             <!-- login button -->
-                            <a href="#" class="btn crose-btn header-btn">Login</a>
+                            <a href="{{ route('admin.login') }}" class="btn crose-btn header-btn">Login</a>
 
                         </div>
                         <!-- Nav End -->

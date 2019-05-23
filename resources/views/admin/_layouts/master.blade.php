@@ -10,6 +10,9 @@
     <link href="{{ url(mix('backend/assets/css/bootstrap.min.css')) }}" rel="stylesheet">
     <link href="{{ url('backend/assets/font-awesome/css/font-awesome.css') }}" rel="stylesheet">
 
+    <!-- Toastr style -->
+    <link href="{{ url('backend/assets/css/plugins/toastr/toastr.min.css')}}" rel="stylesheet">
+
     @hasSection('css')
         @yield('css')
     @endif
@@ -30,7 +33,7 @@
                         <img alt="image" class="rounded-circle"
                              src="{{ asset('backend/assets/img/profile_small.jpg') }}"/>
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                            <span class="block m-t-xs font-bold">Gabriel Cabral</span>
+                            <span class="block m-t-xs font-bold">{{$user->name}}</span>
                             <span class="text-muted text-xs block">Admin <b class="caret"></b></span>
                         </a>
                         <ul class="dropdown-menu animated fadeInRight m-t-xs">
@@ -69,20 +72,20 @@
 
         <!-- start: top navbar -->
         <div class="row border-bottom">
-            <nav class="navbar navbar-static-top white-bg" role="navigation" style="margin-bottom: 0">
+            <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
                 <div class="navbar-header">
                     <a class="navbar-minimalize minimalize-styl-2 btn btn-danger" href="#"><i class="fa fa-bars"></i>
                     </a>
                     <form role="search" class="navbar-form-custom" action="search_results.html">
                         <div class="form-group">
-                            <input type="text" placeholder="Pesquise aqui..." class="form-control" name="top-search"
-                                   id="top-search">
+                            {{--                            <input type="text" placeholder="Pesquise aqui..." class="form-control" name="top-search"--}}
+                            {{--                                   id="top-search">--}}
                         </div>
                     </form>
                 </div>
                 <ul class="nav navbar-top-links navbar-right">
                     <li>
-                        <span class="m-r-sm text-muted welcome-message">Bem-vindo(a) ao Sistema Administrativo.</span>
+                        <span class="m-r-sm text-muted welcome-message">{{$user->name}}, Bem-vindo(a) ao Sistema Administrativo da {{ env('APP_NAME') }}.</span>
                     </li>
 
                     <li class="dropdown">
@@ -138,6 +141,8 @@
         </div>
         <!-- end: top navbar -->
 
+        @yield('page-heading')
+
         <!-- start: content -->
         <div class="wrapper wrapper-content">
             @yield('content')
@@ -162,12 +167,32 @@
 <script src="{{ url('backend/assets/js/plugins/metisMenu/jquery.metisMenu.js') }}"></script>
 <script src="{{ url('backend/assets/js/plugins/slimscroll/jquery.slimscroll.min.js') }}"></script>
 
+<!-- Custom and plugin javascript -->
+<script src="{{ url(mix('backend/assets/js/inspinia.js')) }}"></script>
+<script src="{{ url('backend/assets/js/plugins/pace/pace.min.js') }}"></script>
+
 <!-- jQuery UI -->
 <script src="{{ url('backend/assets/js/plugins/jquery-ui/jquery-ui.min.js') }}"></script>
+
+<!-- Toastr -->
+<script src="{{ url('backend/assets/js/plugins/toastr/toastr.min.js')}}"></script>
 
 @hasSection('js')
     @yield('js')
 @endif
 
+<script>
+    {{--$(document).ready(function () {--}}
+    {{--    setTimeout(function () {--}}
+    {{--        toastr.options = {--}}
+    {{--            closeButton: true,--}}
+    {{--            progressBar: true,--}}
+    {{--            showMethod: 'slideDown',--}}
+    {{--            timeOut: 4000--}}
+    {{--        };--}}
+    {{--        toastr.success('Bem-vindo(a) novamente {{ $user->name }}');--}}
+    {{--    }, 1300);--}}
+    {{--});--}}
+</script>
 </body>
 </html>

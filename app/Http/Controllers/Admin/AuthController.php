@@ -20,7 +20,10 @@ class AuthController extends Controller
 
     public function home()
     {
-        return view('admin.dashboard');
+        $user = User::where('id', Auth::user()->id)->first();
+        return view('admin.dashboard', [
+            'user' => $user
+        ]);
     }
 
     /**

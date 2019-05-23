@@ -2,11 +2,19 @@
 
 namespace App\Http\Controllers\Site;
 
+use App\Support\Seo;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class WebController extends Controller
 {
+    private $seo;
+
+    public function __construct()
+    {
+        $this->seo = new Seo();
+    }
+
     public function home()
     {
         $head = $this->seo->render(

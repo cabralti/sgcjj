@@ -11,6 +11,10 @@ class AuthController extends Controller
 {
     public function showLoginForm()
     {
+        if (Auth::check() === true) {
+            return redirect()->route('admin.home');
+        }
+
         return view('admin.index');
     }
 
@@ -54,12 +58,34 @@ class AuthController extends Controller
             return response()->json($json);
         }
 
+        $this->authenticated($request->getClientIp());
+
         $json['redirect'] = route('admin.home');
         return response()->json($json);
     }
 
-    public function logout(){
+    /**
+     * Logout
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function logout()
+    {
         Auth::logout();
         return redirect()->route('admin.login');
+    }
+
+    /**
+     * Atualizando último login e último ip
+     *
+     * @param string $ip
+     */
+    private function authenticated(string $ip)
+    {
+        $user = User::where('id', Auth::user()->id);
+        $user->update([
+            'last_login_at' => date('Y-m-d H:i:s'),
+            'last_login_ip' => $ip
+        ]);
     }
 }

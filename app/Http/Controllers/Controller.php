@@ -13,12 +13,12 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
-    protected $seo;
+    //    protected $seo;
     protected $message;
 
     public function __construct()
     {
-        $this->seo = new Seo();
+        //        $this->seo = new Seo();
         $this->message = new Message();
     }
 }

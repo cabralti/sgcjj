@@ -19,7 +19,7 @@
                         <i class="fa fa-university fa-5x"></i>
                     </div>
                     <div class="col-8 text-right">
-                        <a href="#"><h3 class="text-uppercase text-muted">Academias </h3></a>
+                        <a href="{{ route('admin.academies.index') }}"><h3 class="text-uppercase text-muted">Academias </h3></a>
                         <h2 class="font-bold">1</h2>
                     </div>
                 </div>

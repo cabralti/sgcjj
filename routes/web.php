@@ -34,10 +34,13 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin.'], fu
     Route::get('/', 'AuthController@showLoginForm')->name('login');
     Route::post('login', 'AuthController@login')->name('login.do');
 
-    /** Rotas protegias */
+    /** Rotas protegidas */
     Route::group(['middleware' => ['auth']], function () {
         /** Dashboard */
         Route::get('home', 'AuthController@home')->name('home');
+
+        /** Academies */
+        Route::resource('academies', 'AcademyController');
     });
 
     /** Logout */

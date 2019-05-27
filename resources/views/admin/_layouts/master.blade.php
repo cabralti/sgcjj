@@ -33,7 +33,7 @@
                         <img alt="image" class="rounded-circle"
                              src="{{ asset('backend/assets/img/profile_small.jpg') }}"/>
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                            <span class="block m-t-xs font-bold">{{$user->name}}</span>
+                            <span class="block m-t-xs font-bold">{{Auth::user()->name}}</span>
                             <span class="text-muted text-xs block">Admin <b class="caret"></b></span>
                         </a>
                         <ul class="dropdown-menu animated fadeInRight m-t-xs">
@@ -52,15 +52,20 @@
                         <i class="fa fa-dashboard"></i><span class="nav-label">Dashboard</span>
                     </a>
                 </li>
-                <li class="">
+                <li class="{{ isActive('admin.academies') }}">
                     <a href="#">
                         <i class="fa fa-university"></i><span class="nav-label">Academias</span>
                         <span class="fa arrow"></span>
                     </a>
                     <ul class="nav nav-second-level collapse">
-                        <li><a href="#">Ver todas</a></li>
+                        <li><a href="{{ route('admin.academies.index') }}">Ver todas</a></li>
                         <li><a href="#">Criar Nova</a></li>
                     </ul>
+                </li>
+                <li>
+                    <a href="{{route('site.home')}}" target="_blank">
+                        <i class="fa fa-reply"></i><span class="nav-label">Ver Site</span>
+                    </a>
                 </li>
             </ul>
 
@@ -85,51 +90,50 @@
                 </div>
                 <ul class="nav navbar-top-links navbar-right">
                     <li>
-                        <span class="m-r-sm text-muted welcome-message">{{$user->name}}, Bem-vindo(a) ao Sistema Administrativo da {{ env('APP_NAME') }}.</span>
+                        <span class="m-r-sm text-muted welcome-message">{{Auth::user()->name}}, Bem-vindo(a) ao Sistema Administrativo da {{ env('APP_NAME') }}.</span>
                     </li>
-
-                    <li class="dropdown">
-                        <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
-                            <i class="fa fa-bell"></i> <span class="label label-primary">8</span>
-                        </a>
-                        <ul class="dropdown-menu dropdown-alerts">
-                            <li>
-                                <a href="mailbox.html" class="dropdown-item">
-                                    <div>
-                                        <i class="fa fa-envelope fa-fw"></i> You have 16 messages
-                                        <span class="float-right text-muted small">4 minutes ago</span>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="dropdown-divider"></li>
-                            <li>
-                                <a href="profile.html" class="dropdown-item">
-                                    <div>
-                                        <i class="fa fa-twitter fa-fw"></i> 3 New Followers
-                                        <span class="float-right text-muted small">12 minutes ago</span>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="dropdown-divider"></li>
-                            <li>
-                                <a href="grid_options.html" class="dropdown-item">
-                                    <div>
-                                        <i class="fa fa-upload fa-fw"></i> Server Rebooted
-                                        <span class="float-right text-muted small">4 minutes ago</span>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="dropdown-divider"></li>
-                            <li>
-                                <div class="text-center link-block">
-                                    <a href="notifications.html" class="dropdown-item">
-                                        <strong>See All Alerts</strong>
-                                        <i class="fa fa-angle-right"></i>
-                                    </a>
-                                </div>
-                            </li>
-                        </ul>
-                    </li>
+{{--                    <li class="dropdown">--}}
+{{--                        <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">--}}
+{{--                            <i class="fa fa-bell"></i> <span class="label label-primary">8</span>--}}
+{{--                        </a>--}}
+{{--                        <ul class="dropdown-menu dropdown-alerts">--}}
+{{--                            <li>--}}
+{{--                                <a href="mailbox.html" class="dropdown-item">--}}
+{{--                                    <div>--}}
+{{--                                        <i class="fa fa-envelope fa-fw"></i> You have 16 messages--}}
+{{--                                        <span class="float-right text-muted small">4 minutes ago</span>--}}
+{{--                                    </div>--}}
+{{--                                </a>--}}
+{{--                            </li>--}}
+{{--                            <li class="dropdown-divider"></li>--}}
+{{--                            <li>--}}
+{{--                                <a href="profile.html" class="dropdown-item">--}}
+{{--                                    <div>--}}
+{{--                                        <i class="fa fa-twitter fa-fw"></i> 3 New Followers--}}
+{{--                                        <span class="float-right text-muted small">12 minutes ago</span>--}}
+{{--                                    </div>--}}
+{{--                                </a>--}}
+{{--                            </li>--}}
+{{--                            <li class="dropdown-divider"></li>--}}
+{{--                            <li>--}}
+{{--                                <a href="grid_options.html" class="dropdown-item">--}}
+{{--                                    <div>--}}
+{{--                                        <i class="fa fa-upload fa-fw"></i> Server Rebooted--}}
+{{--                                        <span class="float-right text-muted small">4 minutes ago</span>--}}
+{{--                                    </div>--}}
+{{--                                </a>--}}
+{{--                            </li>--}}
+{{--                            <li class="dropdown-divider"></li>--}}
+{{--                            <li>--}}
+{{--                                <div class="text-center link-block">--}}
+{{--                                    <a href="notifications.html" class="dropdown-item">--}}
+{{--                                        <strong>See All Alerts</strong>--}}
+{{--                                        <i class="fa fa-angle-right"></i>--}}
+{{--                                    </a>--}}
+{{--                                </div>--}}
+{{--                            </li>--}}
+{{--                        </ul>--}}
+{{--                    </li>--}}
                     <li>
                         <a href="{{ route('admin.logout') }}">
                             <i class="fa fa-sign-out"></i> Sair
@@ -141,10 +145,10 @@
         </div>
         <!-- end: top navbar -->
 
-        @yield('page-heading')
+    @yield('page-heading')
 
-        <!-- start: content -->
-        <div class="wrapper wrapper-content">
+    <!-- start: content -->
+        <div class="wrapper wrapper-content animated fadeInRight">
             @yield('content')
         </div>
         <!-- end: content -->

@@ -1,5 +1,5 @@
 @extends('admin._layouts.master')
-@section('title', ' | Home')
+@section('title', ' | Academias')
 
 @section('css')
     <link href="{{ url('backend/assets/css/plugins/dataTables/datatables.min.css') }}" rel="stylesheet">
@@ -41,43 +41,38 @@
                         <table class="table table-striped table-bordered table-hover dataTables-example">
                             <thead>
                             <tr>
-                                <th> #</th>
+                                <th>#</th>
                                 <th>Academia</th>
-                                <th>Responsável</th>
                                 <th>E-mail</th>
                                 <th>Telefone</th>
+                                <th>Professor Responsável</th>
+                                <th>Celular</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td><a href="#">Gaia Team</a></td>
-                                <td>Fulano</td>
-                                <td>gaia@gmail.com</td>
-                                <td>(91) 98888-3333</td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td><a href="#">Cícero Costa</a></td>
-                                <td>Fulano</td>
-                                <td>cicero@gmail.com</td>
-                                <td>(91) 98888-3333</td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td><a href="#">Advance</a></td>
-                                <td>Fulano</td>
-                                <td>advance@gmail.com</td>
-                                <td>(91) 98888-3333</td>
-                            </tr>
+                            @foreach($academies as $academy)
+                                <tr>
+                                    <td>{{$academy->id}}</td>
+                                    <td>
+                                        <a href="{{ route('admin.academies.edit', ['academy' => $academy->id]) }}">{{ $academy->name }}</a>
+                                    </td>
+                                    <td>
+                                        <a href="mailto:{{ $academy->email }}">{{$academy->email}}</a>
+                                    </td>
+                                    <td>{{$academy->telephone}}</td>
+                                    <td>{{$academy->teacher_name}}</td>
+                                    <td>{{$academy->teacher_cell}}</td>
+                                </tr>
+                            @endforeach
                             </tbody>
                             <tfoot>
                             <tr>
-                                <th> #</th>
+                                <th>#</th>
                                 <th>Academia</th>
-                                <th>Responsável</th>
                                 <th>E-mail</th>
                                 <th>Telefone</th>
+                                <th>Professor Responsável</th>
+                                <th>Celular</th>
                             </tr>
                             </tfoot>
                         </table>

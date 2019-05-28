@@ -56,6 +56,6 @@ class Academy extends Model
             return '';
         }
 
-        return (string)str_replace(['.', '-', '/', '(', ') ', ' '], '', $param);
+        return str_replace(['.', '-', '/', '(', ') ', ' '], '', $param);
     }
 }

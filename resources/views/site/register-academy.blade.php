@@ -105,7 +105,7 @@
                                     <label for="street" class="col-form-label">Endereço: <span
                                                 class="text-danger">*</span></label>
                                     <input type="text" name="street" id="street" class="form-control"
-                                           placeholder="Informe o endereço" value="{{ old('address') }}" required>
+                                           placeholder="Informe o endereço" value="{{ old('street') }}" required>
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="neighborhood" class="col-form-label">Bairro: <span
@@ -215,7 +215,7 @@
                                 <div class="form-group col-md-6">
                                     <label for="teacher_email" class="col-form-label">E-mail: <span class="text-danger">*</span></label>
                                     <input type="email" name="teacher_email" id="teacher_email" class="form-control"
-                                           placeholder="Informe o melhor e-mail do professor responsável" value="{{old('teacher_cell')}}" required>
+                                           placeholder="Informe o melhor e-mail do professor responsável" value="{{old('teacher_email')}}" required>
                                 </div>
                             </div>
                         </fieldset>

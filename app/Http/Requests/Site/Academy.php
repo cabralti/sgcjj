@@ -25,10 +25,10 @@ class Academy extends FormRequest
     {
         return [
             // Academy
-            'social_name' => 'min:3|max:191',
+            'social_name' => 'required|max:191',
             'name' => 'required|min:3|max:191',
-//            'document' => 'max:14|unique:academies',
-//            'email' => 'required|email|unique:academies',
+            'document' => 'max:14|unique:academies',
+            'email' => 'required|email|unique:academies',
 
             // Address
             'zipcode' => 'max:9',

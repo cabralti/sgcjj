@@ -11,9 +11,6 @@ class AcademyController extends Controller
 {
     public function store(AcademyRequest $request)
     {
-        $academy = new Academy();
-        $academy->fill($request->all());
-
-        dd($academy->getAttributes(), $request->all());
+        $academyCreate = Academy::create($request->all());
     }
 }

@@ -21,6 +21,7 @@ Route::get('/atletas/registrar-atleta', 'Site\WebController@registerAthlete')->n
 
 Route::get('/academias/como-registrar-academia', 'Site\WebController@howRegisterAcademy')->name('site.academias.como-registrar-academia');
 Route::get('/academias/registrar-academia', 'Site\WebController@registerAcademy')->name('site.academias.registrar-academia');
+Route::post('/academias/store', 'Site\AcademyController@store')->name('site.academias.store');
 
 Route::get('/eventos', 'Site\WebController@events')->name('site.eventos');
 Route::get('/eventos/{uri}', 'Site\WebController@eventsDetails')->name('site.eventos.detalhes');

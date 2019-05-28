@@ -36,7 +36,16 @@
                     </div>
                 </div>
                 <div class="col-12">
-                    <form action="">
+                    <form action="{{ route('site.academias.store') }}" method="post">
+
+                        @if($errors->all())
+                            @foreach($errors->all() as $error)
+                                @message(['color' => 'danger'])
+                                <span class="fa fa-asterisk"></span> {{ $error }}
+                                @endmessage
+                            @endforeach
+                        @endif
+
                         @csrf
                         <fieldset class="my-4">
                             <legend class="border-bottom">Dados da Academia</legend>
@@ -45,33 +54,36 @@
                                 <div class="form-group col-md-6">
                                     <label for="social_name" class="col-form-label">Razão Social:</label>
                                     <input type="text" name="social_name" id="social_name" class="form-control"
-                                           placeholder="Informe a razão social da academia">
+                                           placeholder="Informe a razão social da academia"
+                                           value="{{ old('social_name') }}">
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="name" class="col-form-label">Nome: <span
                                                 class="text-danger">*</span></label>
                                     <input type="text" name="name" id="name" class="form-control"
-                                           placeholder="Informe o nome fantasia da academia" required>
+                                           placeholder="Informe o nome fantasia da academia" value="{{ old('name') }}"
+                                           required>
                                 </div>
                             </div>
 
                             <div class="form-row">
                                 <div class="form-group col-md-6">
-                                    <label for="cnpj" class="col-form-label">CNPJ:</label>
-                                    <input type="text" name="cnpj" id="cnpj" class="form-control" placeholder="">
+                                    <label for="document" class="col-form-label">CNPJ:</label>
+                                    <input type="text" name="document" id="document" class="form-control"
+                                           placeholder="" value="{{ old('document') }}">
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="email" class="col-form-label">E-mail: <span class="text-danger">*</span></label>
                                     <input type="email" name="email" id="email" class="form-control"
-                                           placeholder="Informe o melhor e-mail" required>
+                                           placeholder="Informe o melhor e-mail" value="{{ old('email') }}" required>
                                 </div>
                             </div>
 
                             <div class="form-row">
                                 <div class="form-group col-md-6">
-                                    <label for="cell" class="col-form-label">Celular: <span class="text-danger">*</span></label>
-                                    <input type="tel" name="cell" id="cell" class="form-control"
-                                           placeholder="(99) 9 9999-9999" required>
+                                    <label for="telephone" class="col-form-label">Telefone:</label>
+                                    <input type="tel" name="telephone" id="telephone" class="form-control"
+                                           placeholder="(99) 9999-9999" value="{{ old('telephone') }}">
                                     <small>Somente números</small>
                                 </div>
                             </div>
@@ -83,34 +95,36 @@
 
                             <div class="form-row">
                                 <div class="form-group col-md-6">
-                                    <label for="cep" class="col-form-label">CEP:</label>
-                                    <input type="text" name="cep" id="cep" class="form-control" placeholder="00000-000">
+                                    <label for="zipcode" class="col-form-label">CEP:</label>
+                                    <input type="text" name="zipcode" id="zipcode" class="form-control"
+                                           placeholder="00000-000" value="{{ old('zipcode') }}">
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-6">
-                                    <label for="address" class="col-form-label">Endereço: <span
+                                    <label for="street" class="col-form-label">Endereço: <span
                                                 class="text-danger">*</span></label>
-                                    <input type="text" name="address" id="address" class="form-control"
-                                           placeholder="Informe o endereço" required>
+                                    <input type="text" name="street" id="street" class="form-control"
+                                           placeholder="Informe o endereço" value="{{ old('address') }}" required>
                                 </div>
                                 <div class="form-group col-md-6">
-                                    <label for="cep" class="col-form-label">Bairro: <span
+                                    <label for="neighborhood" class="col-form-label">Bairro: <span
                                                 class="text-danger">*</span></label>
-                                    <input type="text" name="cep" id="cep" class="form-control" placeholder="Informe o bairro" required>
+                                    <input type="text" name="neighborhood" id="neighborhood" class="form-control"
+                                           placeholder="Informe o bairro" value="{{ old('neighborhood') }}" required>
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label for="city" class="col-form-label">Cidade: <span class="text-danger">*</span></label>
                                     <input type="text" name="city" id="city" class="form-control"
-                                           placeholder="Informe a cidade" required>
+                                           placeholder="Informe a cidade" value="{{old('city')}}" required>
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="state" class="col-form-label">Estado: <span class="text-danger">*</span></label>
                                     <select name="state" id="state" class="form-control" required>
                                         <option value="">Selecione...</option>
-                                        <option value="PA">PA</option>
+                                        <option {{ (old('state') == 'PA') ? 'selected': '' }} value="PA">PA</option>
                                     </select>
                                 </div>
                             </div>
@@ -121,53 +135,94 @@
 
                             <div class="form-row">
                                 <div class="form-group col-md-6">
-                                    <label for="name_teacher" class="col-form-label">Nome: <span class="text-danger">*</span></label>
-                                    <input type="text" name="name_teacher" id="name_teacher" class="form-control"
-                                           placeholder="Informe o nome do professor responsável" required>
+                                    <label for="teacher_name" class="col-form-label">Nome: <span
+                                                class="text-danger">*</span></label>
+                                    <input type="text" name="teacher_name" id="teacher_name" class="form-control"
+                                           placeholder="Informe o nome do professor responsável"
+                                           value="{{old('teacher_name')}}" required>
                                 </div>
                                 <div class="form-group col-md-6">
-                                    <label for="band" class="col-form-label">Faixa: <span class="text-danger">*</span></label>
-                                    <select name="band" id="band" class="form-control" required>
+                                    <label for="teacher_band" class="col-form-label">Faixa: <span
+                                                class="text-danger">*</span></label>
+                                    <select name="teacher_band" id="teacher_band" class="form-control" required>
                                         <option value="">Selecione...</option>
-                                        <option value="PRETA">PRETA</option>
-                                        <option value="PRETA 1º GRAU">PRETA 1º GRAU</option>
-                                        <option value="PRETA 2º GRAU">PRETA 2º GRAU</option>
-                                        <option value="PRETA 3º GRAU">PRETA 3º GRAU</option>
-                                        <option value="PRETA 4º GRAU">PRETA 4º GRAU</option>
-                                        <option value="PRETA 5º GRAU">PRETA 5º GRAU</option>
-                                        <option value="PRETA 6º GRAU">PRETA 6º GRAU</option>
-                                        <option value="CORAL 1º GRAU">CORAL 1º GRAU</option>
-                                        <option value="CORAL 2º GRAU">CORAL 2º GRAU</option>
-                                        <option value="CORAL 3º GRAU">CORAL 3º GRAU</option>
-                                        <option value="CORAL 4º GRAU">CORAL 4º GRAU</option>
-                                        <option value="CORAL 5º GRAU">CORAL 5º GRAU</option>
-                                        <option value="CORAL 6º GRAU">CORAL 6º GRAU</option>
+                                        <option {{ (old('teacher_band') == 'PRETA') ? 'selected': '' }} value="PRETA">
+                                            PRETA
+                                        </option>
+                                        <option {{ (old('teacher_band') == 'PRETA 1º GRAU') ? 'selected': '' }} value="PRETA 1º GRAU">
+                                            PRETA 1º GRAU
+                                        </option>
+                                        <option {{ (old('teacher_band') == 'PRETA 2º GRAU') ? 'selected': '' }} value="PRETA 2º GRAU">
+                                            PRETA 2º GRAU
+                                        </option>
+                                        <option {{ (old('teacher_band') == 'PRETA 3º GRAU') ? 'selected': '' }} value="PRETA 3º GRAU">
+                                            PRETA 3º GRAU
+                                        </option>
+                                        <option {{ (old('teacher_band') == 'PRETA 4º GRAU') ? 'selected': '' }} value="PRETA 4º GRAU">
+                                            PRETA 4º GRAU
+                                        </option>
+                                        <option {{ (old('teacher_band') == 'PRETA 5º GRAU') ? 'selected': '' }} value="PRETA 5º GRAU">
+                                            PRETA 5º GRAU
+                                        </option>
+                                        <option {{ (old('teacher_band') == 'PRETA 6º GRAU') ? 'selected': '' }} value="PRETA 6º GRAU">
+                                            PRETA 6º GRAU
+                                        </option>
+                                        <option {{ (old('teacher_band') == 'CORAL 1º GRAU') ? 'selected': '' }} value="CORAL 1º GRAU">
+                                            CORAL 1º GRAU
+                                        </option>
+                                        <option {{ (old('teacher_band') == 'CORAL 2º GRAU') ? 'selected': '' }} value="CORAL 2º GRAU">
+                                            CORAL 2º GRAU
+                                        </option>
+                                        <option {{ (old('teacher_band') == 'CORAL 3º GRAU') ? 'selected': '' }} value="CORAL 3º GRAU">
+                                            CORAL 3º GRAU
+                                        </option>
+                                        <option {{ (old('teacher_band') == 'CORAL 4º GRAU') ? 'selected': '' }} value="CORAL 4º GRAU">
+                                            CORAL 4º GRAU
+                                        </option>
+                                        <option {{ (old('teacher_band') == 'CORAL 5º GRAU') ? 'selected': '' }} value="CORAL 5º GRAU">
+                                            CORAL 5º GRAU
+                                        </option>
+                                        <option {{ (old('teacher_band') == 'CORAL 6º GRAU') ? 'selected': '' }} value="CORAL 6º GRAU">
+                                            CORAL 6º GRAU
+                                        </option>
                                     </select>
                                 </div>
                             </div>
 
                             <div class="form-row">
                                 <div class="form-group col-md-6">
-                                    <label for="cel" class="col-form-label">Celular: <span class="text-danger">*</span></label>
-                                    <input type="tel" name="cel_teacher" id="cel_teacher" class="form-control"
-                                           placeholder="(99) 9 9999-9999" required>
-                                    <small>Somente números</small>
+                                    <label for="teacher_document" class="col-form-label">CPF: <span class="text-danger">*</span></label>
+                                    <input type="text" name="teacher_document" id="teacher_document"
+                                           class="form-control" placeholder="___.___.___-__"
+                                           value="{{old('teacher_document')}}" required>
                                 </div>
                                 <div class="form-group col-md-6">
-                                    <label for="rg" class="col-form-label">RG: <span class="text-danger">*</span></label>
-                                    <input type="text" name="rg" id="rg" class="form-control" placeholder="Informe o RG" required>
+                                    <label for="teacher_document_secondary" class="col-form-label">RG: <span
+                                                class="text-danger">*</span></label>
+                                    <input type="text" name="teacher_document_secondary" id="teacher_document_secondary"
+                                           class="form-control" placeholder="Informe o RG"
+                                           value="{{old('teacher_document_secondary')}}" required>
                                 </div>
                             </div>
 
                             <div class="form-row">
                                 <div class="form-group col-md-6">
-                                    <label for="cpf" class="col-form-label">CPF: <span class="text-danger">*</span></label>
-                                    <input type="text" name="cpf" id="cpf" class="form-control" placeholder="___.___.___-__" required>
+                                    <label for="teacher_cell" class="col-form-label">Celular: <span class="text-danger">*</span></label>
+                                    <input type="tel" name="teacher_cell" id="teacher_cell" class="form-control"
+                                           placeholder="(99) 9 9999-9999" value="{{old('teacher_cell')}}" required>
+                                    <small>Somente números</small>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="teacher_email" class="col-form-label">E-mail: <span class="text-danger">*</span></label>
+                                    <input type="email" name="teacher_email" id="teacher_email" class="form-control"
+                                           placeholder="Informe o melhor e-mail do professor responsável" value="{{old('teacher_cell')}}" required>
                                 </div>
                             </div>
                         </fieldset>
 
-                        <button type="submit" class="btn crose-btn text-center"><i class="fa fa-floppy-o"></i> Salvar</button>
+                        <button type="submit" class="btn crose-btn text-center">
+                            <i class="fa fa-floppy-o"></i> Salvar
+                        </button>
                     </form>
                 </div>
             </div>

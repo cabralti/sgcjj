@@ -46,6 +46,12 @@
                             @endforeach
                         @endif
 
+                        @if(session()->exists('message'))
+                            @message(['color' => session()->get('color')])
+                                <span class="{{session()->get('icon')}}"></span> {{ session()->get('message') }}
+                            @endmessage
+                        @endif
+
                         @csrf
                         <fieldset class="my-4">
                             <legend class="border-bottom">Dados da Academia</legend>
@@ -215,7 +221,8 @@
                                 <div class="form-group col-md-6">
                                     <label for="teacher_email" class="col-form-label">E-mail: <span class="text-danger">*</span></label>
                                     <input type="email" name="teacher_email" id="teacher_email" class="form-control"
-                                           placeholder="Informe o melhor e-mail do professor responsável" value="{{old('teacher_email')}}" required>
+                                           placeholder="Informe o melhor e-mail do professor responsável"
+                                           value="{{old('teacher_email')}}" required>
                                 </div>
                             </div>
                         </fieldset>

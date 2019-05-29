@@ -16,6 +16,11 @@ class Academy extends FormRequest
         return true;
     }
 
+    public function all($keys = null)
+    {
+
+    }
+
     /**
      * Get the validation rules that apply to the request.
      *
@@ -27,7 +32,7 @@ class Academy extends FormRequest
             // Academy
             'social_name' => 'required|max:191',
             'name' => 'required|min:3|max:191',
-            'document' => 'max:14|unique:academies',
+            'document' => (!empty($this->request->all()['id']) ? 'max:18|unique:academies,document,' . $this->request->all()['id']: 'max:18|unique:academies,document'),
             'email' => 'required|email|unique:academies',
 
             // Address

@@ -175,6 +175,7 @@ return [
 
         // Person
         'social_name' => 'razão social',
+        'document' => 'CNPJ',
         'telephone' => 'telefone',
 
         // Address

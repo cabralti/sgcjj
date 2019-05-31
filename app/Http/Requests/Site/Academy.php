@@ -16,10 +16,10 @@ class Academy extends FormRequest
         return true;
     }
 
-    public function all($keys = null)
-    {
-
-    }
+//    public function all($keys = null)
+//    {
+//
+//    }
 
     /**
      * Get the validation rules that apply to the request.

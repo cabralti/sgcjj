@@ -1,4 +1,4 @@
-@extends('layouts.site')
+@extends('site._layouts.master')
 @section('title', '| Quem somos')
 
 @section('content')

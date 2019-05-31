@@ -1,5 +1,4 @@
-@extends('layouts.site')
-
+@extends('site._layouts.master')
 @section('title', ' | Registar Academia')
 
 @section('content')
@@ -75,8 +74,8 @@
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label for="document" class="col-form-label">CNPJ:</label>
-                                    <input type="text" name="document" id="document" class="form-control"
-                                           placeholder="" value="{{ old('document') }}">
+                                    <input type="text" name="document" id="document" class="form-control mask-cnpj"
+                                           placeholder="__.___.___/____-__" value="{{ old('document') }}">
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="email" class="col-form-label">E-mail: <span class="text-danger">*</span></label>
@@ -88,7 +87,7 @@
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label for="telephone" class="col-form-label">Telefone:</label>
-                                    <input type="tel" name="telephone" id="telephone" class="form-control"
+                                    <input type="tel" name="telephone" id="telephone" class="form-control mask-phone"
                                            placeholder="(99) 9999-9999" value="{{ old('telephone') }}">
                                     <small>Somente números</small>
                                 </div>
@@ -102,7 +101,7 @@
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label for="zipcode" class="col-form-label">CEP:</label>
-                                    <input type="text" name="zipcode" id="zipcode" class="form-control"
+                                    <input type="text" name="zipcode" id="zipcode" class="form-control mask-zipcode zip_code_search"
                                            placeholder="00000-000" value="{{ old('zipcode') }}">
                                 </div>
                             </div>
@@ -110,28 +109,28 @@
                                 <div class="form-group col-md-6">
                                     <label for="street" class="col-form-label">Endereço: <span
                                                 class="text-danger">*</span></label>
-                                    <input type="text" name="street" id="street" class="form-control"
+                                    <input type="text" name="street" id="street" class="form-control street"
                                            placeholder="Informe o endereço" value="{{ old('street') }}" required>
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="neighborhood" class="col-form-label">Bairro: <span
                                                 class="text-danger">*</span></label>
-                                    <input type="text" name="neighborhood" id="neighborhood" class="form-control"
+                                    <input type="text" name="neighborhood" id="neighborhood" class="form-control neighborhood"
                                            placeholder="Informe o bairro" value="{{ old('neighborhood') }}" required>
                                 </div>
                             </div>
                             <div class="form-row">
-                                <div class="form-group col-md-6">
-                                    <label for="city" class="col-form-label">Cidade: <span class="text-danger">*</span></label>
-                                    <input type="text" name="city" id="city" class="form-control"
-                                           placeholder="Informe a cidade" value="{{old('city')}}" required>
-                                </div>
                                 <div class="form-group col-md-6">
                                     <label for="state" class="col-form-label">Estado: <span class="text-danger">*</span></label>
                                     <select name="state" id="state" class="form-control" required>
                                         <option value="">Selecione...</option>
                                         <option {{ (old('state') == 'PA') ? 'selected': '' }} value="PA">PA</option>
                                     </select>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="city" class="col-form-label">Cidade: <span class="text-danger">*</span></label>
+                                    <input type="text" name="city" id="city" class="form-control city"
+                                           placeholder="Informe a cidade" value="{{old('city')}}" required>
                                 </div>
                             </div>
                         </fieldset>
@@ -199,7 +198,7 @@
                                 <div class="form-group col-md-6">
                                     <label for="teacher_document" class="col-form-label">CPF: <span class="text-danger">*</span></label>
                                     <input type="text" name="teacher_document" id="teacher_document"
-                                           class="form-control" placeholder="___.___.___-__"
+                                           class="form-control mask-doc" placeholder="___.___.___-__"
                                            value="{{old('teacher_document')}}" required>
                                 </div>
                                 <div class="form-group col-md-6">
@@ -214,7 +213,7 @@
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label for="teacher_cell" class="col-form-label">Celular: <span class="text-danger">*</span></label>
-                                    <input type="tel" name="teacher_cell" id="teacher_cell" class="form-control"
+                                    <input type="tel" name="teacher_cell" id="teacher_cell" class="form-control mask-cell"
                                            placeholder="(99) 9 9999-9999" value="{{old('teacher_cell')}}" required>
                                     <small>Somente números</small>
                                 </div>

@@ -1,5 +1,4 @@
-@extends('layouts.site')
-
+@extends('site._layouts.master')
 @section('title', ' | Como Registar Academias')
 
 @section('content')

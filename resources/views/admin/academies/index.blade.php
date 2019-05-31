@@ -38,7 +38,7 @@
                 <div class="ibox-content">
 
                     <div class="table-responsive">
-                        <table class="table table-striped table-bordered table-hover dataTables-example">
+                        <table id="dataTable" class="table table-striped table-bordered table-hover">
                             <thead>
                             <tr>
                                 <th>#</th>

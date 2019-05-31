@@ -13,17 +13,34 @@ $(function () {
         const action = form.attr('action');
         const email = form.find('input[name="email"]').val();
         const password = form.find('input[name="password"]').val();
+        const form_button = form.find('button');
 
-        $.post(action, {email: email, password: password}, function (response) {
-            if (response.message) {
-                toastr[response.type](response.message);
+        $.ajax({
+            url: action,
+            type: 'POST',
+            dataType: 'json',
+            data: {
+                email: email,
+                password: password
+            },
+            beforeSend: function () {
+                form_button.prop('disabled', true).html(`
+                    <i class="fa fa-circle-o-notch fa-spin fa-fw"></i>
+                    <span>Aguarde...</span>
+                `);
+            },
+            success: function (response) {
+                form_button.prop('disabled', false).html('Login');
+                if (response.message) {
+                    toastr[response.type](response.message);
+                }
+
+                if (response.redirect) {
+                    window.location.href = response.redirect;
+                }
             }
+        });
 
-            if (response.redirect) {
-                window.location.href = response.redirect;
-            }
-
-        }, 'json');
     });
 
     toastr.options = {

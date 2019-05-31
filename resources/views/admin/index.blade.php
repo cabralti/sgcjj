@@ -19,14 +19,12 @@
 
 <body class="gray-bg">
 
-<div class="middle-box text-center loginscreen animated fadeInDown">
-    <div>
+<div class="middle-box text-center animated fadeInDown" >
+    <div class="mt-5">
         <div>
-            {{--            <h1 class="logo-name">LPJJ</h1>--}}
-            <img class="logo-name" width="180" height="250" src="{{ asset('backend/assets/img/liga_oficial.png') }}"
+            <img class="logo-name" width="130" height="180" src="{{ asset('backend/assets/img/liga_oficial.png') }}"
                  alt="">
         </div>
-        {{--        <h3>Acesse sua conta</h3>--}}
         <form name="formLogin" class="m-t" role="form" action="{{ route('admin.login.do') }}" method="post">
             <div class="form-group">
                 <input type="email" name="email" class="form-control" placeholder="E-mail" required="">
@@ -37,7 +35,7 @@
 
             <button type="submit" class="btn btn-danger btn-lg block full-width m-b">Login</button>
 
-            <a href="#">
+            <a href="#" class="text-dark">
                 <span>Esqueceu a senha?</span>
             </a>
         </form>
@@ -56,27 +54,6 @@
 <script src="{{ url('backend/assets/js/plugins/toastr/toastr.min.js') }}"></script>
 
 <script src="{{ url(mix('backend/assets/js/login.js')) }}"></script>
-
-<script>
-    // $(function () {
-    //     toastr.options = {
-    //         "closeButton": true,
-    //         "debug": false,
-    //         "progressBar": true,
-    //         "preventDuplicates": false,
-    //         "positionClass": "toast-top-right",
-    //         "onclick": null,
-    //         "showDuration": "400",
-    //         "hideDuration": "1000",
-    //         "timeOut": "7000",
-    //         "extendedTimeOut": "1000",
-    //         "showEasing": "swing",
-    //         "hideEasing": "linear",
-    //         "showMethod": "fadeIn",
-    //         "hideMethod": "fadeOut"
-    //     }
-    // });
-</script>
 
 </body>
 

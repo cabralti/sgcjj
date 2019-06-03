@@ -61,7 +61,10 @@ class AcademyController extends Controller
      */
     public function edit($id)
     {
-        //
+        $academy = Academy::where('id', $id)->first();
+        return view('admin.academies.edit', [
+            'academy' => $academy
+        ]);
     }
 
     /**

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Academy;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -20,7 +21,10 @@ class AuthController extends Controller
 
     public function home()
     {
-        return view('admin.dashboard');
+        $academies = Academy::count();
+        return view('admin.dashboard',[
+            'academies' => $academies
+        ]);
     }
 
     /**

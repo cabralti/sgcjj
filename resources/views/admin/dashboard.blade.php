@@ -20,7 +20,7 @@
                     </div>
                     <div class="col-8 text-right">
                         <a href="{{ route('admin.academies.index') }}"><h3 class="text-uppercase text-muted">Academias </h3></a>
-                        <h2 class="font-bold">1</h2>
+                        <h2 class="font-bold">{{ $academies }}</h2>
                     </div>
                 </div>
             </div>

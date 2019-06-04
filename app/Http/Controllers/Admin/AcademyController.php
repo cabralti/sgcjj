@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Academy;
+use App\Http\Requests\Admin\Academy as AcademyRequest;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -74,9 +75,20 @@ class AcademyController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(AcademyRequest $request, $id)
     {
-        //
+        $academy = Academy::where('id', $id)->first();
+        $academy->fill($request->all());
+
+        if (!$academy->save()) {
+            return redirect()->back()->withInput()->withErrors();
+        }
+
+        $json['error'] = false;
+        $json['message'] = 'Academia alterada com sucesso!';
+        $json['type'] = 'success';
+
+        return response()->json($json);
     }
 
     /**

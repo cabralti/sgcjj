@@ -16,6 +16,9 @@
     <!-- Toastr style -->
     <link href="{{ url('backend/assets/css/plugins/toastr/toastr.min.css')}}" rel="stylesheet">
 
+    <!-- Sweetalert -->
+    <link href="{{ url('backend/assets/css/plugins/sweetalert/sweetalert.css')}}" rel="stylesheet">
+
     @hasSection('css')
         @yield('css')
     @endif
@@ -186,6 +189,8 @@
 
 <!-- Mask -->
 <script src="{{ url('libs/jquery.mask.js')}}"></script>
+
+<script src="{{ url('backend/assets/js/plugins/sweetalert/sweetalert.min.js') }}"></script>
 
 @hasSection('js')
     @yield('js')

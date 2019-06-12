@@ -14,7 +14,8 @@
                         <div class="hero-slides-content">
                             <h2 data-animation="fadeInUp" data-delay="100ms">Filiação</h2>
                             <p data-animation="fadeInUp" data-delay="100ms">Seja um atleta filiado à LPJJ</p>
-                            <a href="{{route('site.atletas.registrar-atleta')}}" class="btn crose-btn" data-animation="fadeInUp" data-delay="100ms">Realizar
+                            <a href="{{route('site.atletas.registrar-atleta')}}" class="btn crose-btn"
+                               data-animation="fadeInUp" data-delay="100ms">Realizar
                                 Filiação</a>
                         </div>
                     </div>
@@ -51,7 +52,8 @@
                         <div class="sermons-content">
                             <h4>Título do Evento</h4>
                             <div class="sermons-meta-data">
-                                <p><i class="fa fa-calendar" aria-hidden="true"></i> Data do Evento: <span>01/04/2019</span>
+                                <p><i class="fa fa-calendar" aria-hidden="true"></i> Data do Evento:
+                                    <span>01/04/2019</span>
                                 </p>
                                 <p><i class="fa fa-map-marker" aria-hidden="true"></i> Local: <span>Belém, PA</span></p>
                                 <p><i class="fa fa-clock-o" aria-hidden="true"></i> Inscrições até
@@ -74,7 +76,8 @@
                         <div class="sermons-content">
                             <h4>Título do Evento</h4>
                             <div class="sermons-meta-data">
-                                <p><i class="fa fa-calendar" aria-hidden="true"></i> Data do Evento: <span>01/04/2019</span>
+                                <p><i class="fa fa-calendar" aria-hidden="true"></i> Data do Evento:
+                                    <span>01/04/2019</span>
                                 </p>
                                 <p><i class="fa fa-map-marker" aria-hidden="true"></i> Local: <span>Belém, PA</span></p>
                                 <p><i class="fa fa-clock-o" aria-hidden="true"></i> Inscrições até
@@ -97,7 +100,8 @@
                         <div class="sermons-content">
                             <h4>Título do Evento</h4>
                             <div class="sermons-meta-data">
-                                <p><i class="fa fa-calendar" aria-hidden="true"></i> Data do Evento: <span>01/04/2019</span>
+                                <p><i class="fa fa-calendar" aria-hidden="true"></i> Data do Evento:
+                                    <span>01/04/2019</span>
                                 </p>
                                 <p><i class="fa fa-map-marker" aria-hidden="true"></i> Local: <span>Belém, PA</span></p>
                                 <p><i class="fa fa-clock-o" aria-hidden="true"></i> Inscrições até
@@ -118,70 +122,70 @@
         <!-- Single Gallery Area -->
         <div class="single-gallery-area">
             <a href="{{asset('uploads/galeria1.jpeg')}}" class="gallery-img" title="Imagem 1">
-                <img src="{{\Illuminate\Support\Facades\Storage::url(\App\Support\Cropper::thumb('gallery/galeria1.jpeg', 800, 450 ))}}" alt="">
+                <img src="{{url('uploads/galeria1.jpeg')}}" alt="">
             </a>
         </div>
 
         <!-- Single Gallery Area -->
         <div class="single-gallery-area">
             <a href="{{asset('uploads/galeria7.jpg')}}" class="gallery-img" title="Imagem 2">
-                <img src="{{\Illuminate\Support\Facades\Storage::url(\App\Support\Cropper::thumb('gallery/galeria7.jpg', 800, 450 ))}}" alt="">
+                <img src="{{url('uploads/galeria7.jpg')}}" alt="">
             </a>
         </div>
 
         <!-- Single Gallery Area -->
         <div class="single-gallery-area">
             <a href="{{asset('uploads/galeria3.jpeg')}}" class="gallery-img" title="Imagem 3">
-                <img src="{{\Illuminate\Support\Facades\Storage::url(\App\Support\Cropper::thumb('gallery/galeria3.jpeg', 800, 450 ))}}" alt="">
+                <img src="{{url('uploads/galeria3.jpeg')}}" alt="">
             </a>
         </div>
 
         <!-- Single Gallery Area -->
         <div class="single-gallery-area">
             <a href="{{asset('uploads/galeria4.jpeg')}}" class="gallery-img" title="Imagem 4">
-                <img src="{{\Illuminate\Support\Facades\Storage::url(\App\Support\Cropper::thumb('gallery/galeria4.jpeg', 800, 450 ))}}" alt="">
+                <img src="{{url('uploads/galeria4.jpeg')}}" alt="">
             </a>
         </div>
 
         <!-- Single Gallery Area -->
         <div class="single-gallery-area">
             <a href="{{asset('uploads/galeria5.jpeg')}}" class="gallery-img" title="Imagem 5">
-                <img src="{{\Illuminate\Support\Facades\Storage::url(\App\Support\Cropper::thumb('gallery/galeria5.jpeg', 800, 450 ))}}" alt="">
+                <img src="{{url('uploads/galeria5.jpeg')}}" alt="">
             </a>
         </div>
 
         <!-- Single Gallery Area -->
         <div class="single-gallery-area">
             <a href="{{asset('uploads/galeria7.jpg')}}" class="gallery-img" title="Imagem 2">
-                <img src="{{\Illuminate\Support\Facades\Storage::url(\App\Support\Cropper::thumb('gallery/galeria7.jpg', 800, 450 ))}}" alt="">
+                <img src="{{url('uploads/galeria7.jpg')}}" alt="">
             </a>
         </div>
 
         <!-- Single Gallery Area -->
         <div class="single-gallery-area">
             <a href="{{asset('uploads/galeria1.jpeg')}}" class="gallery-img" title="Imagem 1">
-                <img src="{{\Illuminate\Support\Facades\Storage::url(\App\Support\Cropper::thumb('gallery/galeria1.jpeg', 800, 450 ))}}" alt="">
+                <img src="{{url('uploads/galeria1.jpeg')}}" alt="">
             </a>
         </div>
 
         <!-- Single Gallery Area -->
         <div class="single-gallery-area">
             <a href="{{asset('uploads/galeria5.jpeg')}}" class="gallery-img" title="Imagem 5">
-                <img src="{{\Illuminate\Support\Facades\Storage::url(\App\Support\Cropper::thumb('gallery/galeria5.jpeg', 800, 450 ))}}" alt="">
+                <img src="{{url('uploads/galeria5.jpeg')}}" alt="">
             </a>
         </div>
 
         <!-- Single Gallery Area -->
         <div class="single-gallery-area">
             <a href="{{asset('uploads/galeria3.jpeg')}}" class="gallery-img" title="Imagem 3">
-                <img src="{{\Illuminate\Support\Facades\Storage::url(\App\Support\Cropper::thumb('gallery/galeria3.jpeg', 800, 450 ))}}" alt="">
+                <img src="{{url('uploads/galeria3.jpeg')}}" alt="">
             </a>
         </div>
 
         <!-- Single Gallery Area -->
         <div class="single-gallery-area">
             <a href="{{asset('uploads/galeria4.jpeg')}}" class="gallery-img" title="Imagem 4">
-                <img src="{{\Illuminate\Support\Facades\Storage::url(\App\Support\Cropper::thumb('gallery/galeria4.jpeg', 800, 450 ))}}" alt="">
+                <img src="{{url('uploads/galeria4.jpeg')}}" alt="">
             </a>
         </div>
     </div>

@@ -32,8 +32,7 @@
                     <li><a class="nav-link" data-toggle="tab" href="#tab-4"> Documentos Anexados</a></li>
                 </ul>
                 <form name="form_edit" action="{{ route('admin.academies.update', ['academy' => $academy->id]) }}"
-                      method="post"
-                      enctype="multipart/form-data">
+                      method="post" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     <input type="hidden" name="id" value="{{ $academy->id }}">

@@ -44,7 +44,6 @@
                                 <th>#</th>
                                 <th>Academia</th>
                                 <th>E-mail</th>
-                                <th>Telefone</th>
                                 <th>Professor Responsável</th>
                                 <th>Celular</th>
                             </tr>
@@ -59,7 +58,6 @@
                                     <td>
                                         <a href="mailto:{{ $academy->email }}">{{$academy->email}}</a>
                                     </td>
-                                    <td>{{$academy->telephone}}</td>
                                     <td>{{$academy->teacher_name}}</td>
                                     <td>{{$academy->teacher_cell}}</td>
                                 </tr>
@@ -70,7 +68,6 @@
                                 <th>#</th>
                                 <th>Academia</th>
                                 <th>E-mail</th>
-                                <th>Telefone</th>
                                 <th>Professor Responsável</th>
                                 <th>Celular</th>
                             </tr>

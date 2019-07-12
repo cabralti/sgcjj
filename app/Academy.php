@@ -65,6 +65,11 @@ class Academy extends Model
         $this->attributes['teacher_cell'] = $this->clearField($value);
     }
 
+    public function getTeacherCellAttribute($value)
+    {
+        return '(' . substr($value, 0, 2) . ') ' . substr($value, 2, 5) . '-' . substr($value, 7, 4);
+    }
+
     private function clearField(?string $param)
     {
         if (empty($param)) {

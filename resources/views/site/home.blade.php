@@ -209,7 +209,7 @@
                 <div class="col-12 col-sm-6 col-lg-3">
                     <div class="single-team-members text-center">
                         <div class="team-thumb"
-                             style="background-image: url({{asset('images/site/parceiros/joker.png')}}); background-size: cover;">
+                             style="background-image:url({{asset('images/site/parceiros/joker.png')}}); background-size: cover;">
                             <div class="team-social-info">
                                 <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
                             </div>
@@ -222,7 +222,7 @@
                 <div class="col-12 col-sm-6 col-lg-3">
                     <div class="single-team-members text-center mb-100">
                         <div class="team-thumb"
-                             style="background-image: url({{asset('images/site/parceiros/drill_fight.jpg')}});background-repeat: no-repeat;  background-size: cover;">
+                             style="background-image:url({{asset('images/site/parceiros/drill_fight.jpg')}});background-repeat: no-repeat;  background-size: cover;">
                             <div class="team-social-info">
                                 <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
                             </div>

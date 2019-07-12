@@ -336,10 +336,10 @@
                     </div>
 
                     <div class="border-top my-2 py-2 ">
-                        <button type="submit" class="btn btn-secondary">
+                        <button type="submit" class="btn btn-primary">
                             <i class="fa fa-floppy-o"></i> Salvar
                         </button>
-                        <a href="{{ route('admin.academies.index') }}" class="btn btn-danger pull-right">
+                        <a href="{{ route('admin.academies.index') }}" class="btn btn-danger">
                             <i class="fa fa-ban"></i> Cancelar
                         </a>
                     </div>

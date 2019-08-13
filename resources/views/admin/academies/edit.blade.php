@@ -1,5 +1,5 @@
 @extends('admin._layouts.master')
-@section('title', ' | Editar Academia')
+@section('title', ' Editar Academia | ')
 
 @section('page-heading')
     <div class="row wrapper border-bottom white-bg page-heading">
@@ -26,10 +26,14 @@
         <div class="col-lg-12">
             <div class="tabs-container">
                 <ul class="nav nav-tabs">
-                    <li><a class="nav-link active" data-toggle="tab" href="#tab-1"> Dados da Academia</a></li>
-                    <li><a class="nav-link" data-toggle="tab" href="#tab-2"> Endereço</a></li>
-                    <li><a class="nav-link" data-toggle="tab" href="#tab-3"> Professor Responsável</a></li>
-                    <li><a class="nav-link" data-toggle="tab" href="#tab-4"> Documentos Anexados</a></li>
+                    <li><a class="nav-link active" data-toggle="tab" href="#tab-1"><i class="fa fa-university"></i>
+                            Dados da Academia</a></li>
+                    <li><a class="nav-link" data-toggle="tab" href="#tab-2"><i class="fa fa-map-marker"></i>
+                            Endereço</a></li>
+                    <li><a class="nav-link" data-toggle="tab" href="#tab-3"><i class="fa fa-male"></i> Professor
+                            Responsável</a></li>
+                    <li><a class="nav-link" data-toggle="tab" href="#tab-4"><i class="fa fa-paperclip"></i> Documentos
+                            Anexados</a></li>
                 </ul>
                 <form name="form_edit" action="{{ route('admin.academies.update', ['academy' => $academy->id]) }}"
                       method="post" enctype="multipart/form-data">
@@ -51,42 +55,39 @@
                             <div class="panel-body">
 
                                 <fieldset>
-                                    <div class="form-group row">
-                                        <label class="col-sm-2 col-form-label">Razão Social:</label>
-                                        <div class="col-sm-10">
-                                            <input type="text" name="social_name" id="social_name" class="form-control"
-                                                   placeholder="Informe a razão social"
+                                    <div class="row">
+                                        <div class="col-sm-12 col-md-6 form-group">
+                                            <label class="col-form-label font-weight-bold">Razão Social:</label>
+                                            <input type="text" name="social_name" id="social_name"
+                                                   class="form-control" placeholder="Informe a razão social"
                                                    value="{{ old('social_name') ?? $academy->social_name }}">
                                         </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="col-sm-2 col-form-label">Nome:</label>
-                                        <div class="col-sm-10">
+                                        <div class="col-sm-12 col-md-6 form-group">
+                                            <label class="col-form-label font-weight-bold">Nome da Academia:</label>
                                             <input type="text" name="name" id="name" class="form-control"
-                                                   placeholder="Informe o nome fantasia"
+                                                   placeholder="Informe o nome fantasia da academia" required
                                                    value="{{ old('name') ?? $academy->name }}">
                                         </div>
                                     </div>
-                                    <div class="form-group row">
-                                        <label class="col-sm-2 col-form-label">CNPJ:</label>
-                                        <div class="col-sm-10">
+
+                                    <div class="row">
+                                        <div class="col-sm-12 col-md-6 form-group">
+                                            <label class="col-form-label font-weight-bold">CNPJ:</label>
                                             <input type="text" name="document" id="document"
-                                                   class="form-control mask-cnpj"
-                                                   placeholder="__.___.___/____-__"
-                                                   value="{{ old('document') ?? $academy->document }}">
+                                                   class="form-control mask-cnpj" placeholder="__.___.___/____-__"
+                                                   value="{{ old('document') ?? $academy->document }}" required>
                                         </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="col-sm-2 col-form-label">E-mail:</label>
-                                        <div class="col-sm-10">
+                                        <div class="col-sm-12 col-md-6 form-group">
+                                            <label class="col-form-label font-weight-bold">E-mail:</label>
                                             <input type="email" name="email" id="email" class="form-control"
-                                                   placeholder="Informe o melhor e-mail"
-                                                   value="{{ old('email') ?? $academy->email }}">
+                                                   placeholder="Informe o melhor e-mail da academia"
+                                                   value="{{ old('email') ?? $academy->email }}" required>
                                         </div>
                                     </div>
-                                    <div class="form-group row">
-                                        <label class="col-sm-2 col-form-label">Telefone:</label>
-                                        <div class="col-sm-10">
+
+                                    <div class="row">
+                                        <div class="col-sm-12 col-md-6 form-group">
+                                            <label class="col-form-label font-weight-bold">Telefone:</label>
                                             <input type="tel" name="telephone" id="telephone"
                                                    class="form-control mask-phone" placeholder="(99) 9999-9999"
                                                    value="{{ old('telephone') ?? $academy->telephone }}">
@@ -100,49 +101,44 @@
                             <div class="panel-body">
 
                                 <fieldset>
-                                    <div class="form-group row">
-                                        <label class="col-sm-2 col-form-label">CEP:</label>
-                                        <div class="col-sm-6">
+                                    <div class="row">
+                                        <div class="col-sm-12 col-md-6 form-group">
+                                            <label class="col-form-label font-weight-bold">CEP:</label>
                                             <input type="text" name="zipcode" id="zipcode"
                                                    class="form-control mask-zipcode zip_code_search"
                                                    placeholder="00000-000"
                                                    value="{{ old('zipcode') ?? $academy->zipcode }}">
                                         </div>
                                     </div>
-                                    <div class="form-group row">
-                                        <label class="col-sm-2 col-form-label">Endereço:</label>
-                                        <div class="col-sm-10">
+                                    <div class="row">
+                                        <div class="col-sm-12 col-md-6 form-group">
+                                            <label class="col-form-label font-weight-bold">Endereço:</label>
                                             <input type="text" name="street" id="street" class="form-control street"
                                                    placeholder="Informe o endereço"
-                                                   value="{{ old('street') ?? $academy->street }}">
+                                                   value="{{ old('street') ?? $academy->street }}" required>
                                         </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="col-sm-2 col-form-label">Bairro:</label>
-                                        <div class="col-sm-10">
+                                        <div class="col-sm-12 col-md-6 form-group">
+                                            <label class="col-form-label font-weight-bold">Bairro:</label>
                                             <input type="text" name="neighborhood" id="neighborhood"
-                                                   class="form-control neighborhood"
-                                                   placeholder="Informe o bairro"
-                                                   value="{{ old('neighborhood') ?? $academy->neighborhood }}">
+                                                   class="form-control neighborhood" placeholder="Informe o bairro"
+                                                   value="{{ old('neighborhood') ?? $academy->neighborhood }}" required>
                                         </div>
                                     </div>
-                                    <div class="form-group row">
-                                        <label class="col-sm-2 col-form-label">Estado:</label>
-                                        <div class="col-sm-10">
-                                            <select name="state" id="state" class="form-control">
+                                    <div class="row">
+                                        <div class="col-sm-12 col-md-6 form-group">
+                                            <label class="col-form-label font-weight-bold">Estado:</label>
+                                            <select name="state" id="state" class="form-control state" required>
                                                 <option>Selecione</option>
                                                 <option {{ old('state') ? 'selectd' : ($academy->state == 'PA' ? 'selected' : '') }}>
                                                     PA
                                                 </option>
                                             </select>
                                         </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="col-sm-2 col-form-label">Cidade:</label>
-                                        <div class="col-sm-10">
+                                        <div class="col-sm-12 col-md-6 form-group">
+                                            <label class="col-form-label font-weight-bold">Cidade:</label>
                                             <input type="text" name="city" id="city" class="form-control city"
                                                    placeholder="Informe a cidade"
-                                                   value="{{ old('city') ?? $academy->city }}">
+                                                   value="{{ old('city') ?? $academy->city }}" required>
                                         </div>
                                     </div>
                                 </fieldset>
@@ -153,19 +149,18 @@
                             <div class="panel-body">
 
                                 <fieldset>
-                                    <div class="form-group row">
-                                        <label class="col-sm-2 col-form-label">Nome:</label>
-                                        <div class="col-sm-10">
+                                    <div class="row">
+                                        <div class="col-sm-12 col-md-6 form-group">
+                                            <label class="col-form-label font-weight-bold">Nome:</label>
                                             <input type="text" name="teacher_name" id="teacher_name"
                                                    class="form-control"
                                                    placeholder="Informe o nome do professor responsável"
-                                                   value="{{ old('teacher_name') ?? $academy->teacher_name }}">
+                                                   value="{{ old('teacher_name') ?? $academy->teacher_name }}" required>
                                         </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="col-sm-2 col-form-label">Faixa:</label>
-                                        <div class="col-sm-10">
-                                            <select name="teacher_band" id="teacher_band" class="form-control">
+
+                                        <div class="col-sm-12 col-md-6 form-group">
+                                            <label class="col-form-label font-weight-bold">Faixa:</label>
+                                            <select name="teacher_band" id="teacher_band" class="form-control" required>
                                                 <option value="">Selecione...</option>
                                                 <option {{ (old('teacher_band') == 'PRETA') ? 'selected': ($academy->teacher_band == 'PRETA' ? 'selected' : '') }} value="PRETA">
                                                     PRETA
@@ -209,41 +204,43 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="form-group row">
-                                        <label class="col-sm-2 col-form-label">CPF:</label>
-                                        <div class="col-sm-10">
+
+                                    <div class="row">
+                                        <div class="col-sm-12 col-md-6 form-group">
+                                            <label class="col-form-label font-weight-bold">CPF:</label>
                                             <input type="text" name="teacher_document" id="teacher_document"
-                                                   class="form-control mask-doc"
-                                                   placeholder="___.___.___-__"
-                                                   value="{{ old('teacher_document') ?? $academy->teacher_document }}">
+                                                   class="form-control mask-doc" placeholder="___.___.___-__"
+                                                   value="{{ old('teacher_document') ?? $academy->teacher_document }}"
+                                                   required>
                                         </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="col-sm-2 col-form-label">RG:</label>
-                                        <div class="col-sm-10">
+
+                                        <div class="col-sm-12 col-md-6 form-group">
+                                            <label class="col-form-label font-weight-bold">RG:</label>
                                             <input type="text" name="teacher_document_secondary"
                                                    id="teacher_document_secondary" class="form-control"
                                                    placeholder="Informe o RG"
-                                                   value="{{ old('teacher_document_secondary') ?? $academy->teacher_document_secondary }}">
+                                                   value="{{ old('teacher_document_secondary') ?? $academy->teacher_document_secondary }}"
+                                                   required>
                                         </div>
                                     </div>
-                                    <div class="form-group row">
-                                        <label class="col-sm-2 col-form-label">E-mail:</label>
-                                        <div class="col-sm-10">
+
+                                    <div class="row">
+                                        <div class="col-sm-12 col-md-6 form-group">
+                                            <label class="col-form-label font-weight-bold">E-mail:</label>
                                             <input type="email" name="teacher_email" id="teacher_email"
-                                                   class="form-control"
-                                                   placeholder="Informe o melhor e-mail"
-                                                   value="{{ old('teacher_email') ?? $academy->teacher_email }}">
+                                                   class="form-control" placeholder="Informe o melhor e-mail"
+                                                   value="{{ old('teacher_email') ?? $academy->teacher_email }}"
+                                                   required>
                                         </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="col-sm-2 col-form-label">Celular:</label>
-                                        <div class="col-sm-10">
+
+                                        <div class="col-sm-12 col-md-6 form-group">
+                                            <label class="col-form-label font-weight-bold">Celular:</label>
                                             <input type="tel" name="teacher_cell" id="teacher_cell"
                                                    class="form-control mask-cell" placeholder="(99) 9 9999-9999"
-                                                   value="{{ old('teacher_cell') ?? $academy->teacher_cell }}">
+                                                   value="{{ old('teacher_cell') ?? $academy->teacher_cell }}" required>
                                         </div>
                                     </div>
+
                                 </fieldset>
 
                             </div>
@@ -335,13 +332,13 @@
                         </div>
                     </div>
 
-                    <div class="border-top my-2 py-2 ">
+                    <div class="border-top my-2 py-2">
+                        <a href="{{ route('admin.academies.index') }}" class="btn btn-default">
+                            <i class="fa fa-ban"></i> Cancelar
+                        </a>
                         <button type="submit" class="btn btn-primary">
                             <i class="fa fa-floppy-o"></i> Salvar
                         </button>
-                        <a href="{{ route('admin.academies.index') }}" class="btn btn-danger">
-                            <i class="fa fa-ban"></i> Cancelar
-                        </a>
                     </div>
                 </form>
             </div>

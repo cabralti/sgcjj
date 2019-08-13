@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>LPJJ @yield('title')</title>
+    <title> @yield('title') LPJJ</title>
 
     <!-- Favicon -->
     <link rel="icon" href="{{asset('images/favicon.ico')}}">
@@ -65,7 +65,7 @@
                     </a>
                     <ul class="nav nav-second-level collapse">
                         <li><a href="{{ route('admin.academies.index') }}">Ver todas</a></li>
-                        <li><a href="#">Criar Nova</a></li>
+                        {{--                        <li><a href="#">Criar Nova</a></li>--}}
                     </ul>
                 </li>
                 <li>

@@ -1,5 +1,5 @@
 @extends('admin._layouts.master')
-@section('title', ' | Academias')
+@section('title', 'Academias | ')
 
 @section('css')
     <link href="{{ url('backend/assets/css/plugins/dataTables/datatables.min.css') }}" rel="stylesheet">
@@ -45,33 +45,41 @@
                                 <th>Academia</th>
                                 <th>E-mail</th>
                                 <th>Professor Responsável</th>
-                                <th>Celular</th>
+                                <th>Celular Prof.</th>
+                                <th>Status</th>
+                                <th class="text-right"></th>
                             </tr>
                             </thead>
                             <tbody>
                             @foreach($academies as $academy)
                                 <tr>
-                                    <td>{{$academy->id}}</td>
-                                    <td>
+                                    <td class="align-middle">{{$academy->id}}</td>
+                                    <td class="align-middle">
                                         <a href="{{ route('admin.academies.edit', ['academy' => $academy->id]) }}">{{ $academy->name }}</a>
                                     </td>
-                                    <td>
+                                    <td class="align-middle">
                                         <a href="mailto:{{ $academy->email }}">{{$academy->email}}</a>
                                     </td>
-                                    <td>{{$academy->teacher_name}}</td>
-                                    <td>{{$academy->teacher_cell}}</td>
+                                    <td class="align-middle">{{$academy->teacher_name}}</td>
+                                    <td class="align-middle">{{$academy->teacher_cell}}</td>
+                                    <td class="align-middle"><span class="badge badge-primary">Ativo</span></td>
+                                    <td class="align-middle text-right">
+                                        <a href="#" class="btn btn-default"><i class="fa fa-search"></i> Ver</a>
+                                        <a href="{{ route('admin.academies.edit', ['academy' => $academy->id]) }}" class="btn btn-default"><i class="fa fa-edit"></i> Editar</a>
+                                        <a href="#" class="btn btn-danger"><i class="fa fa-trash-o"></i> Excluir</a>
+{{--                                        <div class="btn-group">--}}
+{{--                                            <button data-toggle="dropdown" class="btn btn-default dropdown-toggle" aria-expanded="false"><i class="fa fa-cogs"></i> Ações</button>--}}
+{{--                                            <ul class="dropdown-menu" x-placement="bottom-start" style="position: absolute; top: 32px; left: 0px; will-change: top, left;">--}}
+{{--                                                <li><a class="dropdown-item" href="#"><i class="fa fa-search"></i> Ver</a></li>--}}
+{{--                                                <li><a class="dropdown-item" href="#"> <i class="fa fa-edit"></i> Editar</a></li>--}}
+{{--                                                <li class="dropdown-divider"></li>--}}
+{{--                                                <li><a class="dropdown-item" href="#"><i class="fa fa-trash-o"></i> Excluir</a></li>--}}
+{{--                                            </ul>--}}
+{{--                                        </div>--}}
+                                    </td>
                                 </tr>
                             @endforeach
                             </tbody>
-                            <tfoot>
-                            <tr>
-                                <th>#</th>
-                                <th>Academia</th>
-                                <th>E-mail</th>
-                                <th>Professor Responsável</th>
-                                <th>Celular</th>
-                            </tr>
-                            </tfoot>
                         </table>
                     </div>
 

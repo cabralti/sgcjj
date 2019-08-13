@@ -71,15 +71,16 @@
                         <!-- Nav Start -->
                         <div class="classynav">
                             <ul>
-                                <li><a href="{{ route('site.home') }}">Home</a></li>
-                                <li>
+                                <li class="{{ isActive('site.home') }}"><a href="{{ route('site.home') }}">Home</a></li>
+                                <li class="{{ isActive('site.a-liga.sobre') }} {{isActive('site.a-liga.informacoes') }}">
                                     <a href="#">A Liga</a>
                                     <ul class="dropdown">
                                         <li><a href="{{ route('site.a-liga.sobre') }}">Sobre</a></li>
                                         <li><a href="{{ route('site.a-liga.informacoes') }}">Informações</a></li>
                                     </ul>
                                 </li>
-                                <li>
+                                <li class="{{isActive('site.atletas.como-registrar-atleta') }}
+                                            {{isActive('site.atletas.registrar-atleta') }}">
                                     <a href="#">Atletas</a>
                                     <ul class="dropdown">
                                         <li><a href="{{route('site.atletas.como-registrar-atleta')}}">Como se
@@ -88,7 +89,8 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li>
+                                <li class="{{isActive('site.academias.como-registrar-academia') }}
+                                            {{isActive('site.academias.registrar-academia') }}">
                                     <a href="#">Academias</a>
                                     <ul class="dropdown">
                                         <li><a href="{{route('site.academias.como-registrar-academia')}}">Como
@@ -97,15 +99,15 @@
                                                 Academia</a></li>
                                     </ul>
                                 </li>
-                                <li>
+                                <li class="{{isActive('site.eventos') }}">
                                     <a href="#">Eventos</a>
                                     <ul class="dropdown">
                                         <li><a href="{{route('site.eventos')}}">Calendário 2019</a></li>
                                         {{--                                        <li><a href="about.html">Inscrições abertas</a></li>--}}
                                     </ul>
                                 </li>
-                                <li><a href="{{route('site.noticias')}}">Notícias</a></li>
-                                <li><a href="{{route('site.contato')}}">Contato</a></li>
+                                <li class="{{isActive('site.noticias') }}"><a href="{{route('site.noticias')}}">Notícias</a></li>
+                                <li class="{{isActive('site.contato') }}"><a href="{{route('site.contato')}}">Contato</a></li>
                             </ul>
 
                             <!-- Search Button -->

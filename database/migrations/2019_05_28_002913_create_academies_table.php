@@ -18,7 +18,7 @@ class CreateAcademiesTable extends Migration
             $table->increments('id');
             $table->string('social_name')->unique();
             $table->string('name');
-            $table->string('document')->unique();
+            $table->string('academy_document')->unique();
             $table->string('email')->unique();
             $table->string('telephone')->nullable();
 
@@ -29,15 +29,7 @@ class CreateAcademiesTable extends Migration
             $table->string('city')->nullable();
             $table->string('state')->nullable();
 
-            /** teacher */
-            $table->string('teacher_name')->nullable();
-            $table->string('teacher_band')->nullable();
-            $table->string('teacher_document')->nullable();
-            $table->string('teacher_document_secondary', 20)->nullable();
-            $table->string('teacher_cell')->nullable();
-            $table->string('teacher_email')->nullable();
-
-            $table->boolean('status')->nullable()->default(0);
+            $table->string('status')->nullable()->default(0);
             $table->timestamps();
         });
     }

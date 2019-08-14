@@ -23,6 +23,9 @@ Route::get('/academias/como-registrar-academia', 'Site\WebController@howRegister
 Route::get('/academias/registrar-academia', 'Site\WebController@registerAcademy')->name('site.academias.registrar-academia');
 Route::post('/academias/store', 'Site\AcademyController@store')->name('site.academias.store');
 
+/** Get Data Teachers */
+Route::post('/teacher/get-data-teacher', 'Admin\TeacherController@getDataTeacher')->name('site.teacher.get-data-teacher');
+
 Route::get('/eventos', 'Site\WebController@events')->name('site.eventos');
 Route::get('/eventos/{uri}', 'Site\WebController@eventsDetails')->name('site.eventos.detalhes');
 Route::get('/noticias', 'Site\WebController@news')->name('site.noticias');

@@ -385,6 +385,10 @@ img {
   .header-area .classynav ul li a {
     font-weight: 700;
     text-transform: uppercase; }
+
+.header-area .classynav ul li.active > a {
+    color: #c92f2f !important;
+}
     @media only screen and (min-width: 992px) and (max-width: 1199px) {
       .header-area .classynav ul li a {
         font-size: 13px;

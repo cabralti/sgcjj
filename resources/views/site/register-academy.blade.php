@@ -1,6 +1,10 @@
 @extends('site._layouts.master')
 @section('title', ' | Registar Academia')
 
+@section('css')
+    <link rel="stylesheet" href="{{url('frontend/assets/js/plugins/select2/css/select2.min.css')}}">
+@endsection
+
 @section('content')
 
     <!-- start: breadcrumb area -->
@@ -81,7 +85,8 @@
                                     <label for="email" class="col-form-label font-bold">E-mail: <span
                                             class="text-danger">*</span></label>
                                     <input type="email" name="email" id="email" class="form-control"
-                                           placeholder="Informe o melhor e-mail da academia" value="{{ old('email') }}" required>
+                                           placeholder="Informe o melhor e-mail da academia" value="{{ old('email') }}"
+                                           required>
                                 </div>
                             </div>
 
@@ -173,9 +178,19 @@
                                     <label for="teacher_search" class="col-form-label font-bold">
                                         <i class="fa fa-search"></i> Pesquisar:
                                     </label>
-                                    <input type="text" name="teacher_search" id="teacher_search"
-                                           class="form-control typeahead" data-provide="typeahead"
-                                           placeholder="Informe o nome ou cpf do professor responsável">
+                                    {{--                                    <input type="text" name="teacher_search" id="teacher_search"--}}
+                                    {{--                                           class="form-control typeahead" data-provide="typeahead"--}}
+                                    {{--                                           placeholder="Informe o nome ou cpf do professor responsável">--}}
+
+                                    <select name="teacher_search" id="teacher_search" class="form-control select2"
+                                            data-action="{{route('site.teacher.get-data-teacher')}}">
+                                        <option value="">Selecione</option>
+                                        @foreach($teachers as $teacher)
+                                            <option value="{{$teacher->id}}">
+                                                {{$teacher->name}} ({{$teacher->document}})
+                                            </option>
+                                        @endforeach
+                                    </select>
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="" class="col-form-label font-bold">Não encontrou seu responsável ao
@@ -310,38 +325,57 @@
 
 
 @section('js')
-    <script src="{{url('frontend/assets/js/typeahead.js')}}"></script>
+    <script src="{{url('frontend/assets/js/plugins/select2/select2.full.min.js')}}"></script>
+    <script src="{{url('frontend/assets/js/plugins/select2/js/i18n/pt-BR.js')}}"></script>
 
     <script>
         $(function () {
 
-            $('#dadosResponsavel :input').prop('disabled', true);
-
-            var $input = $(".typeahead");
-            $input.typeahead({
-                source: [
-                    {id: "someId1", name: "Display name 1"},
-                    {id: "someId2", name: "Display name 2"}
-                ],
-                autoSelect: true
-            });
-
-            $input.change(function () {
-                $('#dadosResponsavel :input').prop('disabled', true);
-
-                var current = $input.typeahead("getActive");
-                if (current) {
-                    // Some item from your model is active!
-                    if (current.name == $input.val()) {
-                        // This means the exact match is found. Use toLowerCase() if you want case insensitive match.
-                    } else {
-                        // This means it is only a partial match, you can either add a new item
-                        // or take the active if you don't want new items
-                    }
-                } else {
-                    // Nothing is active so it is a new value (or maybe empty value)
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
             });
+
+            $('.select2').select2({
+                language: "pt-BR"
+            });
+
+            $('#teacher_search').on('change', function () {
+
+                $('#dadosResponsavel :input').prop('disabled', true);
+
+                var teacher = $(this);
+
+                $.ajax({
+                    url: teacher.data('action'),
+                    type: 'POST',
+                    dataType: 'json',
+                    data: {teacher: teacher.val()},
+                    success: function (response) {
+                        if (response.success) {
+                            $('#teacher_name').val(response.teacher.name);
+                            $('#teacher_document').val(response.teacher.document);
+                            $('#teacher_document_secondary').val(response.teacher.document_secondary);
+                            $('#teacher_cell').val(response.teacher.cell);
+                            $('#teacher_email').val(response.teacher.email);
+
+                            $('#teacher_band option').each(function () {
+                                if ($(this).val() == response.teacher.band) {
+                                    $(this).prop('selected', true);
+                                } else {
+                                    $(this).prop('selected', false);
+                                }
+                            });
+
+                        } else {
+                            $('#dadosResponsavel :input').val('');
+                        }
+                    }
+                });
+            });
+
+            $('#dadosResponsavel :input').prop('disabled', true);
         });
 
         function habilitarCampos() {

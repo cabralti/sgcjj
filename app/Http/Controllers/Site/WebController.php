@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Site;
 
 use App\Support\Seo;
+use App\Teacher;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -98,8 +99,11 @@ class WebController extends Controller
             asset('images/lpjj_oficial.png')
         );
 
+        $teachers = Teacher::where('status', '1')->get();
+
         return view('site.register-academy', [
-            'head' => $head
+            'head' => $head,
+            'teachers' => $teachers
         ]);
     }
 

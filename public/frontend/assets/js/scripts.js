@@ -46,7 +46,14 @@ $(function () {
                     $(".street").val(data.logradouro);
                     $(".neighborhood").val(data.bairro);
                     $(".city").val(data.localidade);
-                    $(".state").val(data.uf);
+
+                    $(".state option").each(function () {
+                        if($(this).val() == data.uf){
+                            $(this).prop('selected', true);
+                        }else{
+                            $(this).prop('selected', false);
+                        }
+                    });
                 } else {
                     emptyForm();
                     alert("CEP não encontrado.");

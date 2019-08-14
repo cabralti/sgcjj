@@ -45,11 +45,12 @@ mix
     ], 'public/frontend/assets/css/libs.css')
     .styles('resources/views/site/assets/css/custom.css', 'public/frontend/assets/css/custom.css')
     .copyDirectory('resources/views/site/assets/fonts', 'public/frontend/assets/fonts')
+    .copyDirectory('resources/views/site/assets/js/plugins', 'public/frontend/assets/js/plugins')
 
     .scripts(['resources/views/site/assets/js/jquery/jquery-2.2.4.min.js'], 'public/frontend/assets/js/jquery/jquery-2.2.4.min.js')
     .scripts(['resources/views/site/assets/js/bootstrap/popper.min.js'], 'public/frontend/assets/js/bootstrap/popper.min.js')
     .scripts(['resources/views/site/assets/js/bootstrap/bootstrap.min.js'], 'public/frontend/assets/js/bootstrap/bootstrap.min.js')
-    .scripts(['resources/views/site/assets/js/plugins/plugins.js'], 'public/frontend/assets/js/plugins/plugins.js')
+    // .scripts(['resources/views/site/assets/js/plugins/plugins.js'], 'public/frontend/assets/js/plugins/plugins.js')
     .scripts(['resources/views/site/assets/js/typeahead.js'], 'public/frontend/assets/js/typeahead.js')
     .scripts(['resources/views/site/assets/js/active.js'], 'public/frontend/assets/js/active.js')
     .scripts(['resources/views/site/assets/js/scripts.js'], 'public/frontend/assets/js/scripts.js')

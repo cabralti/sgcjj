@@ -3,6 +3,7 @@
 
 @section('css')
     <link rel="stylesheet" href="{{url('frontend/assets/js/plugins/select2/css/select2.min.css')}}">
+    <link rel="stylesheet" href="{{url('frontend/assets/js/plugins/select2/css/select2-bootstrap4.min.css')}}">
 @endsection
 
 @section('content')
@@ -39,15 +40,15 @@
                     </div>
                 </div>
                 <div class="col-12">
-                    <form action="{{ route('site.academias.store') }}" method="post">
+                    <form action="{{ route('site.academias.store') }}" method="post" autocomplete="off">
 
-                        @if($errors->all())
-                            @foreach($errors->all() as $error)
-                                @message(['color' => 'danger'])
-                                <span class="fa fa-asterisk"></span> {{ $error }}
-                                @endmessage
-                            @endforeach
-                        @endif
+                        {{--                        @if($errors->all())--}}
+                        {{--                            @foreach($errors->all() as $error)--}}
+                        {{--                                @message(['color' => 'danger'])--}}
+                        {{--                                <span class="fa fa-asterisk"></span> {{ $error }}--}}
+                        {{--                                @endmessage--}}
+                        {{--                            @endforeach--}}
+                        {{--                        @endif--}}
 
                         @if(session()->exists('message'))
                             @message(['color' => session()->get('color')])
@@ -63,30 +64,50 @@
                                 <div class="form-group col-md-6">
                                     <label for="name" class="col-form-label font-bold">Nome da Academia: <span
                                             class="text-danger">*</span></label>
-                                    <input type="text" name="name" id="name" class="form-control"
+                                    <input type="text" name="name" id="name"
+                                           class="form-control {{$errors->has('name') ? 'is-invalid' : ''}}"
                                            placeholder="Informe o nome fantasia da academia" value="{{ old('name') }}"
                                            required>
+
+                                    @if($errors->has('name'))
+                                        <div class="invalid-feedback">{{$errors->first('name')}}</div>
+                                    @endif
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="social_name" class="col-form-label font-bold">Razão Social:</label>
-                                    <input type="text" name="social_name" id="social_name" class="form-control"
+                                    <input type="text" name="social_name" id="social_name"
+                                           class="form-control {{$errors->has('social_name') ? 'is-invalid' : ''}}"
                                            placeholder="Informe a razão social da academia"
                                            value="{{ old('social_name') }}">
+
+                                    @if($errors->has('social_name'))
+                                        <div class="invalid-feedback">{{$errors->first('social_name')}}</div>
+                                    @endif
                                 </div>
                             </div>
 
                             <div class="form-row">
                                 <div class="form-group col-md-6">
-                                    <label for="document" class="col-form-label font-bold">CNPJ:</label>
-                                    <input type="text" name="document" id="document" class="form-control mask-cnpj"
-                                           placeholder="__.___.___/____-__" value="{{ old('document') }}">
+                                    <label for="academy_document" class="col-form-label font-bold">CNPJ:</label>
+                                    <input type="text" name="academy_document" id="academy_document"
+                                           class="form-control mask-cnpj {{$errors->has('academy_document') ? 'is-invalid' : ''}}"
+                                           placeholder="__.___.___/____-__" value="{{ old('academy_document') }}">
+
+                                    @if($errors->has('academy_document'))
+                                        <div class="invalid-feedback">{{$errors->first('academy_document')}}</div>
+                                    @endif
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="email" class="col-form-label font-bold">E-mail: <span
                                             class="text-danger">*</span></label>
-                                    <input type="email" name="email" id="email" class="form-control"
+                                    <input type="email" name="email" id="email"
+                                           class="form-control {{$errors->has('email') ? 'is-invalid' : ''}}"
                                            placeholder="Informe o melhor e-mail da academia" value="{{ old('email') }}"
                                            required>
+
+                                    @if($errors->has('email'))
+                                        <div class="invalid-feedback">{{$errors->first('email')}}</div>
+                                    @endif
                                 </div>
                             </div>
 
@@ -116,22 +137,32 @@
                                 <div class="form-group col-md-6">
                                     <label for="street" class="col-form-label font-bold">Endereço: <span
                                             class="text-danger">*</span></label>
-                                    <input type="text" name="street" id="street" class="form-control street"
+                                    <input type="text" name="street" id="street"
+                                           class="form-control street {{$errors->has('street') ? 'is-invalid' : ''}}"
                                            placeholder="Informe o endereço" value="{{ old('street') }}" required>
+
+                                    @if($errors->has('street'))
+                                        <div class="invalid-feedback">{{$errors->first('street')}}</div>
+                                    @endif
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="neighborhood" class="col-form-label font-bold">Bairro: <span
                                             class="text-danger">*</span></label>
                                     <input type="text" name="neighborhood" id="neighborhood"
-                                           class="form-control neighborhood"
+                                           class="form-control neighborhood {{$errors->has('neighborhood') ? 'is-invalid' : ''}}"
                                            placeholder="Informe o bairro" value="{{ old('neighborhood') }}" required>
+                                    @if($errors->has('neighborhood'))
+                                        <div class="invalid-feedback">{{$errors->first('neighborhood')}}</div>
+                                    @endif
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label for="state" class="col-form-label font-bold">Estado: <span
                                             class="text-danger">*</span></label>
-                                    <select name="state" id="state" class="form-control state" required>
+                                    <select name="state" id="state"
+                                            class="form-control state {{$errors->has('state') ? 'is-invalid' : ''}}"
+                                            required>
                                         <option value="">Selecione...</option>
                                         <option {{ (old('state') == 'AC') ? 'selected': '' }} value="AC">AC</option>
                                         <option {{ (old('state') == 'AL') ? 'selected': '' }} value="AL">AL</option>
@@ -160,12 +191,21 @@
                                         <option {{ (old('state') == 'SP') ? 'selected': '' }} value="SP">SP</option>
                                         <option {{ (old('state') == 'SE') ? 'selected': '' }} value="SE">SE</option>
                                     </select>
+
+                                    @if($errors->has('state'))
+                                        <div class="invalid-feedback">{{$errors->first('state')}}</div>
+                                    @endif
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="city" class="col-form-label font-bold">Cidade: <span
                                             class="text-danger">*</span></label>
-                                    <input type="text" name="city" id="city" class="form-control city"
+                                    <input type="text" name="city" id="city"
+                                           class="form-control city {{$errors->first('city') ? 'is-invalid' : ''}}"
                                            placeholder="Informe a cidade" value="{{old('city')}}" required>
+
+                                    @if($errors->has('city'))
+                                        <div class="invalid-feedback">{{$errors->first('city')}}</div>
+                                    @endif
                                 </div>
                             </div>
                         </fieldset>
@@ -175,19 +215,20 @@
 
                             <div class="form-row border-bottom">
                                 <div class="form-group col-md-6">
-                                    <label for="teacher_search" class="col-form-label font-bold">
+                                    <label for="teacher_id" class="col-form-label font-bold">
                                         <i class="fa fa-search"></i> Pesquisar:
                                     </label>
-                                    {{--                                    <input type="text" name="teacher_search" id="teacher_search"--}}
+                                    {{--                                    <input type="text" name="teacher_id" id="teacher_id"--}}
                                     {{--                                           class="form-control typeahead" data-provide="typeahead"--}}
                                     {{--                                           placeholder="Informe o nome ou cpf do professor responsável">--}}
 
-                                    <select name="teacher_search" id="teacher_search" class="form-control select2"
+                                    <select name="teacher_id" id="teacher_id" class="form-control select2"
                                             data-action="{{route('site.teacher.get-data-teacher')}}">
                                         <option value="">Selecione</option>
                                         @foreach($teachers as $teacher)
-                                            <option value="{{$teacher->id}}">
-                                                {{$teacher->name}} ({{$teacher->document}})
+                                            <option
+                                                value="{{$teacher->id}}" {{(old('teacher_id') == $teacher->id) ? 'selected' : ''}}>
+                                                {{$teacher->name}} ( {{$teacher->document}} )
                                             </option>
                                         @endforeach
                                     </select>
@@ -195,9 +236,8 @@
                                 <div class="form-group col-md-6">
                                     <label for="" class="col-form-label font-bold">Não encontrou seu responsável ao
                                         lado? </label>
-                                    <button type="button" class="btn btn-primary btn-block" onclick="habilitarCampos()">
-                                        Cadastrar
-                                        novo responsável
+                                    <button type="button" class="btn btn-primary btn-block" onclick="enableFields()">
+                                        Cadastrar novo responsável
                                     </button>
                                 </div>
                             </div>
@@ -323,7 +363,6 @@
 
 @endsection
 
-
 @section('js')
     <script src="{{url('frontend/assets/js/plugins/select2/select2.full.min.js')}}"></script>
     <script src="{{url('frontend/assets/js/plugins/select2/js/i18n/pt-BR.js')}}"></script>
@@ -338,12 +377,13 @@
             });
 
             $('.select2').select2({
-                language: "pt-BR"
+                language: "pt-BR",
+                theme: 'bootstrap4'
             });
 
-            $('#teacher_search').on('change', function () {
+            $('#teacher_id').on('change', function () {
 
-                $('#dadosResponsavel :input').prop('disabled', true);
+                // $('#dadosResponsavel :input').prop('disabled', true);
 
                 var teacher = $(this);
 
@@ -375,12 +415,12 @@
                 });
             });
 
-            $('#dadosResponsavel :input').prop('disabled', true);
+            // $('#dadosResponsavel :input').prop('readonly', true);
         });
 
-        function habilitarCampos() {
-            $('#teacher_search').val('');
-            $('#dadosResponsavel :input').val('').prop('disabled', false);
+        function enableFields() {
+            $('.select2').val(null).trigger('change');
+            $('#teacher_id').val('');
             $('#teacher_name').focus();
         }
     </script>

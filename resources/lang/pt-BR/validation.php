@@ -173,15 +173,15 @@ return [
         'username' => 'usuário',
         'year' => 'ano',
 
-        // Person
+        // Academy
         'social_name' => 'razão social',
-        'document' => 'CNPJ',
+        'academy_document' => 'CNPJ',
         'telephone' => 'telefone',
 
         // Address
         'zipcode' => 'CEP',
         'street' => 'rua',
-        'neighbordhood' => 'bairro',
+        'neighborhood' => 'bairro',
 
         // Teacher
         'teacher_name' => 'nome do professor',

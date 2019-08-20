@@ -7,9 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class Academy extends Model
 {
     protected $fillable = [
+        'teacher',
         'social_name',
         'name',
-        'document',
+        'academy_document',
         'email',
         'telephone',
         'zipcode',
@@ -17,17 +18,11 @@ class Academy extends Model
         'neighborhood',
         'city',
         'state',
-        'teacher_name',
-        'teacher_band',
-        'teacher_document',
-        'teacher_document_secondary',
-        'teacher_cell',
-        'teacher_email'
     ];
 
-    public function setDocumentAttribute($value)
+    public function setAcademyDocumentAttribute($value)
     {
-        $this->attributes['document'] = $this->clearField($value);
+        $this->attributes['academy_document'] = $this->clearField($value);
     }
 
     public function getDocumentAttribute($value)
@@ -48,26 +43,6 @@ class Academy extends Model
     public function getZipcodeAttribute($value)
     {
         return substr($value, 0, 5) . '-' . substr($value, 5, 3);
-    }
-
-    public function setTeacherDocumentAttribute($value)
-    {
-        $this->attributes['teacher_document'] = $this->clearField($value);
-    }
-
-    public function getTeacherDocumentAttribute($value)
-    {
-        return substr($value, 0, 3) . '.' . substr($value, 3, 3) . '.' . substr($value, 6, 3) . '-' . substr($value, 9, 2);
-    }
-
-    public function setTeacherCellAttribute($value)
-    {
-        $this->attributes['teacher_cell'] = $this->clearField($value);
-    }
-
-    public function getTeacherCellAttribute($value)
-    {
-        return '(' . substr($value, 0, 2) . ') ' . substr($value, 2, 5) . '-' . substr($value, 7, 4);
     }
 
     private function clearField(?string $param)

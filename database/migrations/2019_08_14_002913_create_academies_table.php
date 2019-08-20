@@ -16,6 +16,7 @@ class CreateAcademiesTable extends Migration
         Schema::create('academies', function (Blueprint $table) {
             /** data */
             $table->increments('id');
+            $table->unsignedInteger('teacher');
             $table->string('social_name')->unique();
             $table->string('name');
             $table->string('academy_document')->unique();
@@ -31,6 +32,8 @@ class CreateAcademiesTable extends Migration
 
             $table->string('status')->nullable()->default(0);
             $table->timestamps();
+
+            $table->foreign('teacher')->references('id')->on('teachers');
         });
     }
 

@@ -2127,10 +2127,10 @@ button.dim:active:before {
   position: relative;
   text-decoration: none;
 }
-.page-item.active .page-link {
-  background-color: #1ab394;
-  border-color: #1ab394;
-}
+/*.page-item.active .page-link {*/
+/*  background-color: #1ab394;*/
+/*  border-color: #1ab394;*/
+/*}*/
 .page-link:focus {
   box-shadow: none;
 }
@@ -2780,10 +2780,10 @@ select.form-control:not([size]):not([multiple]) {
   transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
   width: 100%;
 }
-.form-control:focus,
-.single-line:focus {
-  border-color: #1ab394;
-}
+/*.form-control:focus,*/
+/*.single-line:focus {*/
+/*  border-color: #1ab394;*/
+/*}*/
 .has-success .form-control,
 .has-success .form-control:focus {
   border-color: #1ab394;

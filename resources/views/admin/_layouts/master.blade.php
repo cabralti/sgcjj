@@ -178,11 +178,11 @@
 <script src="{{ url('backend/assets/js/plugins/slimscroll/jquery.slimscroll.min.js') }}"></script>
 
 <!-- Custom and plugin javascript -->
-<script src="{{ url(mix('backend/assets/js/inspinia.js')) }}"></script>
+<script src="{{ url('backend/assets/js/inspinia.js') }}"></script>
 <script src="{{ url('backend/assets/js/plugins/pace/pace.min.js') }}"></script>
 
 <!-- jQuery UI -->
-<script src="{{ url('backend/assets/js/plugins/jquery-ui/jquery-ui.min.js') }}"></script>
+{{--<script src="{{ url('backend/assets/js/plugins/jquery-ui/jquery-ui.min.js') }}"></script>--}}
 
 <!-- Toastr -->
 <script src="{{ url('backend/assets/js/plugins/toastr/toastr.min.js')}}"></script>

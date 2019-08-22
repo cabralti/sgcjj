@@ -63,13 +63,14 @@ $(function () {
     // DATATABLES
     $('#dataTable').DataTable({
         responsive: true,
-        "pageLength": 25,
-        dom: '<"html5buttons"B>lTfgitp',
+        "pageLength": 10,
+        "pagingType": "full_numbers",
+        // dom: '<"html5buttons"B>lTfgitp',
         buttons: [
             // {extend: 'copy'},
             // {extend: 'csv'},
             // {extend: 'excel', title: 'ExampleFile'},
-            {extend: 'pdf', title: 'Academias'},
+            // {extend: 'pdf', title: 'Academias'},
 
             {
                 extend: 'print',
@@ -85,21 +86,22 @@ $(function () {
         ],
         "language": {
             "sEmptyTable": "Nenhum registro encontrado",
-            "sInfo": "Mostrando de _START_ até _END_ de _TOTAL_ registros",
+            "sInfo": "Total: _MAX_ registro(s) | Página _PAGE_ de _PAGES_",
             "sInfoEmpty": "Mostrando 0 até 0 de 0 registros",
             "sInfoFiltered": "(Filtrados de _MAX_ registros)",
             "sInfoPostFix": "",
             "sInfoThousands": ".",
-            "sLengthMenu": "_MENU_ resultados por página",
+            "sLengthMenu": "_MENU_ registros por página",
             "sLoadingRecords": "Carregando...",
             "sProcessing": "Processando...",
             "sZeroRecords": "Nenhum registro encontrado",
             "sSearch": "Pesquisar",
-            "oPaginate": {
-                "sNext": "Próximo",
-                "sPrevious": "Anterior",
-                "sFirst": "Primeiro",
-                "sLast": "Último"
+            "pagingType": "full_numbers",
+            "paginate": {
+                "first": "<i class='fa fa-angle-double-left'></i>",
+                "last": "<i class='fa fa-angle-double-right'></i>",
+                "next": "<i class='fa fa-angle-right'></i>",
+                "previous": "<i class='fa fa-angle-left'></i>"
             },
             "oAria": {
                 "sSortAscending": ": Ordenar colunas de forma ascendente",

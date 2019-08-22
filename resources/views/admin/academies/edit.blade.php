@@ -57,16 +57,17 @@
                                 <fieldset>
                                     <div class="row">
                                         <div class="col-sm-12 col-md-6 form-group">
-                                            <label class="col-form-label font-weight-bold">Razão Social:</label>
-                                            <input type="text" name="social_name" id="social_name"
-                                                   class="form-control" placeholder="Informe a razão social"
-                                                   value="{{ old('social_name') ?? $academy->social_name }}">
-                                        </div>
-                                        <div class="col-sm-12 col-md-6 form-group">
                                             <label class="col-form-label font-weight-bold">Nome da Academia:</label>
                                             <input type="text" name="name" id="name" class="form-control"
                                                    placeholder="Informe o nome fantasia da academia" required
                                                    value="{{ old('name') ?? $academy->name }}">
+                                        </div>
+
+                                        <div class="col-sm-12 col-md-6 form-group">
+                                            <label class="col-form-label font-weight-bold">Razão Social:</label>
+                                            <input type="text" name="social_name" id="social_name"
+                                                   class="form-control" placeholder="Informe a razão social"
+                                                   value="{{ old('social_name') ?? $academy->social_name }}">
                                         </div>
                                     </div>
 
@@ -75,7 +76,7 @@
                                             <label class="col-form-label font-weight-bold">CNPJ:</label>
                                             <input type="text" name="document" id="document"
                                                    class="form-control mask-cnpj" placeholder="__.___.___/____-__"
-                                                   value="{{ old('document') ?? $academy->document }}" required>
+                                                   value="{{ old('academy_document') ?? $academy->academy_document }}" required>
                                         </div>
                                         <div class="col-sm-12 col-md-6 form-group">
                                             <label class="col-form-label font-weight-bold">E-mail:</label>

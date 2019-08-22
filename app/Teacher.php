@@ -17,7 +17,7 @@ class Teacher extends Model
 
     public function academies()
     {
-        return $this->hasMany('Academy');
+        return $this->hasMany(Academy::class, 'teacher', 'id');
     }
 
     public function setDocumentAttribute($value)

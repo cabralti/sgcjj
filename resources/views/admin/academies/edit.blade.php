@@ -1,6 +1,11 @@
 @extends('admin._layouts.master')
 @section('title', ' Editar Academia | ')
 
+@section('css')
+    <link rel="stylesheet" href="{{url('backend/assets/js/plugins/select2/css/select2.min.css')}}">
+    <link rel="stylesheet" href="{{url('backend/assets/js/plugins/select2/css/select2-bootstrap4.min.css')}}">
+@endsection
+
 @section('page-heading')
     <div class="row wrapper border-bottom white-bg page-heading">
         <div class="col-lg-9">
@@ -37,7 +42,6 @@
                 </ul>
                 <form name="form_edit" action="{{ route('admin.academies.update', ['academy' => $academy->id]) }}"
                       method="post" enctype="multipart/form-data">
-                    @csrf
                     @method('PUT')
                     <input type="hidden" name="id" value="{{ $academy->id }}">
 
@@ -74,9 +78,10 @@
                                     <div class="row">
                                         <div class="col-sm-12 col-md-6 form-group">
                                             <label class="col-form-label font-weight-bold">CNPJ:</label>
-                                            <input type="text" name="document" id="document"
+                                            <input type="text" name="academy_document" id="academy_document"
                                                    class="form-control mask-cnpj" placeholder="__.___.___/____-__"
-                                                   value="{{ old('academy_document') ?? $academy->academy_document }}" required>
+                                                   value="{{ old('academy_document') ?? $academy->academy_document }}"
+                                                   required>
                                         </div>
                                         <div class="col-sm-12 col-md-6 form-group">
                                             <label class="col-form-label font-weight-bold">E-mail:</label>
@@ -90,7 +95,7 @@
                                         <div class="col-sm-12 col-md-6 form-group">
                                             <label class="col-form-label font-weight-bold">Telefone:</label>
                                             <input type="tel" name="telephone" id="telephone"
-                                                   class="form-control mask-phone" placeholder="(99) 9999-9999"
+                                                   class="form-control mask-phone" placeholder="(xx) xxxx-xxxx"
                                                    value="{{ old('telephone') ?? $academy->telephone }}">
                                         </div>
                                     </div>
@@ -130,8 +135,109 @@
                                             <label class="col-form-label font-weight-bold">Estado:</label>
                                             <select name="state" id="state" class="form-control state" required>
                                                 <option>Selecione</option>
-                                                <option {{ old('state') ? 'selectd' : ($academy->state == 'PA' ? 'selected' : '') }}>
+                                                <option
+                                                    {{ (old('state') == 'AC') ? 'selected': ($academy->state == 'AC') ? 'selected' : '' }} value="AC">
+                                                    AC
+                                                </option>
+                                                <option
+                                                    {{ (old('state') == 'AL') ? 'selected': ($academy->state == 'AL') ? 'selected' : '' }} value="AL">
+                                                    AL
+                                                </option>
+                                                <option
+                                                    {{ (old('state') == 'AP') ? 'selected': ($academy->state == 'AP') ? 'selected' : '' }} value="AP">
+                                                    AP
+                                                </option>
+                                                <option
+                                                    {{ (old('state') == 'AM') ? 'selected': ($academy->state == 'AM') ? 'selected' : '' }} value="AM">
+                                                    AM
+                                                </option>
+                                                <option
+                                                    {{ (old('state') == 'BA') ? 'selected': ($academy->state == 'BA') ? 'selected' : '' }} value="BA">
+                                                    BA
+                                                </option>
+                                                <option
+                                                    {{ (old('state') == 'CE') ? 'selected': ($academy->state == 'CE') ? 'selected' : '' }} value="CE">
+                                                    CE
+                                                </option>
+                                                <option
+                                                    {{ (old('state') == 'DF') ? 'selected': ($academy->state == 'DF') ? 'selected' : '' }} value="DF">
+                                                    DF
+                                                </option>
+                                                <option
+                                                    {{ (old('state') == 'ES') ? 'selected': ($academy->state == 'ES') ? 'selected' : '' }} value="ES">
+                                                    ES
+                                                </option>
+                                                <option
+                                                    {{ (old('state') == 'GO') ? 'selected': ($academy->state == 'GO') ? 'selected' : '' }} value="GO">
+                                                    GO
+                                                </option>
+                                                <option
+                                                    {{ (old('state') == 'MA') ? 'selected': ($academy->state == 'MA') ? 'selected' : '' }} value="MA">
+                                                    MA
+                                                </option>
+                                                <option
+                                                    {{ (old('state') == 'MT') ? 'selected': ($academy->state == 'MT') ? 'selected' : '' }} value="MT">
+                                                    MT
+                                                </option>
+                                                <option
+                                                    {{ (old('state') == 'MS') ? 'selected': ($academy->state == 'MS') ? 'selected' : '' }} value="MS">
+                                                    MS
+                                                </option>
+                                                <option
+                                                    {{ (old('state') == 'MG') ? 'selected': ($academy->state == 'MG') ? 'selected' : '' }} value="MG">
+                                                    MG
+                                                </option>
+                                                <option
+                                                    {{ (old('state') == 'PA') ? 'selected': ($academy->state == 'PA') ? 'selected' : '' }} value="PA">
                                                     PA
+                                                </option>
+                                                <option
+                                                    {{ (old('state') == 'PB') ? 'selected': ($academy->state == 'PB') ? 'selected' : '' }} value="PB">
+                                                    PB
+                                                </option>
+                                                <option
+                                                    {{ (old('state') == 'PR') ? 'selected': ($academy->state == 'PR') ? 'selected' : '' }} value="PR">
+                                                    PR
+                                                </option>
+                                                <option
+                                                    {{ (old('state') == 'PE') ? 'selected': ($academy->state == 'PE') ? 'selected' : '' }} value="PE">
+                                                    PE
+                                                </option>
+                                                <option
+                                                    {{ (old('state') == 'PI') ? 'selected': ($academy->state == 'PI') ? 'selected' : '' }} value="PI">
+                                                    PI
+                                                </option>
+                                                <option
+                                                    {{ (old('state') == 'RJ') ? 'selected': ($academy->state == 'RJ') ? 'selected' : '' }} value="RJ">
+                                                    RJ
+                                                </option>
+                                                <option
+                                                    {{ (old('state') == 'RN') ? 'selected': ($academy->state == 'RN') ? 'selected' : '' }} value="RN">
+                                                    RN
+                                                </option>
+                                                <option
+                                                    {{ (old('state') == 'RS') ? 'selected': ($academy->state == 'RS') ? 'selected' : '' }} value="RS">
+                                                    RS
+                                                </option>
+                                                <option
+                                                    {{ (old('state') == 'RO') ? 'selected': ($academy->state == 'RO') ? 'selected' : '' }} value="RO">
+                                                    RO
+                                                </option>
+                                                <option
+                                                    {{ (old('state') == 'RR') ? 'selected': ($academy->state == 'RR') ? 'selected' : '' }} value="RR">
+                                                    RR
+                                                </option>
+                                                <option
+                                                    {{ (old('state') == 'SC') ? 'selected': ($academy->state == 'SC') ? 'selected' : '' }} value="SC">
+                                                    SC
+                                                </option>
+                                                <option
+                                                    {{ (old('state') == 'SP') ? 'selected': ($academy->state == 'SP') ? 'selected' : '' }} value="SP">
+                                                    SP
+                                                </option>
+                                                <option
+                                                    {{ (old('state') == 'SE') ? 'selected': ($academy->state == 'SE') ? 'selected' : '' }} value="SE">
+                                                    SE
                                                 </option>
                                             </select>
                                         </div>
@@ -151,55 +257,89 @@
 
                                 <fieldset>
                                     <div class="row">
+
+                                        <div class="col-sm-12 col-md-6 form-group">
+                                            <label class="col-form-label font-weight-bold">Professor
+                                                Responsável:</label>
+                                            <select name="teacher" id="teacher" class="form-control select2"
+                                                    style="width: 100%"
+                                                    data-action="{{route('site.teacher.get-data-teacher')}}" required>
+                                                <option value="">Selecione...</option>
+                                                @foreach($teachers as $teacher)
+                                                    <option
+                                                        value="{{$teacher->id}}" {{(old('teacher_id') == $teacher->id) ? 'selected' :  $teacher->id == $academy->teacher()->first()->id ? 'selected' :  ''}}>
+                                                        {{$teacher->name}} ( {{$teacher->document}} )
+                                                    </option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
                                         <div class="col-sm-12 col-md-6 form-group">
                                             <label class="col-form-label font-weight-bold">Nome:</label>
                                             <input type="text" name="teacher_name" id="teacher_name"
                                                    class="form-control"
                                                    placeholder="Informe o nome do professor responsável"
-                                                   value="{{ old('teacher_name') ?? $academy->teacher_name }}" required>
+                                                   value="{{ old('teacher_name') ?? $academy->teacher()->first()->name}}"
+                                                   disabled required>
                                         </div>
 
                                         <div class="col-sm-12 col-md-6 form-group">
                                             <label class="col-form-label font-weight-bold">Faixa:</label>
-                                            <select name="teacher_band" id="teacher_band" class="form-control" required>
+                                            <select name="teacher_band" id="teacher_band" class="form-control" disabled
+                                                    required>
                                                 <option value="">Selecione...</option>
-                                                <option {{ (old('teacher_band') == 'PRETA') ? 'selected': ($academy->teacher_band == 'PRETA' ? 'selected' : '') }} value="PRETA">
+                                                <option
+                                                    {{ (old('teacher_band') == 'PRETA') ? 'selected': ($academy->teacher()->first()->band == 'PRETA' ? 'selected' : '') }} value="PRETA">
                                                     PRETA
                                                 </option>
-                                                <option {{ (old('teacher_band') == 'PRETA 1º GRAU') ? 'selected': ($academy->teacher_band == 'PRETA 1º GRAU' ? 'selected' : '') }} value="PRETA 1º GRAU">
+                                                <option
+                                                    {{ (old('teacher_band') == 'PRETA 1º GRAU') ? 'selected': ($academy->teacher()->first()->band == 'PRETA 1º GRAU' ? 'selected' : '') }} value="PRETA 1º GRAU">
                                                     PRETA 1º GRAU
                                                 </option>
-                                                <option {{ (old('teacher_band') == 'PRETA 2º GRAU') ? 'selected': ($academy->teacher_band == 'PRETA 2º GRAU' ? 'selected' : '') }} value="PRETA 2º GRAU">
+                                                <option
+                                                    {{ (old('teacher_band') == 'PRETA 2º GRAU') ? 'selected': ($academy->teacher()->first()->band == 'PRETA 2º GRAU' ? 'selected' : '') }} value="PRETA 2º GRAU">
                                                     PRETA 2º GRAU
                                                 </option>
-                                                <option {{ (old('teacher_band') == 'PRETA 3º GRAU') ? 'selected': ($academy->teacher_band == 'PRETA 3º GRAU' ? 'selected' : '') }} value="PRETA 3º GRAU">
+                                                <option
+                                                    {{ (old('teacher_band') == 'PRETA 3º GRAU') ? 'selected': ($academy->teacher()->first()->band == 'PRETA 3º GRAU' ? 'selected' : '') }} value="PRETA 3º GRAU">
                                                     PRETA 3º GRAU
                                                 </option>
-                                                <option {{ (old('teacher_band') == 'PRETA 4º GRAU') ? 'selected': ($academy->teacher_band == 'PRETA 4º GRAU' ? 'selected' : '') }} value="PRETA 4º GRAU">
+                                                <option
+                                                    {{ (old('teacher_band') == 'PRETA 4º GRAU') ? 'selected': ($academy->teacher()->first()->band == 'PRETA 4º GRAU' ? 'selected' : '') }} value="PRETA 4º GRAU">
                                                     PRETA 4º GRAU
                                                 </option>
-                                                <option {{ (old('teacher_band') == 'PRETA 5º GRAU') ? 'selected': ($academy->teacher_band == 'PRETA 5º GRAU' ? 'selected' : '') }} value="PRETA 5º GRAU">
+                                                <option
+                                                    {{ (old('teacher_band') == 'PRETA 5º GRAU') ? 'selected': ($academy->teacher()->first()->band == 'PRETA 5º GRAU' ? 'selected' : '') }} value="PRETA 5º GRAU">
                                                     PRETA 5º GRAU
                                                 </option>
-                                                <option {{ (old('teacher_band') == 'PRETA 6º GRAU') ? 'selected': ($academy->teacher_band == 'PRETA 6º GRAU' ? 'selected' : '') }} value="PRETA 6º GRAU">
+                                                <option
+                                                    {{ (old('teacher_band') == 'PRETA 6º GRAU') ? 'selected': ($academy->teacher()->first()->band == 'PRETA 6º GRAU' ? 'selected' : '') }} value="PRETA 6º GRAU">
                                                     PRETA 6º GRAU
                                                 </option>
-                                                <option {{ (old('teacher_band') == 'CORAL 1º GRAU') ? 'selected': ($academy->teacher_band == 'CORAL 1º GRAU' ? 'selected' : '') }} value="CORAL 1º GRAU">
+                                                <option
+                                                    {{ (old('teacher_band') == 'CORAL 1º GRAU') ? 'selected': ($academy->teacher()->first()->band == 'CORAL 1º GRAU' ? 'selected' : '') }} value="CORAL 1º GRAU">
                                                     CORAL 1º GRAU
                                                 </option>
-                                                <option {{ (old('teacher_band') == 'CORAL 2º GRAU') ? 'selected': ($academy->teacher_band == 'CORAL 2º GRAU' ? 'selected' : '') }} value="CORAL 2º GRAU">
+                                                <option
+                                                    {{ (old('teacher_band') == 'CORAL 2º GRAU') ? 'selected': ($academy->teacher()->first()->band == 'CORAL 2º GRAU' ? 'selected' : '') }} value="CORAL 2º GRAU">
                                                     CORAL 2º GRAU
                                                 </option>
-                                                <option {{ (old('teacher_band') == 'CORAL 3º GRAU') ? 'selected': ($academy->teacher_band == 'CORAL 3º GRAU' ? 'selected' : '') }} value="CORAL 3º GRAU">
+                                                <option
+                                                    {{ (old('teacher_band') == 'CORAL 3º GRAU') ? 'selected': ($academy->teacher()->first()->band == 'CORAL 3º GRAU' ? 'selected' : '') }} value="CORAL 3º GRAU">
                                                     CORAL 3º GRAU
                                                 </option>
-                                                <option {{ (old('teacher_band') == 'CORAL 4º GRAU') ? 'selected': ($academy->teacher_band == 'CORAL 4º GRAU' ? 'selected' : '') }} value="CORAL 4º GRAU">
+                                                <option
+                                                    {{ (old('teacher_band') == 'CORAL 4º GRAU') ? 'selected': ($academy->teacher()->first()->band == 'CORAL 4º GRAU' ? 'selected' : '') }} value="CORAL 4º GRAU">
                                                     CORAL 4º GRAU
                                                 </option>
-                                                <option {{ (old('teacher_band') == 'CORAL 5º GRAU') ? 'selected': ($academy->teacher_band == 'CORAL 5º GRAU' ? 'selected' : '') }} value="CORAL 5º GRAU">
+                                                <option
+                                                    {{ (old('teacher_band') == 'CORAL 5º GRAU') ? 'selected': ($academy->teacher()->first()->band == 'CORAL 5º GRAU' ? 'selected' : '') }} value="CORAL 5º GRAU">
                                                     CORAL 5º GRAU
                                                 </option>
-                                                <option {{ (old('teacher_band') == 'CORAL 6º GRAU') ? 'selected': ($academy->teacher_band == 'CORAL 6º GRAU' ? 'selected' : '') }} value="CORAL 6º GRAU">
+                                                <option
+                                                    {{ (old('teacher_band') == 'CORAL 6º GRAU') ? 'selected': ($academy->teacher()->first()->band == 'CORAL 6º GRAU' ? 'selected' : '') }} value="CORAL 6º GRAU">
                                                     CORAL 6º GRAU
                                                 </option>
                                             </select>
@@ -211,8 +351,8 @@
                                             <label class="col-form-label font-weight-bold">CPF:</label>
                                             <input type="text" name="teacher_document" id="teacher_document"
                                                    class="form-control mask-doc" placeholder="___.___.___-__"
-                                                   value="{{ old('teacher_document') ?? $academy->teacher_document }}"
-                                                   required>
+                                                   value="{{ old('teacher_document') ?? $academy->teacher()->first()->document}}"
+                                                   disabled required>
                                         </div>
 
                                         <div class="col-sm-12 col-md-6 form-group">
@@ -220,8 +360,8 @@
                                             <input type="text" name="teacher_document_secondary"
                                                    id="teacher_document_secondary" class="form-control"
                                                    placeholder="Informe o RG"
-                                                   value="{{ old('teacher_document_secondary') ?? $academy->teacher_document_secondary }}"
-                                                   required>
+                                                   value="{{ old('teacher_document_secondary') ?? $academy->teacher()->first()->document_secondary }}"
+                                                   disabled required>
                                         </div>
                                     </div>
 
@@ -230,18 +370,18 @@
                                             <label class="col-form-label font-weight-bold">E-mail:</label>
                                             <input type="email" name="teacher_email" id="teacher_email"
                                                    class="form-control" placeholder="Informe o melhor e-mail"
-                                                   value="{{ old('teacher_email') ?? $academy->teacher_email }}"
-                                                   required>
+                                                   value="{{ old('teacher_email') ?? $academy->teacher()->first()->email }}"
+                                                   disabled required>
                                         </div>
 
                                         <div class="col-sm-12 col-md-6 form-group">
                                             <label class="col-form-label font-weight-bold">Celular:</label>
                                             <input type="tel" name="teacher_cell" id="teacher_cell"
-                                                   class="form-control mask-cell" placeholder="(99) 9 9999-9999"
-                                                   value="{{ old('teacher_cell') ?? $academy->teacher_cell }}" required>
+                                                   class="form-control mask-cell" placeholder="(xx) xxxxx-xxxx"
+                                                   value="{{ old('teacher_cell') ?? $academy->teacher()->first()->cell }}"
+                                                   disabled required>
                                         </div>
                                     </div>
-
                                 </fieldset>
 
                             </div>
@@ -264,17 +404,14 @@
                                     <table class="table table-bordered table-stripped">
                                         <thead>
                                         <tr>
-                                            <th>Anexo</th>
-                                            <th>Anexo url</th>
+                                            <th>Tipo</th>
                                             <th>Ações</th>
                                         </tr>
                                         </thead>
                                         <tbody>
                                         <tr>
-                                            <td><img src="img/gallery/2s.jpg"></td>
                                             <td>
-                                                <input type="text" class="form-control" disabled
-                                                       value="http://mydomain.com/images/image1.png">
+                                                Ficha de Registro
                                             </td>
                                             <td>
                                                 <a href="#" class="btn btn-outline-secondary" data-toggle="tooltip"
@@ -289,30 +426,7 @@
                                         </tr>
                                         <tr>
                                             <td>
-                                                <img src="img/gallery/1s.jpg">
-                                            </td>
-                                            <td>
-                                                <input type="text" class="form-control" disabled
-                                                       value="http://mydomain.com/images/image2.png">
-                                            </td>
-                                            <td>
-                                                <a href="#" class="btn btn-outline-secondary" data-toggle="tooltip"
-                                                   title="Ver anexo">
-                                                    <i class="fa fa-eye"></i>
-                                                </a>
-                                                <button class="btn btn-danger" data-toggle="tooltip"
-                                                        title="Excluir anexo">
-                                                    <i class="fa fa-trash"></i>
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <img src="img/gallery/3s.jpg">
-                                            </td>
-                                            <td>
-                                                <input type="text" class="form-control" disabled
-                                                       value="http://mydomain.com/images/image3.png">
+                                                Certificado de faixa do professor
                                             </td>
                                             <td>
                                                 <a href="#" class="btn btn-outline-secondary" data-toggle="tooltip"
@@ -349,7 +463,57 @@
 @endsection
 
 @section('js')
+    <script src="{{url('backend/assets/js/plugins/select2/select2.full.min.js')}}"></script>
+    <script src="{{url('backend/assets/js/plugins/select2/js/i18n/pt-BR.js')}}"></script>
+
     <script>
+
+        $(function () {
+
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+            // SELECT 2
+            $('.select2').select2({
+                language: "pt-BR",
+                theme: 'bootstrap4'
+            });
+
+            // SEARCH TEACHER
+            $('#teacher').on('change', function () {
+
+                var teacher = $(this);
+
+                $.ajax({
+                    url: teacher.data('action'),
+                    type: 'POST',
+                    dataType: 'json',
+                    data: {teacher: teacher.val()},
+                    success: function (response) {
+                        if (response.success) {
+                            $('#teacher_name').val(response.teacher.name);
+                            $('#teacher_document').val(response.teacher.document);
+                            $('#teacher_document_secondary').val(response.teacher.document_secondary);
+                            $('#teacher_cell').val(response.teacher.cell);
+                            $('#teacher_email').val(response.teacher.email);
+
+                            $('#teacher_band option').each(function () {
+                                if ($(this).val() == response.teacher.band) {
+                                    $(this).prop('selected', true);
+                                } else {
+                                    $(this).prop('selected', false);
+                                }
+                            });
+
+                        }
+                    }
+                });
+            });
+
+        });
 
         $('input[name="files[]"]').change(function (files) {
             $('content_image').text('');
@@ -391,7 +555,19 @@
                 },
                 success: function (response) {
                     form_button.prop('disabled', false);
-                    swal('OK!', response.message, response.type);
+                    // swal('OK!', response.message, response.type);
+                    swal({
+                        title: 'OK',
+                        text: response.message,
+                        icon: response.type,
+                        closeOnClickOutside: false
+                    }).then((result) => {
+                        if (result) {
+                            window.location.href = response.redirect;
+                        } else {
+                            return false;
+                        }
+                    });
                 }
             });
         })

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Academy;
 use App\Http\Requests\Admin\Academy as AcademyRequest;
+use App\Teacher;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -66,8 +67,11 @@ class AcademyController extends Controller
     public function edit($id)
     {
         $academy = Academy::where('id', $id)->first();
+        $teachers = Teacher::where('status', '1')->get();
+
         return view('admin.academies.edit', [
-            'academy' => $academy
+            'academy' => $academy,
+            'teachers' => $teachers
         ]);
     }
 
@@ -83,6 +87,8 @@ class AcademyController extends Controller
         $academy = Academy::where('id', $id)->first();
         $academy->fill($request->all());
 
+        //dd($academy->fill($request->all()));
+
         if (!$academy->save()) {
             return redirect()->back()->withInput()->withErrors();
         }
@@ -90,6 +96,7 @@ class AcademyController extends Controller
         $json['error'] = false;
         $json['message'] = 'Academia alterada com sucesso!';
         $json['type'] = 'success';
+        $json['redirect'] = route('admin.academies.show', ['academy' => $academy->id]);
 
         return response()->json($json);
     }

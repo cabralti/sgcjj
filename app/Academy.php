@@ -18,6 +18,7 @@ class Academy extends Model
         'neighborhood',
         'city',
         'state',
+        'status'
     ];
 
     public function teacher()

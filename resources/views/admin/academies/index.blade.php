@@ -56,7 +56,7 @@
                                     <tr>
                                         <td class="align-middle">{{$academy->id}}</td>
                                         <td class="align-middle">
-                                            <a href="{{ route('admin.academies.edit', ['academy' => $academy->id]) }}">{{ $academy->name }}</a>
+                                            <a href="{{ route('admin.academies.show', ['academy' => $academy->id]) }}">{{ $academy->name }}</a>
                                         </td>
                                         <td class="align-middle">
                                             <a href="mailto:{{ $academy->email }}">{{$academy->email}}</a>
@@ -65,7 +65,8 @@
                                         <td class="align-middle">{{$academy->teacher()->first()->cell}}</td>
                                         <td class="align-middle"><span class="badge badge-primary">Ativo</span></td>
                                         <td class="align-middle text-right">
-                                            <a href="#" class="btn btn-default" data-toggle="tooltip" title="Ver">
+                                            <a href="{{route('admin.academies.show', ['academy' => $academy->id])}}"
+                                               class="btn btn-default" data-toggle="tooltip" title="Visualizar">
                                                 <i class="fa fa-search"></i>
                                             </a>
                                             <a href="{{ route('admin.academies.edit', ['academy' => $academy->id]) }}"

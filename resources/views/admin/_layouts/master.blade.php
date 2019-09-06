@@ -36,8 +36,9 @@
             <ul class="nav metismenu" id="side-menu">
                 <li class="nav-header">
                     <div class="dropdown profile-element">
-                        <img alt="image" class="rounded-circle"
-                             src="{{ asset('backend/assets/img/profile_small.jpg') }}"/>
+{{--                        <img alt="image" class="rounded-circle"--}}
+{{--                             src="{{ asset('backend/assets/img/profile_small.jpg') }}"/>--}}
+                        <span class="fa fa-user-circle-o fa-4x text-white"></span>
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                             <span class="block m-t-xs font-bold">{{Auth::user()->name}}</span>
                             <span class="text-muted text-xs block">Admin <b class="caret"></b></span>

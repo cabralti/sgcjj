@@ -338,7 +338,7 @@
                                                 class="text-danger">*</span></label>
                                         <input type="tel" name="teacher_cell" id="teacher_cell"
                                                class="form-control mask-cell"
-                                               placeholder="(99) 9 9999-9999" value="{{old('teacher_cell')}}" required>
+                                               placeholder="(xx) xxxxx-xxxx" value="{{old('teacher_cell')}}" required>
                                         <small>Somente números</small>
                                     </div>
                                     <div class="form-group col-md-6">

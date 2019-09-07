@@ -18,6 +18,7 @@ Route::get('/a-liga/informacoes', 'Site\WebController@information')->name('site.
 
 Route::get('/atletas/como-registrar-atleta', 'Site\WebController@howRegisterAthlete')->name('site.atletas.como-registrar-atleta');
 Route::get('/atletas/registrar-atleta', 'Site\WebController@registerAthlete')->name('site.atletas.registrar-atleta');
+Route::post('/atletas/store', 'Site\AthleteController@store')->name('site.atletas.store');
 
 Route::get('/academias/como-registrar-academia', 'Site\WebController@howRegisterAcademy')->name('site.academias.como-registrar-academia');
 Route::get('/academias/registrar-academia', 'Site\WebController@registerAcademy')->name('site.academias.registrar-academia');

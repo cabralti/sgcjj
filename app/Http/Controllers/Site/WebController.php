@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Site;
 
+use App\Academy;
 use App\Support\Seo;
 use App\Teacher;
 use Illuminate\Http\Request;
@@ -73,7 +74,18 @@ class WebController extends Controller
 
     public function registerAthlete()
     {
-        return view('site.register-athlete');
+        $head = $this->seo->render(
+            'Registrar Atleta | ' . env('APP_NAME'),
+            'Realize seu registro de filiação à Liga Paraense de Jiu-Jitsu (LPJJ) preenchendo o formulário com os dados solicitados',
+            route('site.atletas.registrar-atleta'),
+            asset('images/lpjj_oficial.png')
+        );
+
+        $academies = Academy::where('status', '1')->get();
+        return view('site.register-athlete', [
+            'head' => $head,
+            'academies' => $academies
+        ]);
     }
 
     public function howRegisterAcademy()

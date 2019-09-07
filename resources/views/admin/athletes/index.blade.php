@@ -44,6 +44,7 @@
                                 <tr>
                                     <th>#</th>
                                     <th>Atleta</th>
+                                    <th>Faixa</th>
                                     <th>E-mail</th>
                                     <th>Celular</th>
                                     <th>Academia</th>
@@ -56,16 +57,22 @@
                                     <tr>
                                         <td class="align-middle">{{$athlete->id}}</td>
                                         <td class="align-middle">
-                                            <a href="#">{{ $athlete->name }}</a>
+                                            <a href="{{route('admin.athletes.show', ['athlete' => $athlete->id])}}">{{ $athlete->name }}</a>
                                         </td>
+                                        <td class="align-middle">{{$athlete->band}}</td>
                                         <td class="align-middle">
                                             <a href="mailto:{{ $athlete->email }}">{{$athlete->email}}</a>
                                         </td>
                                         <td class="align-middle">{{$athlete->cell}}</td>
-                                        <td class="align-middle">{{$athlete->academy()->first()->name}}</td>
-                                        <td class="align-middle"><span class="badge badge-secondary">Pendente</span></td>
+                                        <td class="align-middle">
+                                            <a href="{{route('admin.academies.show', ['academy' => $athlete->academy()->first()->id])}}">
+                                                {{$athlete->academy()->first()->name}}
+                                            </a>
+                                        </td>
+                                        <td class="align-middle"><span class="badge badge-secondary">Pendente</span>
+                                        </td>
                                         <td class="align-middle text-right">
-                                            <a href="#"
+                                            <a href="{{route('admin.athletes.show', ['athlete' => $athlete->id])}}"
                                                class="btn btn-default" data-toggle="tooltip" title="Visualizar">
                                                 <i class="fa fa-search"></i>
                                             </a>

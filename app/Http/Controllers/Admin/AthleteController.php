@@ -20,4 +20,18 @@ class AthleteController extends Controller
             'athletes' => $athletes
         ]);
     }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        $athlete = Athlete::where('id', $id)->first();
+        return view('admin.athletes.show', [
+            'athlete' => $athlete
+        ]);
+    }
 }

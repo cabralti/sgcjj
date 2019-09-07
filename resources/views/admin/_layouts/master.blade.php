@@ -76,7 +76,7 @@
                         <span class="fa arrow"></span>
                     </a>
                     <ul class="nav nav-second-level collapse">
-                        <li><a href="{{ route('admin.athletes.index') }}">Ver todas</a></li>
+                        <li><a href="{{ route('admin.athletes.index') }}">Ver todos</a></li>
                     </ul>
                 </li>
                 <li>

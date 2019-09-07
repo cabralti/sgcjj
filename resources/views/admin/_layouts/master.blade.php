@@ -70,6 +70,15 @@
                         {{--                        <li><a href="#">Criar Nova</a></li>--}}
                     </ul>
                 </li>
+                <li class="{{ isActive('admin.athletes') }}">
+                    <a href="#">
+                        <i class="fa fa-male"></i><span class="nav-label">Atletas</span>
+                        <span class="fa arrow"></span>
+                    </a>
+                    <ul class="nav nav-second-level collapse">
+                        <li><a href="{{ route('admin.athletes.index') }}">Ver todas</a></li>
+                    </ul>
+                </li>
                 <li>
                     <a href="{{route('site.home')}}" target="_blank">
                         <i class="fa fa-reply"></i><span class="nav-label">Ver Site</span>

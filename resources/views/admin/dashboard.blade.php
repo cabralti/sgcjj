@@ -19,7 +19,8 @@
                         <i class="fa fa-university fa-5x"></i>
                     </div>
                     <div class="col-8 text-right">
-                        <a href="{{ route('admin.academies.index') }}"><h3 class="text-uppercase text-muted">Academias </h3></a>
+                        <a href="{{ route('admin.academies.index') }}"><h3 class="text-uppercase text-muted">
+                                Academias </h3></a>
                         <h2 class="font-bold">{{ $academies }}</h2>
                     </div>
                 </div>
@@ -32,38 +33,38 @@
                         <i class="fa fa-male fa-5x"></i>
                     </div>
                     <div class="col-8 text-right">
-                        <a href="#"><h3 class="text-uppercase text-muted">Atletas </h3></a>
-                        <h2 class="font-bold">1</h2>
+                        <a href="{{route('admin.athletes.index')}}"><h3 class="text-uppercase text-muted">Atletas </h3></a>
+                        <h2 class="font-bold">{{$athletes}}</h2>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-lg-3">
-            <div class="widget style1 bg-light">
-                <div class="row">
-                    <div class="col-4 text-center">
-                        <i class="fa fa-trophy fa-5x"></i>
-                    </div>
-                    <div class="col-8 text-right">
-                        <a href="#"><h3 class="text-uppercase text-muted">Campeonatos </h3></a>
-                        <h2 class="font-bold">2</h2>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3">
-            <div class="widget style1 lazur-bg">
-                <div class="row">
-                    <div class="col-4 text-center">
-                        <i class="fa fa-newspaper-o fa-5x"></i>
-                    </div>
-                    <div class="col-8 text-right">
-                        <a href="#"><h3 class="text-uppercase text-white">Notícias </h3></a>
-                        <h2 class="font-bold">1</h2>
-                    </div>
-                </div>
-            </div>
-        </div>
+{{--        <div class="col-lg-3">--}}
+{{--            <div class="widget style1 bg-light">--}}
+{{--                <div class="row">--}}
+{{--                    <div class="col-4 text-center">--}}
+{{--                        <i class="fa fa-trophy fa-5x"></i>--}}
+{{--                    </div>--}}
+{{--                    <div class="col-8 text-right">--}}
+{{--                        <a href="#"><h3 class="text-uppercase text-muted">Campeonatos </h3></a>--}}
+{{--                        <h2 class="font-bold">2</h2>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--        <div class="col-lg-3">--}}
+{{--            <div class="widget style1 lazur-bg">--}}
+{{--                <div class="row">--}}
+{{--                    <div class="col-4 text-center">--}}
+{{--                        <i class="fa fa-newspaper-o fa-5x"></i>--}}
+{{--                    </div>--}}
+{{--                    <div class="col-8 text-right">--}}
+{{--                        <a href="#"><h3 class="text-uppercase text-white">Notícias </h3></a>--}}
+{{--                        <h2 class="font-bold">1</h2>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
     </div>
     <!-- end: widgets -->
 

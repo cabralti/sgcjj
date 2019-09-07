@@ -46,6 +46,9 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin.'], fu
 
         /** Academies */
         Route::resource('academies', 'AcademyController');
+
+        /** Athletes */
+        Route::resource('athletes', 'AthleteController');
     });
 
     /** Logout */

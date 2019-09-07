@@ -24,6 +24,11 @@ class Athlete extends Model
         'status'
     ];
 
+    public function academy()
+    {
+        return $this->belongsTo(Academy::class, 'academy', 'id');
+    }
+
     public function setDateOfBirthAttribute($value)
     {
         $this->attributes['date_of_birth'] = $this->convertStringToDate($value);

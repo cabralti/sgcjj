@@ -1,5 +1,5 @@
 @extends('admin._layouts.master')
-@section('title', ' Visualizar Academia | ')
+@section('title', ' Visualizar Atleta | ')
 
 @section('page-heading')
     <div class="row wrapper border-bottom white-bg page-heading">
@@ -21,7 +21,7 @@
 @endsection
 
 @section('content')
-    <!-- start: academy show -->
+    <!-- start: athlete show -->
     <div class="row">
         <div class="col-lg-3">
             <div class="wrapper wrapper-content project-manager">
@@ -48,8 +48,8 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="text-dark">
-                            <i class="fa fa-male"></i> {{$athlete->academy()->first()->name}}
+                        <a href="{{ route('admin.academies.show', ['academy' => $athlete->academy()->first()->id]) }}">
+                            <i class="fa fa-university"></i> {{$athlete->academy()->first()->name}}
                         </a>
                     </li>
                 </ul>
@@ -62,12 +62,13 @@
                             Dados do Atleta</a></li>
                     <li><a class="nav-link" data-toggle="tab" href="#tab-2"><i class="fa fa-map-marker"></i>
                             Endereço</a></li>
-                    <li><a class="nav-link" data-toggle="tab" href="#tab-3"><i class="fa fa-paperclip"></i> Documentos
+                    <li><a class="nav-link" data-toggle="tab" href="#tab-3"><i class="fa fa-user-secret"></i> Dados do
+                            Responsável</a></li>
+                    <li><a class="nav-link" data-toggle="tab" href="#tab-4"><i class="fa fa-paperclip"></i> Documentos
                             Anexados</a></li>
                 </ul>
 
                 <div class="tab-content">
-
                     <div id="tab-1" class="tab-pane active">
                         <div class="panel-body">
                             <div class="row">
@@ -126,6 +127,24 @@
                                            value="{{ $athlete->email }}" disabled>
                                 </div>
                             </div>
+
+                            <hr>
+
+                            <div class="row">
+                                <div class="col-sm-12 col-md-6 form-group">
+                                    <label for="" class="col-form-label font-weight-bold">
+                                        <i class="fa fa-university"></i> Academia:
+                                    </label>
+                                    <div class="form-control-plaintext">
+                                        <a href="{{route('admin.academies.show', ['academy' => $athlete->academy()->first()->id])}}"
+                                           class="btn btn-link">{{$athlete->academy()->first()->name}}</a>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 col-md-6 form-group">
+                                    <label for="band" class="col-form-label font-weight-bold">Faixa:</label>
+                                    <input type="text" class="form-control-plaintext" value="{{$athlete->band}}">
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div id="tab-2" class="tab-pane">
@@ -171,115 +190,90 @@
 
                         </div>
                     </div>
-                    {{--                    <div id="tab-4" class="tab-pane">--}}
-                    {{--                        <div class="panel-body">--}}
-                    {{--                            <div class="row">--}}
-                    {{--                                <div class="col-sm-12 col-md-6 form-group">--}}
-                    {{--                                    <label class="col-form-label font-weight-bold">Nome:</label>--}}
-                    {{--                                    <input type="text" name="teacher_name" id="teacher_name"--}}
-                    {{--                                           class="form-control-plaintext"--}}
-                    {{--                                           placeholder="Informe o nome do professor responsável"--}}
-                    {{--                                           value="{{ $athlete->teacher()->first()->name}}" disabled>--}}
-                    {{--                                </div>--}}
+                    <div id="tab-3" class="tab-pane">
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-sm-12 col-md-6 form-group">
+                                    <label class="col-form-label font-weight-bold">Nome:</label>
+                                    <input type="text" name="responsible_name" id="responsible_name"
+                                           class="form-control-plaintext"
+                                           placeholder="Informe o nome do responsável"
+                                           value="" disabled>
+                                </div>
 
-                    {{--                                <div class="col-sm-12 col-md-6 form-group">--}}
-                    {{--                                    <label class="col-form-label font-weight-bold">Faixa:</label>--}}
-                    {{--                                    <select name="teacher_band" id="teacher_band" class="form-control-plaintext"--}}
-                    {{--                                            disabled>--}}
-                    {{--                                        <option selected>{{$athlete->teacher()->first()->band}}</option>--}}
-                    {{--                                    </select>--}}
-                    {{--                                </div>--}}
-                    {{--                            </div>--}}
+                                <div class="col-sm-12 col-md-6 form-group">
+                                    <label class="col-form-label font-weight-bold">CPF:</label>
+                                    <input type="text" name="responsible_document" id="responsible_document"
+                                           class="form-control-plaintext mask-doc" placeholder="___.___.___-__"
+                                           value="" disabled>
+                                </div>
+                            </div>
 
-                    {{--                            <div class="row">--}}
-                    {{--                                <div class="col-sm-12 col-md-6 form-group">--}}
-                    {{--                                    <label class="col-form-label font-weight-bold">CPF:</label>--}}
-                    {{--                                    <input type="text" name="teacher_document" id="teacher_document"--}}
-                    {{--                                           class="form-control-plaintext mask-doc" placeholder="___.___.___-__"--}}
-                    {{--                                           value="{{$athlete->teacher()->first()->document}}" disabled>--}}
-                    {{--                                </div>--}}
+                            <div class="row">
+                                <div class="col-sm-12 col-md-6 form-group">
+                                    <label class="col-form-label font-weight-bold">Celular:</label>
+                                    <input type="tel" name="responsible_cell" id="responsible_cell"
+                                           class="form-control-plaintext mask-cell" placeholder="(xx) xxxxx-xxxx"
+                                           value="" disabled>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="tab-4" class="tab-pane">
+                        <div class="panel-body">
 
-                    {{--                                <div class="col-sm-12 col-md-6 form-group">--}}
-                    {{--                                    <label class="col-form-label font-weight-bold">RG:</label>--}}
-                    {{--                                    <input type="text" name="teacher_document_secondary"--}}
-                    {{--                                           id="teacher_document_secondary" class="form-control-plaintext"--}}
-                    {{--                                           placeholder="Informe o RG"--}}
-                    {{--                                           value="{{$athlete->teacher()->first()->document_secondary}}" disabled>--}}
-                    {{--                                </div>--}}
-                    {{--                            </div>--}}
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-stripped">
+                                    <thead>
+                                    <tr>
+                                        <th>Tipo</th>
+                                        <th>Ações</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td>
+                                            Ficha de Registro
+                                        </td>
+                                        <td>
+                                            <a href="#" class="btn btn-outline-secondary" data-toggle="tooltip"
+                                               title="Ver anexo">
+                                                <i class="fa fa-eye"></i>
+                                            </a>
+                                            <a href="#" class="btn btn-outline-primary" data-toggle="tooltip"
+                                               title="Download">
+                                                <i class="fa fa-download"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Certificado de faixa do professor
+                                        </td>
+                                        <td>
+                                            <a href="#" class="btn btn-outline-secondary" data-toggle="tooltip"
+                                               title="Ver anexo">
+                                                <i class="fa fa-eye"></i>
+                                            </a>
+                                            <a href="#" class="btn btn-outline-primary" data-toggle="tooltip"
+                                               title="Download">
+                                                <i class="fa fa-download"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
 
-                    {{--                            <div class="row">--}}
-                    {{--                                <div class="col-sm-12 col-md-6 form-group">--}}
-                    {{--                                    <label class="col-form-label font-weight-bold">E-mail:</label>--}}
-                    {{--                                    <input type="email" name="teacher_email" id="teacher_email"--}}
-                    {{--                                           class="form-control-plaintext" placeholder="Informe o melhor e-mail"--}}
-                    {{--                                           value="{{$athlete->teacher()->first()->email}}" disabled>--}}
-                    {{--                                </div>--}}
-
-                    {{--                                <div class="col-sm-12 col-md-6 form-group">--}}
-                    {{--                                    <label class="col-form-label font-weight-bold">Celular:</label>--}}
-                    {{--                                    <input type="tel" name="teacher_cell" id="teacher_cell"--}}
-                    {{--                                           class="form-control-plaintext mask-cell" placeholder="(99) 9 9999-9999"--}}
-                    {{--                                           value="{{$athlete->teacher()->first()->cell}}" disabled>--}}
-                    {{--                                </div>--}}
-                    {{--                            </div>--}}
-                    {{--                        </div>--}}
-                    {{--                    </div>--}}
-                    {{--                    <div id="tab-3" class="tab-pane">--}}
-                    {{--                        <div class="panel-body">--}}
-
-                    {{--                            <div class="table-responsive">--}}
-                    {{--                                <table class="table table-bordered table-stripped">--}}
-                    {{--                                    <thead>--}}
-                    {{--                                    <tr>--}}
-                    {{--                                        <th>Tipo</th>--}}
-                    {{--                                        <th>Ações</th>--}}
-                    {{--                                    </tr>--}}
-                    {{--                                    </thead>--}}
-                    {{--                                    <tbody>--}}
-                    {{--                                    <tr>--}}
-                    {{--                                        <td>--}}
-                    {{--                                            Ficha de Registro--}}
-                    {{--                                        </td>--}}
-                    {{--                                        <td>--}}
-                    {{--                                            <a href="#" class="btn btn-outline-secondary" data-toggle="tooltip"--}}
-                    {{--                                               title="Ver anexo">--}}
-                    {{--                                                <i class="fa fa-eye"></i>--}}
-                    {{--                                            </a>--}}
-                    {{--                                            <a href="#" class="btn btn-outline-primary" data-toggle="tooltip"--}}
-                    {{--                                               title="Download">--}}
-                    {{--                                                <i class="fa fa-download"></i>--}}
-                    {{--                                            </a>--}}
-                    {{--                                        </td>--}}
-                    {{--                                    </tr>--}}
-                    {{--                                    <tr>--}}
-                    {{--                                        <td>--}}
-                    {{--                                            Certificado de faixa do professor--}}
-                    {{--                                        </td>--}}
-                    {{--                                        <td>--}}
-                    {{--                                            <a href="#" class="btn btn-outline-secondary" data-toggle="tooltip"--}}
-                    {{--                                               title="Ver anexo">--}}
-                    {{--                                                <i class="fa fa-eye"></i>--}}
-                    {{--                                            </a>--}}
-                    {{--                                            <a href="#" class="btn btn-outline-primary" data-toggle="tooltip"--}}
-                    {{--                                               title="Download">--}}
-                    {{--                                                <i class="fa fa-download"></i>--}}
-                    {{--                                            </a>--}}
-                    {{--                                        </td>--}}
-                    {{--                                    </tr>--}}
-                    {{--                                    </tbody>--}}
-                    {{--                                </table>--}}
-                    {{--                            </div>--}}
-
-                    {{--                        </div>--}}
-                    {{--                    </div>--}}
+                        </div>
+                    </div>
                 </div>
 
                 <div class="border-top my-2 py-2">
-                    <a href="{{ route('admin.academies.index') }}" class="btn btn-default" title="Voltar">
+                    <a href="{{ route('admin.athletes.index') }}" class="btn btn-default" title="Voltar">
                         <i class="fa fa-chevron-left"></i> Voltar
                     </a>
-                    <a href="{{ route('admin.academies.edit', ['academy' => $athlete->id]) }}" class="btn btn-warning"
+                    <a href="{{ route('admin.athletes.edit', ['athlete' => $athlete->id]) }}" class="btn btn-warning"
                        title="Editar">
                         <i class="fa fa-pencil"></i> Editar
                     </a>
@@ -287,5 +281,5 @@
             </div>
         </div>
     </div>
-    <!-- end: academy show -->
+    <!-- end: athlete show -->
 @endsection

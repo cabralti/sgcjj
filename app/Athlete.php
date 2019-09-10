@@ -34,6 +34,11 @@ class Athlete extends Model
         $this->attributes['date_of_birth'] = $this->convertStringToDate($value);
     }
 
+    public function getDateOfBirthAttribute($value)
+    {
+        return date('d/m/Y', strtotime($value));
+    }
+
     public function setDocumentAttribute($value)
     {
         $this->attributes['document'] = $this->clearField($value);
@@ -47,6 +52,11 @@ class Athlete extends Model
     public function getCellAttribute($value)
     {
         return "(" . substr($value, 0, 2) . ") " . substr($value, 2, 5) . "-" . substr($value, 7, 4);
+    }
+
+    public function getCreatedAtAttribute($value)
+    {
+        return date('d/m/Y', strtotime($value));
     }
 
     public function convertStringToDate(?string $param)

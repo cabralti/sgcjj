@@ -350,7 +350,7 @@
                         form_button.prop('disabled', false);
 
                         swal({
-                            title: 'OK',
+                            title: '',
                             text: response.message,
                             icon: response.type,
                             closeOnClickOutside: false

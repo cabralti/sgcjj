@@ -79,4 +79,34 @@ class AthleteController extends Controller
 
         return response()->json($json);
     }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        $athlete = Athlete::where('id', $id)->first();
+
+        if (!$athlete->delete()) {
+            $json = [
+                'success' => false,
+                'type' => 'warning',
+                'msg' => 'Erro ao excluir. Entre em contato com o administrador!'
+            ];
+
+            return response()->json($json);
+        }
+
+        $json = [
+            'success' => true,
+            'type' => 'success',
+            'msg' => 'Registro excluído com sucesso!',
+            'redirect' => route('admin.athletes.index')
+        ];
+
+        return response()->json($json);
+    }
 }

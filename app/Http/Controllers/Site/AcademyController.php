@@ -64,4 +64,12 @@ class AcademyController extends Controller
         }
 
     }
+
+    public function fichaDeFiliacao()
+    {
+        $academy = Academy::find(4);
+        return \PDF::loadView('site.pdfs.registration-academy', compact('academy'))
+            // Se quiser que fique no formato a4 retrato: ->setPaper('a4', 'landscape')
+            ->stream('nome-arquivo-pdf-gerado.pdf');
+    }
 }

@@ -35,6 +35,8 @@ mix
 
     // SITE
     .styles('resources/views/site/assets/css/style.css', 'public/frontend/assets/css/style.css')
+    .styles('resources/views/site/assets/css/style-pdf.css', 'public/frontend/assets/css/style-pdf.css')
+    .styles('resources/views/site/assets/css/bootstrap.min.css', 'public/frontend/assets/css/bootstrap.min.css')
     .styles([
         'resources/views/site/assets/css/bootstrap.min.css',
         'resources/views/site/assets/css/classy-nav.css',

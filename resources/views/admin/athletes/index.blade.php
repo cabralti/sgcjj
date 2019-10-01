@@ -76,13 +76,16 @@
                                                class="btn btn-default" data-toggle="tooltip" title="Visualizar">
                                                 <i class="fa fa-search"></i>
                                             </a>
-                                            <a href="#"
+                                            <a href="{{route('admin.athletes.show', ['athlete' => $athlete->id])}}"
                                                class="btn btn-default" data-toggle="tooltip" title="Editar">
                                                 <i class="fa fa-edit"></i>
                                             </a>
-                                            <a href="#" class="btn btn-danger" data-toggle="tooltip" title="Excluir">
+                                            <button type="button"
+                                                    data-action="{{route('admin.athletes.destroy', ['athlete' => $athlete->id])}}"
+                                                    class="btn btn-danger btn-excluir" data-toggle="tooltip"
+                                                    title="Excluir">
                                                 <i class="fa fa-trash-o"></i>
-                                            </a>
+                                            </button>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -111,6 +114,45 @@
     <!-- Page-Level Scripts -->
     <script>
         $(document).ready(function () {
+
+            // DELETE
+            $('.btn-excluir').on('click', function () {
+                const action = $(this).data('action');
+
+                swal({
+                    title: '',
+                    text: 'Tem certeza que deseja excluir este registro?',
+                    icon: 'warning',
+                    buttons: true,
+                    dangerMode: true,
+                }).then(function (result) {
+                    if (result) {
+                        $.ajax({
+                            url: action,
+                            type: 'DELETE',
+                            dataType: 'json',
+                            success: function (response) {
+                                if (response.redirect) {
+                                    swal({
+                                        title: '',
+                                        text: response.msg,
+                                        icon: response.type,
+                                        closeOnClickOutside: false
+                                    }).then(function (result) {
+                                        window.location.href = response.redirect
+                                    });
+                                } else {
+                                    swal('', response.msg, response.type);
+                                }
+                            }
+                        });
+                    } else {
+                        return false;
+                    }
+                });
+            });
+
+            // DATATABLES
             $('.dataTables-example').DataTable({
                 pageLength: 25,
                 responsive: true,

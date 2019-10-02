@@ -3,8 +3,6 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title> Ficha de Filiação | Academia </title>
-
-    <link rel="stylesheet" href="{{url('frontend/assets/css/style-pdf.css')}}">
     <link rel="stylesheet" href="{{url('frontend/assets/css/bootstrap.min.css')}}">
 </head>
 <body>
@@ -13,9 +11,9 @@
     <table class="w-100">
         <tr>
             <td class="text-center">
-                <img src="{{url('images/site/logomarca_lpjj.jpeg')}}" width="60px" height="80px" alt=""> <br>
+                <img src="{{url('images/site/logo_pdf.jpeg')}}" width="65px" height="85px" alt=""> <br>
                 Liga Paraense de Jiu-Jitsu - LPJJ <br>
-                <a href="https://lpjj.com.br/">www.lpjj.com.br</a>
+                <a href="https://lpjj.com.br/" target="_blank">www.lpjj.com.br</a>
             </td>
         </tr>
         <tr>
@@ -88,7 +86,7 @@
 
     <table class="table table-bordered table-sm w-100">
         <tr>
-            <td class="font-italic text-justify">
+            <td class="font-italic text-justify" style="font-size: 15px;">
                 Solicitamos a Inscrição e Registro de nossa Academia (Associação, Clube, Academia, etc.) de
                 Jiu-Jitsu na LPJJ, declarando-nos cientes das condições as quais nos submeteremos,
                 obedecendo a <b>Códigos, Estatutos, Provimentos</b> etc., e acatando quaisquer decisões tomadas
@@ -120,6 +118,10 @@
         </tr>
     </table>
 </main>
+
+<footer class="border-top text-right" style="font-size: 12px; bottom: 0; position: fixed;">
+    Gerado em: {{ date('d/m/Y H:i:s') }}
+</footer>
 
 </body>
 </html>

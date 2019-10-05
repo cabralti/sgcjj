@@ -23,7 +23,6 @@ Route::post('/atletas/store', 'Site\AthleteController@store')->name('site.atleta
 Route::get('/academias/como-registrar-academia', 'Site\WebController@howRegisterAcademy')->name('site.academias.como-registrar-academia');
 Route::get('/academias/registrar-academia', 'Site\WebController@registerAcademy')->name('site.academias.registrar-academia');
 Route::post('/academias/store', 'Site\AcademyController@store')->name('site.academias.store');
-Route::get('/academias/ficha-de-filiacao', 'Site\AcademyController@fichaDeFiliacao')->name('site.academias.ficha-de-filiacao');
 
 /** Get Data Teachers */
 Route::post('/teacher/get-data-teacher', 'Admin\TeacherController@getDataTeacher')->name('site.teacher.get-data-teacher');

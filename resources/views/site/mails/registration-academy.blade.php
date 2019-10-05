@@ -1,9 +1,9 @@
 <h1>Parabéns pelo registro!</h1>
 
-<p>Para concluir sua filiação é necessário escanear os seguintes documentos:</p>
+<p>Para concluir a filiação da academia <b>{{$academy->name}}</b> é necessário escanear os seguintes documentos:</p>
 
 <ul>
-    <li>Ficha de registro de academia devidamente assinada pelo professor responsável</li>
+    <li>Ficha de registro de academia (em anexo) devidamente assinada pelo professor responsável</li>
     <li>Certificado de faixa do professor responsável</li>
 </ul>
 

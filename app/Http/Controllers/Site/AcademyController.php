@@ -6,6 +6,7 @@ use App\Academy;
 use App\Http\Requests\Site\Academy as AcademyRequest;
 use App\Mail\fichaRegistroAcademia;
 use App\Teacher;
+use Barryvdh\DomPDF\PDF;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
@@ -55,11 +56,21 @@ class AcademyController extends Controller
             // sucesso
             DB::commit();
 
-            return redirect()->route('site.academias.registrar-academia')->with([
-                'color' => 'success',
-                'icon' => 'fa fa-check',
-                'message' => 'Academia cadastrada com sucesso'
-            ]);
+            // enviar e-mail de filiação
+            if ($this->sendRegistrationEmail($academy->id)) {
+                return redirect()->route('site.academias.registrar-academia')->with([
+                    'color' => 'success',
+                    'icon' => 'fa fa-check',
+                    'message' => 'Academia cadastrada com sucesso'
+                ]);
+            } else {
+                return redirect()->route('site.academias.registrar-academia')->with([
+                    'color' => 'warning',
+                    'icon' => 'fa fa-check',
+                    'message' => 'Academia cadastrada com sucesso, porém ocorreu um erro no envio da ficha de filiação para o e-mail da academia. Entre em contato com a LPJJ, atráves do e-mail contato@lpjj.com'
+                ]);
+            }
+
         } else {
             // fail, desfaz as alterações no banco de dados
             DB::rollBack();
@@ -67,32 +78,19 @@ class AcademyController extends Controller
 
     }
 
-    public function fichaDeFiliacao()
+    public function sendRegistrationEmail($id)
     {
+        $academy = Academy::find($id);
 
-        $academy = Academy::find(4);
-        Mail::to("cabral.9santos@gmail.com")->send(new fichaRegistroAcademia($academy));
+        if ($academy) {
+            $pdf = \PDF::loadView('site.pdfs.registration-academy', ['academy' => $academy])
+                // Se quiser que fique no formato a4 retrato: ->setPaper('a4', 'landscape')
+                ->stream();
+            Mail::to($academy->email)->send(new fichaRegistroAcademia($academy, $pdf));
 
-//        eltonfplp@gmail.com
-//        return new fichaRegistroAcademia($academy);
+            return true;
+        }
 
-
-//
-//        $info = ["info"=>$academy];
-//
-//        Mail::send(["text"=>"mail"], $info, function($message){
-//
-//            $pdf = \PDF::loadView("site.pdfs.registration-academy", compact('academy'))->stream('nome-arquivo-pdf-gerado.pdf');
-//
-//            $message->to("cabral.9santos@gmail.com","Gabriel Santos Cabral")->subject("Send Mail from Laravel");
-//            $message->from("gabriel.cabral@seduc.pa.gov.br","Gabriel Seduc");
-//            $message->attachData($pdf->stream(), "filename.pdf");
-//
-//        });
-
-//        $academy = Academy::find(4);
-//        return \PDF::loadView('site.pdfs.registration-academy', compact('academy'))
-//            // Se quiser que fique no formato a4 retrato: ->setPaper('a4', 'landscape')
-//            ->stream('nome-arquivo-pdf-gerado.pdf');
+        return false;
     }
 }

@@ -404,61 +404,73 @@
                         </div>
                         <div id="tab-4" class="tab-pane">
                             <div class="panel-body">
-                                <fieldset>
-                                    <div class="form-group row">
-                                        <label class="col-sm-2 col-form-label">Anexar Documentos:</label>
-                                        <div class="col-sm-10">
-                                            <input type="file" name="files[]" id="files[]"
-                                                   class="form-control" multiple>
+                                <div class="row">
+                                    <div class="col-lg-3">
+                                        <div class="ibox ">
+                                            <div class="ibox-content border-0">
+                                                <div class="file-manager">
+                                                    <div class="hr-line-dashed"></div>
+                                                    <button type="button" class="btn btn-default btn-block"
+                                                            data-toggle="modal" data-target="#modalAnexarDocumentos">
+                                                        <i class="fa fa-upload"></i> Anexar Documentos
+                                                    </button>
+                                                    <div class="hr-line-dashed"></div>
+                                                    <div class="clearfix"></div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                </fieldset>
+                                    <div class="col-lg-9 animated fadeInRight">
+                                        <div class="row">
+                                            <div id="file-content" class="col-lg-12">
+                                                <div class="file-box">
+                                                    <div class="file">
+                                                        <a href="#">
+                                                            <span class="corner"></span>
 
-                                <div class="row content_image"></div>
+                                                            <div class="icon">
+                                                                <i class="fa fa-file-pdf-o"></i>
+                                                            </div>
+                                                            <div class="file-name">
+                                                                Ficha_de_Registro.jpg
+                                                                <br/>
+                                                                <small>Adicionado em: 09/10/2019</small>
+                                                                <div class="hr-line-dashed"></div>
+                                                                <button type="button" class="btn btn-sm btn-danger"
+                                                                        title="Excluir" data-toggle="tooltip">
+                                                                    <i class="fa fa-trash"></i>
+                                                                </button>
+                                                            </div>
+                                                        </a>
+                                                    </div>
+                                                </div>
 
-                                <div class="table-responsive">
-                                    <table class="table table-bordered table-stripped">
-                                        <thead>
-                                        <tr>
-                                            <th>Tipo</th>
-                                            <th>Ações</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        <tr>
-                                            <td>
-                                                Ficha de Registro
-                                            </td>
-                                            <td>
-                                                <a href="#" class="btn btn-outline-secondary" data-toggle="tooltip"
-                                                   title="Ver anexo">
-                                                    <i class="fa fa-eye"></i>
-                                                </a>
-                                                <button class="btn btn-danger" data-toggle="tooltip"
-                                                        title="Excluir anexo">
-                                                    <i class="fa fa-trash"></i>
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                Certificado de faixa do professor
-                                            </td>
-                                            <td>
-                                                <a href="#" class="btn btn-outline-secondary" data-toggle="tooltip"
-                                                   title="Ver anexo">
-                                                    <i class="fa fa-eye"></i>
-                                                </a>
-                                                <button class="btn btn-danger" data-toggle="tooltip"
-                                                        title="Excluir anexo">
-                                                    <i class="fa fa-trash"></i>
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
+                                                <div class="file-box">
+                                                    <div class="file">
+                                                        <a href="#">
+                                                            <span class="corner"></span>
+
+                                                            <div class="image">
+                                                                <img alt="image" class="img-fluid" src="img/p1.jpg">
+                                                            </div>
+                                                            <div class="file-name">
+                                                                Certificado de faixa do professor.jpg
+                                                                <br/>
+                                                                <small>Adicionado em: 09/10/2019</small>
+                                                                <div class="hr-line-dashed"></div>
+                                                                <button type="button" class="btn btn-sm btn-danger"
+                                                                        title="Excluir" data-toggle="tooltip">
+                                                                    <i class="fa fa-trash"></i>
+                                                                </button>
+                                                            </div>
+                                                        </a>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-
                             </div>
                         </div>
                     </div>
@@ -476,6 +488,26 @@
         </div>
     </div>
     <!-- end: academy edit -->
+
+    <div class="modal inmodal" id="modalAnexarDocumentos" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content animated bounceInRight">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <i class="fa fa-paperclip modal-icon"></i>
+                    <h4 class="modal-title">Anexar Documentos</h4>
+                    <small class="font-bold">Anexe os documentos necessários para filiação de academias</small>
+                </div>
+                <div class="modal-body">
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-white" data-dismiss="modal">Fechar</button>
+                    <button type="button" class="btn btn-primary">Salvar</button>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
 
 @section('js')
@@ -483,7 +515,6 @@
     <script src="{{url('backend/assets/js/plugins/select2/js/i18n/pt-BR.js')}}"></script>
 
     <script>
-
         $(function () {
 
             $.ajaxSetup({
@@ -529,63 +560,41 @@
                 });
             });
 
-        });
+            // FORM SUBMIT
+            $('form[name="form_edit"]').submit(function (event) {
+                event.preventDefault();
 
-        $('input[name="files[]"]').change(function (files) {
-            $('content_image').text('');
+                const form = $(this);
+                const form_action = form.attr('action');
+                const form_button = form.find('button[type="submit"]');
+                let form_data = form.serialize();
 
-            $.each(files.target.files, function (key, value) {
-                let reader = new FileReader();
-                reader.onload = function (value) {
-                    $('.content_image').append(
-                        '<div class="col-md-3">' +
-                        '<div class="ibox">' +
-                        '<div class="ibox-content product-box">' +
-                        '<div class="product-imitation"' +
-                        'style="background-image: url(' + value.target.result + '); background-size:cover; background-position: center center;">' +
-                        '</div>' +
-                        '</div>' +
-                        '</div>' +
-                        '</div>');
-                };
-
-                reader.readAsDataURL(value);
+                $.ajax({
+                    url: form_action,
+                    type: 'PUT',
+                    dataType: 'json',
+                    data: form_data,
+                    beforeSend: function () {
+                        form_button.prop('disabled', true);
+                    },
+                    success: function (response) {
+                        form_button.prop('disabled', false);
+                        // swal('OK!', response.message, response.type);
+                        swal({
+                            title: '',
+                            text: response.message,
+                            icon: response.type,
+                            closeOnClickOutside: false
+                        }).then((result) => {
+                            if (result) {
+                                window.location.href = response.redirect;
+                            } else {
+                                return false;
+                            }
+                        });
+                    }
+                });
             })
         });
-
-        $('form[name="form_edit"]').submit(function (event) {
-            event.preventDefault();
-
-            const form = $(this);
-            const form_action = form.attr('action');
-            const form_button = form.find('button[type="submit"]');
-            let form_data = form.serialize();
-
-            $.ajax({
-                url: form_action,
-                type: 'PUT',
-                dataType: 'json',
-                data: form_data,
-                beforeSend: function () {
-                    form_button.prop('disabled', true);
-                },
-                success: function (response) {
-                    form_button.prop('disabled', false);
-                    // swal('OK!', response.message, response.type);
-                    swal({
-                        title: '',
-                        text: response.message,
-                        icon: response.type,
-                        closeOnClickOutside: false
-                    }).then((result) => {
-                        if (result) {
-                            window.location.href = response.redirect;
-                        } else {
-                            return false;
-                        }
-                    });
-                }
-            });
-        })
     </script>
 @endsection

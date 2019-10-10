@@ -12,16 +12,17 @@ class fichaRegistroAcademia extends Mailable
 {
     use Queueable, SerializesModels;
 
-    private $academy;
+    private $academy, $pdf;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct(Academy $academy)
+    public function __construct(Academy $academy, $pdf)
     {
         $this->academy = $academy;
+        $this->pdf = $pdf;
     }
 
     /**
@@ -31,9 +32,11 @@ class fichaRegistroAcademia extends Mailable
      */
     public function build()
     {
-        $this->subject("Ficha de Solicitação de Registro - LPJJ");
+        $this->subject("Ficha de Solicitação de Registro de Academia - LPJJ");
         return $this->view('site.mails.registration-academy')->with([
             'academy' => $this->academy
+        ])->attachData($this->pdf, 'ficha_de_filiacao_de_academia.pdf', [
+            'mime' => 'application/pdf',
         ]);
     }
 }

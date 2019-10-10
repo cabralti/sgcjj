@@ -61,6 +61,22 @@
                                 <fieldset>
                                     <div class="row">
                                         <div class="col-sm-12 col-md-6 form-group">
+                                            <label class="col-form-label font-weight-bold">Status:</label>
+                                            <select name="status" id="status" class="form-control">
+                                                <option
+                                                    value="1" {{ (old('status') == '1') ? 'selected' : ($academy->status == '1') ? 'selected' : '' }}>
+                                                    Ativo
+                                                </option>
+                                                <option
+                                                    value="0" {{ (old('status') == '0') ? 'selected' : ($academy->status == '0') ? 'selected' : '' }}>
+                                                    Pendente
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-sm-12 col-md-6 form-group">
                                             <label class="col-form-label font-weight-bold">Nome da Academia:</label>
                                             <input type="text" name="name" id="name" class="form-control"
                                                    placeholder="Informe o nome fantasia da academia" required

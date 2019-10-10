@@ -63,7 +63,13 @@
                                         </td>
                                         <td class="align-middle">{{$academy->teacher()->first()->name}}</td>
                                         <td class="align-middle">{{$academy->teacher()->first()->cell}}</td>
-                                        <td class="align-middle"><span class="badge badge-primary">Ativo</span></td>
+                                        <td class="align-middle">
+                                            @if($academy->status == 1)
+                                                <span class="badge badge-primary">Ativo</span>
+                                            @else
+                                                <span class="badge badge-default">Pendente</span>
+                                            @endif
+                                        </td>
                                         <td class="align-middle text-right">
                                             <a href="{{route('admin.academies.show', ['academy' => $academy->id])}}"
                                                class="btn btn-default" data-toggle="tooltip" title="Visualizar">

@@ -69,52 +69,153 @@ $(function () {
     });
 
     // DATATABLES
-    $('#dataTable').DataTable({
-        responsive: true,
-        "pageLength": 10,
-        "pagingType": "full_numbers",
-        // dom: '<"html5buttons"B>lTfgitp',
-        buttons: [
-            // {extend: 'copy'},
-            // {extend: 'csv'},
-            // {extend: 'excel', title: 'ExampleFile'},
-            // {extend: 'pdf', title: 'Academias'},
+    if ($("#dataTable").length) {
+        $('#dataTable').DataTable({
+            responsive: true,
+            "pageLength": 10,
+            "pagingType": "full_numbers",
+            // dom: '<"html5buttons"B>lTfgitp',
+            buttons: [
+                // {extend: 'copy'},
+                // {extend: 'csv'},
+                // {extend: 'excel', title: 'ExampleFile'},
+                // {extend: 'pdf', title: 'Academias'},
 
-            {
-                extend: 'print',
-                customize: function (win) {
-                    // $(win.document.body).addClass('white-bg');
-                    $(win.document.body).css('font-size', '10px');
+                {
+                    extend: 'print',
+                    customize: function (win) {
+                        // $(win.document.body).addClass('white-bg');
+                        $(win.document.body).css('font-size', '10px');
 
-                    $(win.document.body).find('table')
-                        .addClass('compact')
-                        .css('font-size', 'inherit');
+                        $(win.document.body).find('table')
+                            .addClass('compact')
+                            .css('font-size', 'inherit');
+                    }
+                }
+            ],
+            "language": {
+                "sEmptyTable": "Nenhum registro encontrado",
+                "sInfo": "Total: _MAX_ registro(s) | Página _PAGE_ de _PAGES_",
+                "sInfoEmpty": "Mostrando 0 até 0 de 0 registros",
+                "sInfoFiltered": "(Filtrados de _MAX_ registros)",
+                "sInfoPostFix": "",
+                "sInfoThousands": ".",
+                "sLengthMenu": "_MENU_ registros por página",
+                "sLoadingRecords": "Carregando...",
+                "sProcessing": "Processando...",
+                "sZeroRecords": "Nenhum registro encontrado",
+                "sSearch": "Pesquisar",
+                "pagingType": "full_numbers",
+                "paginate": {
+                    "first": "<i class='fa fa-angle-double-left'></i>",
+                    "last": "<i class='fa fa-angle-double-right'></i>",
+                    "next": "<i class='fa fa-angle-right'></i>",
+                    "previous": "<i class='fa fa-angle-left'></i>"
+                },
+                "oAria": {
+                    "sSortAscending": ": Ordenar colunas de forma ascendente",
+                    "sSortDescending": ": Ordenar colunas de forma descendente"
                 }
             }
-        ],
-        "language": {
-            "sEmptyTable": "Nenhum registro encontrado",
-            "sInfo": "Total: _MAX_ registro(s) | Página _PAGE_ de _PAGES_",
-            "sInfoEmpty": "Mostrando 0 até 0 de 0 registros",
-            "sInfoFiltered": "(Filtrados de _MAX_ registros)",
-            "sInfoPostFix": "",
-            "sInfoThousands": ".",
-            "sLengthMenu": "_MENU_ registros por página",
-            "sLoadingRecords": "Carregando...",
-            "sProcessing": "Processando...",
-            "sZeroRecords": "Nenhum registro encontrado",
-            "sSearch": "Pesquisar",
-            "pagingType": "full_numbers",
-            "paginate": {
-                "first": "<i class='fa fa-angle-double-left'></i>",
-                "last": "<i class='fa fa-angle-double-right'></i>",
-                "next": "<i class='fa fa-angle-right'></i>",
-                "previous": "<i class='fa fa-angle-left'></i>"
-            },
-            "oAria": {
-                "sSortAscending": ": Ordenar colunas de forma ascendente",
-                "sSortDescending": ": Ordenar colunas de forma descendente"
+        });
+    }
+
+    // JQUERY FILER
+    if ($('.filer-input-multiple').length) {
+        $('.filer-input-multiple').filer({
+                limit: 2,
+                captions: {
+                    button: "Selecionar arquivos",
+                    feedback: "Escolher os arquivos para fazer o upload",
+                    feedback2: "arquivos foram escolhidos",
+                    drop: "Solte o arquivo aqui para fazer o upload",
+                    removeConfirmation: "Tem certeza de que deseja remover este arquivo?",
+                    errors: {
+                        filesLimit: "É permitido enviar até {{fi-limit}} arquivos.",
+                        filesType: "Apenas imagens podem ser carregadas.",
+                        filesSize: "{{fi-name}} é muito grande! Faça o upload de arquivos com até {{fi-fileMaxSize}} MB.",
+                        filesSizeAll: "Os arquivos que você escolheu são muito grandes! Faça o upload de arquivos até {{fi-maxSize}} MB.",
+                    }
+                },
+                addMore: true,
+                showThumbs: true,
+                templates: filer_default_opts.templates,
+
+                // dialogs: {
+                //     confirm: function (text, callback) {
+                //         swal('Tem certeza?', '', 'warning');
+                //         confirm(text) ? callback() : null;
+                //     }
+                // }
             }
-        }
-    });
+        );
+    }
 });
+
+// JQUERY FILER
+var filer_default_opts = {
+    templates: {
+        box: '<ul class="jFiler-items-list jFiler-items-grid"></ul>',
+        item: '<li class="jFiler-item" style="width:50%">\
+                            <div class="jFiler-item-container">\
+                                <div class="jFiler-item-inner">\
+                                    <div class="jFiler-item-thumb">\
+                                        <div class="jFiler-item-status"></div>\
+                                        <div class="jFiler-item-thumb-overlay">\
+    										<div class="jFiler-item-info">\
+    											<div style="display:table-cell;vertical-align: middle;">\
+    												<span class="jFiler-item-title"><b title="{{fi-name}}">{{fi-name}}</b></span>\
+    												<span class="jFiler-item-others">{{fi-size2}}</span>\
+    											</div>\
+    										</div>\
+    									</div>\
+                                        {{fi-image}}\
+                                    </div>\
+                                    <div class="jFiler-item-assets jFiler-row">\
+                                        <ul class="list-inline pull-left">\
+                                            <li>{{fi-progressBar}}</li>\
+                                        </ul>\
+                                        <ul class="list-inline pull-right">\
+                                            <li><a class="icon-jfi-trash jFiler-item-trash-action"></a></li>\
+                                        </ul>\
+                                    </div>\
+                                </div>\
+                            </div>\
+                        </li>',
+        itemAppend: '<li class="jFiler-item" style="width:50%">\
+                                <div class="jFiler-item-container">\
+                                    <div class="jFiler-item-inner">\
+                                        <div class="jFiler-item-thumb">\
+                                            <div class="jFiler-item-status"></div>\
+                                            <div class="jFiler-item-thumb-overlay">\
+        										<div class="jFiler-item-info">\
+        											<div style="display:table-cell;vertical-align: middle;">\
+        												<span class="jFiler-item-title"><b title="{{fi-name}}">{{fi-name}}</b></span>\
+        												<span class="jFiler-item-others">{{fi-size2}}</span>\
+        											</div>\
+        										</div>\
+        									</div>\
+                                            {{fi-image}}\
+                                        </div>\
+                                        <div class="jFiler-item-assets jFiler-row">\
+                                            <ul class="list-inline pull-left">\
+                                                <li><span class="jFiler-item-others">{{fi-icon}}</span></li>\
+                                            </ul>\
+                                            <ul class="list-inline pull-right">\
+                                                <li><a class="icon-jfi-trash jFiler-item-trash-action"></a></li>\
+                                            </ul>\
+                                        </div>\
+                                    </div>\
+                                </div>\
+                            </li>',
+        progressBar: '<div class="bar"></div>',
+        itemAppendToEnd: false,
+        removeConfirmation: true,
+        _selectors: {
+            list: '.jFiler-items-list',
+            item: '.jFiler-item',
+            progressBar: '.bar',
+            remove: '.jFiler-item-trash-action'
+        }
+    },
+};

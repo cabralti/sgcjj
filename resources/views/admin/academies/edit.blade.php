@@ -4,6 +4,9 @@
 @section('css')
     <link rel="stylesheet" href="{{url('backend/assets/js/plugins/select2/css/select2.min.css')}}">
     <link rel="stylesheet" href="{{url('backend/assets/js/plugins/select2/css/select2-bootstrap4.min.css')}}">
+    <link rel="stylesheet" href="{{url('backend/assets/js/plugins/jquery-filer/css/jquery.filer.css')}}">
+    <link rel="stylesheet"
+          href="{{url('backend/assets/js/plugins/jquery-filer/css/themes/jquery.filer-dragdropbox-theme.css')}}">
 @endsection
 
 @section('page-heading')
@@ -273,7 +276,6 @@
 
                                 <fieldset>
                                     <div class="row">
-
                                         <div class="col-sm-12 col-md-6 form-group">
                                             <label class="col-form-label font-weight-bold">Professor
                                                 Responsável:</label>
@@ -405,67 +407,42 @@
                         <div id="tab-4" class="tab-pane">
                             <div class="panel-body">
                                 <div class="row">
-                                    <div class="col-lg-3">
-                                        <div class="ibox ">
-                                            <div class="ibox-content border-0">
-                                                <div class="file-manager">
-                                                    <div class="hr-line-dashed"></div>
-                                                    <button type="button" class="btn btn-default btn-block"
-                                                            data-toggle="modal" data-target="#modalAnexarDocumentos">
-                                                        <i class="fa fa-upload"></i> Anexar Documentos
-                                                    </button>
-                                                    <div class="hr-line-dashed"></div>
-                                                    <div class="clearfix"></div>
+
+                                    <div class="col-sm-12 col-md-6 form-group">
+                                        <div id="vertical-timeline"
+                                             class="vertical-container light-timeline no-margins">
+                                            <div class="vertical-timeline-block">
+                                                <div class="vertical-timeline-icon bg-primary"
+                                                     title="Validado"
+                                                     data-toggle="tooltip">
+                                                    <i class="fa fa-check"></i>
+                                                </div>
+
+                                                <div class="vertical-timeline-content">
+                                                    <h2>Ficha de Registro:</h2>
+
+                                                    <p>
+                                                        <input type="file" name="document_record[]"
+                                                               id="document_record"
+                                                               class="form-control filer-input-multiple" multiple>
+                                                    </p>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-9 animated fadeInRight">
-                                        <div class="row">
-                                            <div id="file-content" class="col-lg-12">
-                                                <div class="file-box">
-                                                    <div class="file">
-                                                        <a href="#">
-                                                            <span class="corner"></span>
 
-                                                            <div class="icon">
-                                                                <i class="fa fa-file-pdf-o"></i>
-                                                            </div>
-                                                            <div class="file-name">
-                                                                Ficha_de_Registro.jpg
-                                                                <br/>
-                                                                <small>Adicionado em: 09/10/2019</small>
-                                                                <div class="hr-line-dashed"></div>
-                                                                <button type="button" class="btn btn-sm btn-danger"
-                                                                        title="Excluir" data-toggle="tooltip">
-                                                                    <i class="fa fa-trash"></i>
-                                                                </button>
-                                                            </div>
-                                                        </a>
-                                                    </div>
+                                            <div class="vertical-timeline-block">
+                                                <div class="vertical-timeline-icon bg-danger"
+                                                     title="Não validado"
+                                                     data-toggle="tooltip">
+                                                    <i class="fa fa-close"></i>
                                                 </div>
 
-                                                <div class="file-box">
-                                                    <div class="file">
-                                                        <a href="#">
-                                                            <span class="corner"></span>
-
-                                                            <div class="image">
-                                                                <img alt="image" class="img-fluid" src="img/p1.jpg">
-                                                            </div>
-                                                            <div class="file-name">
-                                                                Certificado de faixa do professor.jpg
-                                                                <br/>
-                                                                <small>Adicionado em: 09/10/2019</small>
-                                                                <div class="hr-line-dashed"></div>
-                                                                <button type="button" class="btn btn-sm btn-danger"
-                                                                        title="Excluir" data-toggle="tooltip">
-                                                                    <i class="fa fa-trash"></i>
-                                                                </button>
-                                                            </div>
-                                                        </a>
-
-                                                    </div>
+                                                <div class="vertical-timeline-content">
+                                                    <h2>Certificado de faixa do professor responsável</h2>
+                                                    <p>
+                                                        <input type="file" name="document_certificate[]"
+                                                               id="document_certificate"
+                                                               class="form-control filer-input-multiple">
+                                                    </p>
                                                 </div>
                                             </div>
                                         </div>
@@ -488,35 +465,17 @@
         </div>
     </div>
     <!-- end: academy edit -->
-
-    <div class="modal inmodal" id="modalAnexarDocumentos" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content animated bounceInRight">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                    <i class="fa fa-paperclip modal-icon"></i>
-                    <h4 class="modal-title">Anexar Documentos</h4>
-                    <small class="font-bold">Anexe os documentos necessários para filiação de academias</small>
-                </div>
-                <div class="modal-body">
-
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-white" data-dismiss="modal">Fechar</button>
-                    <button type="button" class="btn btn-primary">Salvar</button>
-                </div>
-            </div>
-        </div>
-    </div>
 @endsection
 
 @section('js')
     <script src="{{url('backend/assets/js/plugins/select2/select2.full.min.js')}}"></script>
     <script src="{{url('backend/assets/js/plugins/select2/js/i18n/pt-BR.js')}}"></script>
+    <script src="{{url('backend/assets/js/plugins/jquery-filer/js/jquery.filer.min.js')}}"></script>
 
     <script>
         $(function () {
 
+            // AJAX SETUP
             $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')

@@ -422,30 +422,23 @@
                                                     <h2>Ficha de Registro:</h2>
 
                                                     <?php
-
                                                     foreach ($academy->documents()->get() as $key => $document) {
                                                         $documents[$key]['name'] = 'teste_' . $key;
                                                         $documents[$key]['size'] = 5000;
-                                                        $documents[$key]['type'] = "image\/png";
-                                                        $documents[$key]['file'] = "http://localhost/sgcjj/public/storage/cache/a3c1705a2019101527ce4007.jpg";
-//                                                        $documents[$key]['file'] = '/images/site/elaine.jpg';
-//                                                        $documents[$key]['file'] = "images/liga_oficial.png";
-                                                        $documents[$key]['url'] = "/images/liga_oficial.png";
+                                                        $documents[$key]['type'] = "image/jpg";
+                                                        $documents[$key]['file'] = $document->url_cropped;
                                                     }
 
                                                     $documents_converted = json_encode($documents);
-
-//                                                    echo $documents_converted;
                                                     ?>
 
                                                     <p>
                                                         <input type="file" name="document_record[]"
                                                                id="document_record"
-                                                               class="form-control filer-input-multiple" multiple="multiple">
-
+                                                               class="form-control filer-input-multiple"
+                                                               multiple="multiple"
+                                                               data-jfiler-files="{{$documents_converted}}">
                                                     </p>
-
-
                                                 </div>
                                             </div>
 
@@ -539,6 +532,47 @@
                     }
                 });
             });
+
+
+            if ($('.filer-input-multiple').length) {
+                var filer_input = $('.filer-input-multiple').filer({
+                    limit: 2,
+                    showThumbs: true,
+                    templates: filer_default_opts.templates,
+                    addMore: true,
+                    // dialogs: {
+                    //     confirm: function (text, callback) {
+                    //         swal('Tem certeza?', '', 'warning');
+                    //         confirm(text) ? callback() : null;
+                    //     }
+                    // }
+                    // files: [
+                    //     {
+                    //         name: "appended_file.jpg",
+                    //         size: 5453,
+                    //         type: "image/jpg",
+                    //         file: "https://dummyimage.com/720x480/f9f9f9/191a1a.jpg"
+                    //     },
+                    //     {
+                    //         name: "appended_file_2.jpg",
+                    //         size: 9453,
+                    //         type: "image/jpg",
+                    //         file: "https://dummyimage.com/640x480/f9f9f9/191a1a.jpg"
+                    //     }
+                    // ],
+                    captions: {
+                        button: "Selecionar arquivos",
+                        feedback: "Escolher os arquivos para fazer o upload",
+                        feedback2: "arquivos foram escolhidos",
+                        drop: "Solte o arquivo aqui para fazer o upload",
+                        removeConfirmation: "Tem certeza de que deseja remover este arquivo?",
+                        errors: {
+                            filesType: "Apenas imagens podem ser carregadas.",
+                        }
+                    }
+                });
+
+            }
 
             // FORM SUBMIT
             $('form[name="form_edit"]').submit(function (event) {

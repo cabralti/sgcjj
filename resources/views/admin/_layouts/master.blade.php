@@ -182,7 +182,8 @@
 </div>
 
 <!-- Mainly scripts -->
-<script src="{{ url(mix('backend/assets/js/jquery-3.1.1.js')) }}"></script>
+{{--<script src="{{ url(mix('backend/assets/js/jquery-3.1.1.js')) }}"></script>--}}
+<script src="{{ url(mix('backend/assets/js/jquery-1.11.1.min.js')) }}"></script>
 <script src="{{ url(mix('backend/assets/js/popper.js')) }} "></script>
 <script src="{{ url(mix('backend/assets/js/bootstrap.js')) }}"></script>
 <script src="{{ url('backend/assets/js/plugins/metisMenu/jquery.metisMenu.js') }}"></script>

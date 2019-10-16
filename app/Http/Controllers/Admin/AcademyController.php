@@ -95,7 +95,7 @@ class AcademyController extends Controller
         }
 
         // Upload de Documentos
-        if ($request->allFiles()) {
+        if (isset($request->allFiles()['document_record'])) {
             foreach ($request->allFiles()['document_record'] as $documentRecord) {
                 $documents = new Document();
                 $documents->academy = $id;
@@ -104,11 +104,13 @@ class AcademyController extends Controller
                 $documents->save();
                 unset($documents);
             }
+        }
 
+        if (isset($request->allFiles()['document_certificate'])) {
             foreach ($request->allFiles()['document_certificate'] as $documentCertificate) {
                 $documents = new Document();
                 $documents->academy = $id;
-                $documents->type_document = 2; // Certificado de Certificado de faixa do professor responsável
+                $documents->type_document = 2; // Certificado de faixa do professor responsável
                 $documents->path = $documentCertificate->store('academies/' . $id);
                 $documents->save();
                 unset($documents);

@@ -20,6 +20,7 @@ mix
     .styles(['resources/views/admin/assets/css/style.css'], 'public/backend/assets/css/style.css')
 
     .scripts(['resources/views/admin/assets/js/jquery-3.1.1.min.js'], 'public/backend/assets/js/jquery-3.1.1.js')
+    .scripts(['resources/views/admin/assets/js/jquery-1.11.1.min.js'], 'public/backend/assets/js/jquery-1.11.1.min.js')
     .scripts(['resources/views/admin/assets/js/popper.min.js'], 'public/backend/assets/js/popper.js')
     .scripts(['resources/views/admin/assets/js/bootstrap.js'], 'public/backend/assets/js/bootstrap.js')
     .scripts(['resources/views/admin/assets/js/inspinia.js'], 'public/backend/assets/js/inspinia.js')

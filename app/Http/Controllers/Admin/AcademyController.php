@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Academy;
+use App\Document;
 use App\Http\Requests\Admin\Academy as AcademyRequest;
 use App\Teacher;
 use Illuminate\Http\Request;
@@ -91,6 +92,27 @@ class AcademyController extends Controller
 
         if (!$academy->save()) {
             return redirect()->back()->withInput()->withErrors();
+        }
+
+        // Upload de Documentos
+        if ($request->allFiles()) {
+            foreach ($request->allFiles()['document_record'] as $documentRecord) {
+                $documents = new Document();
+                $documents->academy = $id;
+                $documents->type_document = 1; // Ficha de Registro
+                $documents->path = $documentRecord->store('academies/' . $id);
+                $documents->save();
+                unset($documents);
+            }
+
+            foreach ($request->allFiles()['document_certificate'] as $documentCertificate) {
+                $documents = new Document();
+                $documents->academy = $id;
+                $documents->type_document = 2; // Certificado de Certificado de faixa do professor responsável
+                $documents->path = $documentCertificate->store('academies/' . $id);
+                $documents->save();
+                unset($documents);
+            }
         }
 
         $json['error'] = false;

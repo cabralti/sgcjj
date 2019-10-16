@@ -121,42 +121,11 @@ $(function () {
     }
 
     // JQUERY FILER
-    if ($('.filer-input-multiple').length) {
-        $('.filer-input-multiple').filer({
-                limit: 2,
-                captions: {
-                    button: "Selecionar arquivos",
-                    feedback: "Escolher os arquivos para fazer o upload",
-                    feedback2: "arquivos foram escolhidos",
-                    drop: "Solte o arquivo aqui para fazer o upload",
-                    removeConfirmation: "Tem certeza de que deseja remover este arquivo?",
-                    errors: {
-                        filesLimit: "É permitido enviar até {{fi-limit}} arquivos.",
-                        filesType: "Apenas imagens podem ser carregadas.",
-                        filesSize: "{{fi-name}} é muito grande! Faça o upload de arquivos com até {{fi-fileMaxSize}} MB.",
-                        filesSizeAll: "Os arquivos que você escolheu são muito grandes! Faça o upload de arquivos até {{fi-maxSize}} MB.",
-                    }
-                },
-                addMore: true,
-                showThumbs: true,
-                templates: filer_default_opts.templates,
-
-                // dialogs: {
-                //     confirm: function (text, callback) {
-                //         swal('Tem certeza?', '', 'warning');
-                //         confirm(text) ? callback() : null;
-                //     }
-                // }
-            }
-        );
-    }
-});
-
-// JQUERY FILER
-var filer_default_opts = {
-    templates: {
-        box: '<ul class="jFiler-items-list jFiler-items-grid"></ul>',
-        item: '<li class="jFiler-item" style="width:50%">\
+    var filer_default_opts = {
+        changeInput2: '<div class="jFiler-input-dragDrop"><div class="jFiler-input-inner"><div class="jFiler-input-icon"><i class="icon-jfi-cloud-up-o"></i></div><div class="jFiler-input-text"><h3>Drag&Drop files here</h3> <span style="display:inline-block; margin: 15px 0">or</span></div><a class="jFiler-input-choose-btn btn-custom blue-light">Browse Files</a></div></div>',
+        templates: {
+            box: '<ul class="jFiler-items-list jFiler-items-grid"></ul>',
+            item: '<li class="jFiler-item" style="width:50%">\
                             <div class="jFiler-item-container">\
                                 <div class="jFiler-item-inner">\
                                     <div class="jFiler-item-thumb">\
@@ -182,7 +151,7 @@ var filer_default_opts = {
                                 </div>\
                             </div>\
                         </li>',
-        itemAppend: '<li class="jFiler-item" style="width:50%">\
+            itemAppend: '<li class="jFiler-item" style="width:50%">\
                                 <div class="jFiler-item-container">\
                                     <div class="jFiler-item-inner">\
                                         <div class="jFiler-item-thumb">\
@@ -208,14 +177,59 @@ var filer_default_opts = {
                                     </div>\
                                 </div>\
                             </li>',
-        progressBar: '<div class="bar"></div>',
-        itemAppendToEnd: false,
-        removeConfirmation: true,
-        _selectors: {
-            list: '.jFiler-items-list',
-            item: '.jFiler-item',
-            progressBar: '.bar',
-            remove: '.jFiler-item-trash-action'
-        }
-    },
-};
+            progressBar: '<div class="bar"></div>',
+            itemAppendToEnd: false,
+            removeConfirmation: true,
+            _selectors: {
+                list: '.jFiler-items-list',
+                item: '.jFiler-item',
+                progressBar: '.bar',
+                remove: '.jFiler-item-trash-action'
+            }
+        },
+    };
+
+    if ($('.filer-input-multiple').length) {
+        var filer_input = $('.filer-input-multiple').filer({
+            limit: 2,
+            showThumbs: true,
+            // templates: filer_default_opts.templates,
+            addMore: true,
+            // dialogs: {
+            //     confirm: function (text, callback) {
+            //         swal('Tem certeza?', '', 'warning');
+            //         confirm(text) ? callback() : null;
+            //     }
+            // }
+            files: [
+                {
+                    name: "appended_file.jpg",
+                    size: 5453,
+                    type: "image/jpg",
+                    file: "https://dummyimage.com/720x480/f9f9f9/191a1a.jpg"
+                },
+                {
+                    name: "appended_file_2.jpg",
+                    size: 9453,
+                    type: "image/jpg",
+                    file: "https://dummyimage.com/640x480/f9f9f9/191a1a.jpg"
+                }
+            ],
+            captions: {
+                button: "Selecionar arquivos",
+                feedback: "Escolher os arquivos para fazer o upload",
+                feedback2: "arquivos foram escolhidos",
+                drop: "Solte o arquivo aqui para fazer o upload",
+                removeConfirmation: "Tem certeza de que deseja remover este arquivo?",
+                errors: {
+                    filesLimit: "É permitido enviar até {{fi-limit}} arquivos.",
+                    filesType: "Apenas imagens podem ser carregadas.",
+                    filesSize: "{{fi-name}} é muito grande! Faça o upload de arquivos com até {{fi-fileMaxSize}} MB.",
+                    filesSizeAll: "Os arquivos que você escolheu são muito grandes! Faça o upload de arquivos até {{fi-maxSize}} MB.",
+                }
+            }
+        });
+
+    }
+
+});

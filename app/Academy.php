@@ -18,12 +18,19 @@ class Academy extends Model
         'neighborhood',
         'city',
         'state',
-        'status'
+        'status',
+        'document_record[]',
+        'document_certificate[]',
     ];
 
     public function teacher()
     {
         return $this->belongsTo(Teacher::class, 'teacher', 'id');
+    }
+
+    public function documents()
+    {
+        return $this->hasMany(Document::class, 'academy', 'id');
     }
 
     public function setAcademyDocumentAttribute($value)

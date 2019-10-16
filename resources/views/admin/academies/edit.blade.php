@@ -413,7 +413,7 @@
                                              class="vertical-container light-timeline no-margins">
                                             <div class="vertical-timeline-block">
                                                 <div class="vertical-timeline-icon bg-primary"
-                                                     title="Validado"
+                                                     title="Recebido"
                                                      data-toggle="tooltip">
                                                     <i class="fa fa-check"></i>
                                                 </div>
@@ -421,17 +421,37 @@
                                                 <div class="vertical-timeline-content">
                                                     <h2>Ficha de Registro:</h2>
 
+                                                    <?php
+
+                                                    foreach ($academy->documents()->get() as $key => $document) {
+                                                        $documents[$key]['name'] = 'teste_' . $key;
+                                                        $documents[$key]['size'] = 5000;
+                                                        $documents[$key]['type'] = "image\/png";
+                                                        $documents[$key]['file'] = "http://localhost/sgcjj/public/storage/cache/a3c1705a2019101527ce4007.jpg";
+//                                                        $documents[$key]['file'] = '/images/site/elaine.jpg';
+//                                                        $documents[$key]['file'] = "images/liga_oficial.png";
+                                                        $documents[$key]['url'] = "/images/liga_oficial.png";
+                                                    }
+
+                                                    $documents_converted = json_encode($documents);
+
+//                                                    echo $documents_converted;
+                                                    ?>
+
                                                     <p>
                                                         <input type="file" name="document_record[]"
                                                                id="document_record"
-                                                               class="form-control filer-input-multiple" multiple>
+                                                               class="form-control filer-input-multiple" multiple="multiple">
+
                                                     </p>
+
+
                                                 </div>
                                             </div>
 
                                             <div class="vertical-timeline-block">
                                                 <div class="vertical-timeline-icon bg-danger"
-                                                     title="Não validado"
+                                                     title="Não recebido"
                                                      data-toggle="tooltip">
                                                     <i class="fa fa-close"></i>
                                                 </div>
@@ -441,7 +461,8 @@
                                                     <p>
                                                         <input type="file" name="document_certificate[]"
                                                                id="document_certificate"
-                                                               class="form-control filer-input-multiple">
+                                                               class="form-control filer-input-multiple"
+                                                               multiple="multiple">
                                                     </p>
                                                 </div>
                                             </div>
@@ -470,7 +491,7 @@
 @section('js')
     <script src="{{url('backend/assets/js/plugins/select2/select2.full.min.js')}}"></script>
     <script src="{{url('backend/assets/js/plugins/select2/js/i18n/pt-BR.js')}}"></script>
-    <script src="{{url('backend/assets/js/plugins/jquery-filer/js/jquery.filer.min.js')}}"></script>
+    <script src="{{url('backend/assets/js/plugins/jquery-filer/js/jquery.filer.js')}}"></script>
 
     <script>
         $(function () {
@@ -526,12 +547,16 @@
                 const form = $(this);
                 const form_action = form.attr('action');
                 const form_button = form.find('button[type="submit"]');
-                let form_data = form.serialize();
+                // let form_data = form.serialize();
+                var form_data = new FormData($(this)[0]);
 
                 $.ajax({
                     url: form_action,
-                    type: 'PUT',
+                    type: 'POST',
                     dataType: 'json',
+                    contentType: false,
+                    cache: false,
+                    processData: false,
                     data: form_data,
                     beforeSend: function () {
                         form_button.prop('disabled', true);

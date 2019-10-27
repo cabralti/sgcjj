@@ -54,8 +54,13 @@ class AcademyController extends Controller
     public function show($id)
     {
         $academy = Academy::where('id', $id)->first();
+        $documentRecords = $academy->documents()->where('type_document', '1')->get();
+        $documentCertificates = $academy->documents()->where('type_document', '2')->get();
+
         return view('admin.academies.show', [
-            'academy' => $academy
+            'academy' => $academy,
+            'documentRecords' => $documentRecords,
+            'documentCertificates' => $documentCertificates
         ]);
     }
 
@@ -95,22 +100,24 @@ class AcademyController extends Controller
         }
 
         // Upload de Documentos
-        if (isset($request->allFiles()['document_record'])) {
-            foreach ($request->allFiles()['document_record'] as $documentRecord) {
+        if (!empty($request->allFiles()['document_record'])) {
+            foreach ($request->allFiles()['document_record'] as $key => $documentRecord) {
                 $documents = new Document();
                 $documents->academy = $id;
                 $documents->type_document = 1; // Ficha de Registro
+                $documents->name = 'Ficha_de_Registro_' . $key;
                 $documents->path = $documentRecord->store('academies/' . $id);
                 $documents->save();
                 unset($documents);
             }
         }
 
-        if (isset($request->allFiles()['document_certificate'])) {
-            foreach ($request->allFiles()['document_certificate'] as $documentCertificate) {
+        if (!empty($request->allFiles()['document_certificate'])) {
+            foreach ($request->allFiles()['document_certificate'] as $key => $documentCertificate) {
                 $documents = new Document();
                 $documents->academy = $id;
                 $documents->type_document = 2; // Certificado de faixa do professor responsável
+                $documents->name = 'Certificado_do_Professor_' . $key;
                 $documents->path = $documentCertificate->store('academies/' . $id);
                 $documents->save();
                 unset($documents);

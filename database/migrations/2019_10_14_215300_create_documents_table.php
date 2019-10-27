@@ -18,6 +18,7 @@ class CreateDocumentsTable extends Migration
             $table->unsignedInteger('academy')->nullable(true);
             $table->unsignedInteger('athlete')->nullable(true);
             $table->unsignedInteger('type_document');
+            $table->string('name');
             $table->string('path');
             $table->timestamps();
 

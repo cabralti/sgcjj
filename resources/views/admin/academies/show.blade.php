@@ -219,39 +219,69 @@
                                     <thead>
                                     <tr>
                                         <th>Tipo</th>
+                                        <th>Recebido?</th>
                                         <th>Ações</th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     <tr>
-                                        <td>
-                                            Ficha de Registro
-                                        </td>
-                                        <td>
-                                            <a href="#" class="btn btn-outline-secondary" data-toggle="tooltip"
-                                               title="Ver anexo">
-                                                <i class="fa fa-eye"></i>
-                                            </a>
-                                            <a href="#" class="btn btn-outline-primary" data-toggle="tooltip"
-                                               title="Download">
-                                                <i class="fa fa-download"></i>
-                                            </a>
-                                        </td>
+                                        <td class="align-middle">Ficha de Registro</td>
+                                        @if(count($documentRecords) > 1)
+                                            <td class="align-middle"><i class="fa fa-check text-navy"></i> SIM</td>
+                                            <td class="align-middle">
+                                                <ul class="list-group list-group-flush">
+                                                    @foreach($documentRecords as $documentRecord)
+                                                        <li class="list-group-item">
+                                                            <a href="{{$documentRecord->url_cropped}}" target="_blank"
+                                                               class="btn btn-outline-secondary" title="Ver anexo">
+                                                                <i class="fa fa-eye"></i>
+                                                            </a>
+                                                            <a href="{{$documentRecord->url_cropped}}" download=""
+                                                               class="btn btn-outline-primary" title="Download">
+                                                                <i class="fa fa-download"></i>
+                                                            </a>
+                                                        </li>
+                                                    @endforeach
+                                                </ul>
+                                            </td>
+                                        @else
+                                            <td class="align-middle"><i class="fa fa-close text-danger"></i> NÃO</td>
+                                            <td class="align-middle">
+                                                <p class="alert alert-warning">
+                                                    Clique no botão 'Editar' para anexar o documento pendente
+                                                </p>
+                                            </td>
+                                        @endif
                                     </tr>
                                     <tr>
-                                        <td>
-                                            Certificado de faixa do professor
-                                        </td>
-                                        <td>
-                                            <a href="#" class="btn btn-outline-secondary" data-toggle="tooltip"
-                                               title="Ver anexo">
-                                                <i class="fa fa-eye"></i>
-                                            </a>
-                                            <a href="#" class="btn btn-outline-primary" data-toggle="tooltip"
-                                               title="Download">
-                                                <i class="fa fa-download"></i>
-                                            </a>
-                                        </td>
+                                        <td class="align-middle">Certificado de faixa do professor responsável</td>
+                                        @if(count($documentCertificates) > 1)
+                                            <td class="align-middle"><i class="fa fa-check text-navy"></i> SIM</td>
+                                            <td class="align-middle">
+                                                <ul class="list-group list-group-flush">
+                                                    @foreach($documentCertificates as $documentCertificate)
+                                                        <li class="list-group-item">
+                                                            <a href="{{$documentCertificate->url_cropped}}"
+                                                               target="_blank"
+                                                               class="btn btn-outline-secondary" title="Ver anexo">
+                                                                <i class="fa fa-eye"></i>
+                                                            </a>
+                                                            <a href="{{$documentCertificate->url_cropped}}" download=""
+                                                               class="btn btn-outline-primary" title="Download">
+                                                                <i class="fa fa-download"></i>
+                                                            </a>
+                                                        </li>
+                                                    @endforeach
+                                                </ul>
+                                            </td>
+                                        @else
+                                            <td class="align-middle"><i class="fa fa-close text-danger"></i> NÃO</td>
+                                            <td class="align-middle">
+                                                <p class="alert alert-warning mb-0">
+                                                    Clique no botão 'Editar' para anexar o documento pendente
+                                                </p>
+                                            </td>
+                                        @endif
                                     </tr>
                                     </tbody>
                                 </table>

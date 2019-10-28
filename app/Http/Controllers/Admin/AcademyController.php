@@ -5,9 +5,11 @@ namespace App\Http\Controllers\Admin;
 use App\Academy;
 use App\Document;
 use App\Http\Requests\Admin\Academy as AcademyRequest;
+use App\Support\Cropper;
 use App\Teacher;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 
 class AcademyController extends Controller
 {
@@ -74,10 +76,14 @@ class AcademyController extends Controller
     {
         $academy = Academy::where('id', $id)->first();
         $teachers = Teacher::where('status', '1')->get();
+        $documentRecords = $academy->documents()->where('type_document', '1')->get();
+        $documentCertificates = $academy->documents()->where('type_document', '2')->get();
 
         return view('admin.academies.edit', [
             'academy' => $academy,
-            'teachers' => $teachers
+            'teachers' => $teachers,
+            'documentRecords' => $documentRecords,
+            'documentCertificates' => $documentCertificates
         ]);
     }
 
@@ -93,14 +99,14 @@ class AcademyController extends Controller
         $academy = Academy::where('id', $id)->first();
         $academy->fill($request->all());
 
-        //dd($academy->fill($request->all()));
+//        dd($request->allFiles());
 
         if (!$academy->save()) {
             return redirect()->back()->withInput()->withErrors();
         }
 
         // Upload de Documentos
-        if (!empty($request->allFiles()['document_record'])) {
+        if (isset($request->allFiles()['document_record'])) {
             foreach ($request->allFiles()['document_record'] as $key => $documentRecord) {
                 $documents = new Document();
                 $documents->academy = $id;
@@ -112,7 +118,7 @@ class AcademyController extends Controller
             }
         }
 
-        if (!empty($request->allFiles()['document_certificate'])) {
+        if (isset($request->allFiles()['document_certificate'])) {
             foreach ($request->allFiles()['document_certificate'] as $key => $documentCertificate) {
                 $documents = new Document();
                 $documents->academy = $id;
@@ -141,5 +147,23 @@ class AcademyController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function documentDelete(Request $request)
+    {
+        $documentDelete = Document::where('id', $request->document)->first();
+
+        Storage::delete($documentDelete->path);
+        Cropper::flush($documentDelete->path);
+        $documentDelete->delete();
+
+        $json = [
+            'error' => false,
+            'message' => 'Documento excluído com sucesso',
+            'type' => 'success',
+            'redirect' => route('admin.academies.documentDelete')
+        ];
+
+        return response()->json($json);
     }
 }

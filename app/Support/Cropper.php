@@ -20,4 +20,16 @@ class Cropper
 
         return $file;
     }
+
+    public static function flush(?string $path)
+    {
+        $cropper = new \CoffeeCode\Cropper\Cropper('../public/storage/cache');
+
+        if(!empty($path)) {
+            $cropper->flush($path);
+        } else {
+            $cropper->flush();
+        }
+
+    }
 }

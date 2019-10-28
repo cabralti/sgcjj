@@ -26,9 +26,18 @@
 
     <link href="{{ url(mix('backend/assets/css/animate.css')) }}" rel="stylesheet">
     <link href="{{ url(mix('backend/assets/css/style.css')) }}" rel="stylesheet">
-
 </head>
 <body>
+
+<div class="ajax_load">
+    <div class="w-100 h-100 d-flex justify-content-center align-items-center">
+        <div class="ajax_load_box">
+            <div class="ajax_load_box_circle"></div>
+            <p class="ajax_load_box_title">Aguarde, carregando...</p>
+        </div>
+    </div>
+</div>
+
 <div id="wrapper">
 
     <!-- start: navbar -->
@@ -37,8 +46,8 @@
             <ul class="nav metismenu" id="side-menu">
                 <li class="nav-header">
                     <div class="dropdown profile-element">
-{{--                        <img alt="image" class="rounded-circle"--}}
-{{--                             src="{{ asset('backend/assets/img/profile_small.jpg') }}"/>--}}
+                        {{--                        <img alt="image" class="rounded-circle"--}}
+                        {{--                             src="{{ asset('backend/assets/img/profile_small.jpg') }}"/>--}}
                         <span class="fa fa-user-circle-o fa-4x text-white"></span>
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                             <span class="block m-t-xs font-bold">{{Auth::user()->name}}</span>
@@ -182,8 +191,8 @@
 </div>
 
 <!-- Mainly scripts -->
-{{--<script src="{{ url(mix('backend/assets/js/jquery-3.1.1.js')) }}"></script>--}}
-<script src="{{ url(mix('backend/assets/js/jquery-1.11.1.min.js')) }}"></script>
+<script src="{{ url(mix('backend/assets/js/jquery-3.1.1.js')) }}"></script>
+{{--<script src="{{ url(mix('backend/assets/js/jquery-1.11.1.min.js')) }}"></script>--}}
 <script src="{{ url(mix('backend/assets/js/popper.js')) }} "></script>
 <script src="{{ url(mix('backend/assets/js/bootstrap.js')) }}"></script>
 <script src="{{ url('backend/assets/js/plugins/metisMenu/jquery.metisMenu.js') }}"></script>

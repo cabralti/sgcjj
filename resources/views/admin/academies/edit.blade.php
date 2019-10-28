@@ -4,9 +4,6 @@
 @section('css')
     <link rel="stylesheet" href="{{url('backend/assets/js/plugins/select2/css/select2.min.css')}}">
     <link rel="stylesheet" href="{{url('backend/assets/js/plugins/select2/css/select2-bootstrap4.min.css')}}">
-    <link rel="stylesheet" href="{{url('backend/assets/js/plugins/jquery-filer/css/jquery.filer.css')}}">
-    <link rel="stylesheet"
-          href="{{url('backend/assets/js/plugins/jquery-filer/css/themes/jquery.filer-dragdropbox-theme.css')}}">
 @endsection
 
 @section('page-heading')
@@ -57,7 +54,6 @@
                     @endif
 
                     <div class="tab-content">
-
                         <div id="tab-1" class="tab-pane active">
                             <div class="panel-body">
 
@@ -407,47 +403,88 @@
                         <div id="tab-4" class="tab-pane">
                             <div class="panel-body">
                                 <div class="row">
-
-                                    <div class="col-sm-12 col-md-6 form-group">
+                                    <div class="col-sm-12 col-md-12 form-group">
                                         <div id="vertical-timeline"
                                              class="vertical-container light-timeline no-margins">
                                             <div class="vertical-timeline-block">
-                                                <div class="vertical-timeline-icon bg-primary"
-                                                     title="Recebido"
-                                                     data-toggle="tooltip">
-                                                    <i class="fa fa-check"></i>
-                                                </div>
+                                                @if(count($documentRecords) > 0)
+                                                    <div class="vertical-timeline-icon bg-primary"
+                                                         title="Recebido" data-toggle="tooltip">
+                                                        <i class="fa fa-check"></i>
+                                                    </div>
+                                                @else
+                                                    <div class="vertical-timeline-icon bg-danger"
+                                                         title="Não recebido" data-toggle="tooltip">
+                                                        <i class="fa fa-close"></i>
+                                                    </div>
+                                                @endif
 
                                                 <div class="vertical-timeline-content">
                                                     <h2>Ficha de Registro:</h2>
-
-                                                    <?php
-                                                    foreach ($academy->documents()->get() as $key => $document) {
-                                                        $documents[$key]['name'] = 'teste_' . $key;
-                                                        $documents[$key]['size'] = 5000;
-                                                        $documents[$key]['type'] = "image/jpg";
-                                                        $documents[$key]['file'] = $document->url_cropped;
-                                                    }
-
-                                                    $documents_converted = json_encode($documents);
-                                                    ?>
 
                                                     <p>
                                                         <input type="file" name="document_record[]"
                                                                id="document_record"
                                                                class="form-control filer-input-multiple"
-                                                               multiple="multiple"
-                                                               data-jfiler-files="{{$documents_converted}}">
+                                                               data-target="content_records"
+                                                               multiple="multiple">
                                                     </p>
+
+                                                    <div class="row">
+                                                        <div class="col-lg-9 animated fadeInRight">
+                                                            <div class="row">
+                                                                <div class="col-lg-12">
+                                                                    @if(count($documentRecords) > 0)
+                                                                        @foreach($documentRecords as $documentRecord)
+                                                                            <div class="file-box">
+                                                                                <div class="file">
+                                                                                    <a href="#">
+                                                                                        <div class="image">
+                                                                                            <img alt="image"
+                                                                                                 class="img-fluid"
+                                                                                                 src="{{$documentRecord->url_cropped}}">
+                                                                                        </div>
+                                                                                    </a>
+                                                                                    <div
+                                                                                        class="file-action bg-light p-2">
+                                                                                        <button type="button"
+                                                                                                class="btn btn-danger btn-delete"
+                                                                                                data-action="{{route('admin.academies.documentDelete', ['document' => $documentRecord->id])}}"
+                                                                                                title="Excluir">
+                                                                                            <i class="fa fa-trash"></i>
+                                                                                        </button>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        @endforeach
+                                                                    @else
+{{--                                                                        <div class="alert alert-warning mb-0">--}}
+{{--                                                                            <h5> Nenhum documento anexado :( </h5>--}}
+{{--                                                                            Clique no botão 'Editar' para anexar o--}}
+{{--                                                                            documento pendente--}}
+{{--                                                                        </div>--}}
+                                                                    @endif
+                                                                </div>
+                                                                <div class="col-lg-12 content_records">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
 
                                             <div class="vertical-timeline-block">
-                                                <div class="vertical-timeline-icon bg-danger"
-                                                     title="Não recebido"
-                                                     data-toggle="tooltip">
-                                                    <i class="fa fa-close"></i>
-                                                </div>
+                                                @if(count($documentCertificates) > 0)
+                                                    <div class="vertical-timeline-icon bg-primary"
+                                                         title="Recebido" data-toggle="tooltip">
+                                                        <i class="fa fa-check"></i>
+                                                    </div>
+                                                @else
+                                                    <div class="vertical-timeline-icon bg-danger"
+                                                         title="Não recebido" data-toggle="tooltip">
+                                                        <i class="fa fa-close"></i>
+                                                    </div>
+                                                @endif
 
                                                 <div class="vertical-timeline-content">
                                                     <h2>Certificado de faixa do professor responsável</h2>
@@ -455,8 +492,49 @@
                                                         <input type="file" name="document_certificate[]"
                                                                id="document_certificate"
                                                                class="form-control filer-input-multiple"
+                                                               data-target="content_certificates"
                                                                multiple="multiple">
                                                     </p>
+                                                    <div class="row">
+                                                        <div class="col-lg-9 animated fadeInRight">
+                                                            <div class="row">
+                                                                <div class="col-lg-12">
+                                                                    @if(count($documentCertificates) > 0)
+                                                                        @foreach($documentCertificates as $documentCertificate)
+                                                                            <div class="file-box">
+                                                                                <div class="file">
+                                                                                    <a href="#">
+                                                                                        <div class="image">
+                                                                                            <img alt="image"
+                                                                                                 class="img-fluid"
+                                                                                                 src="{{$documentCertificate->url_cropped}}">
+                                                                                        </div>
+                                                                                    </a>
+                                                                                    <div
+                                                                                        class="file-action bg-light p-2">
+                                                                                        <button type="button"
+                                                                                                class="btn btn-danger btn-delete"
+                                                                                                data-action="{{route('admin.academies.documentDelete', ['document' => $documentCertificate->id])}}"
+                                                                                                title="Excluir">
+                                                                                            <i class="fa fa-trash"></i>
+                                                                                        </button>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        @endforeach
+                                                                    @else
+{{--                                                                        <div class="alert alert-warning mb-0">--}}
+{{--                                                                            <h5> Nenhum documento anexado :( </h5>--}}
+{{--                                                                            Clique no botão 'Editar' para anexar o--}}
+{{--                                                                            documento pendente--}}
+{{--                                                                        </div>--}}
+                                                                    @endif
+                                                                </div>
+                                                                <div class="col-lg-12 content_certificates">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -484,7 +562,6 @@
 @section('js')
     <script src="{{url('backend/assets/js/plugins/select2/select2.full.min.js')}}"></script>
     <script src="{{url('backend/assets/js/plugins/select2/js/i18n/pt-BR.js')}}"></script>
-    <script src="{{url('backend/assets/js/plugins/jquery-filer/js/jquery.filer.js')}}"></script>
 
     <script>
         $(function () {
@@ -533,46 +610,39 @@
                 });
             });
 
+            // FILER UPLOAD
+            $('.filer-input-multiple').on('change', function (files) {
 
-            if ($('.filer-input-multiple').length) {
-                var filer_input = $('.filer-input-multiple').filer({
-                    limit: 2,
-                    showThumbs: true,
-                    templates: filer_default_opts.templates,
-                    addMore: true,
-                    // dialogs: {
-                    //     confirm: function (text, callback) {
-                    //         swal('Tem certeza?', '', 'warning');
-                    //         confirm(text) ? callback() : null;
-                    //     }
-                    // }
-                    // files: [
-                    //     {
-                    //         name: "appended_file.jpg",
-                    //         size: 5453,
-                    //         type: "image/jpg",
-                    //         file: "https://dummyimage.com/720x480/f9f9f9/191a1a.jpg"
-                    //     },
-                    //     {
-                    //         name: "appended_file_2.jpg",
-                    //         size: 9453,
-                    //         type: "image/jpg",
-                    //         file: "https://dummyimage.com/640x480/f9f9f9/191a1a.jpg"
-                    //     }
-                    // ],
-                    captions: {
-                        button: "Selecionar arquivos",
-                        feedback: "Escolher os arquivos para fazer o upload",
-                        feedback2: "arquivos foram escolhidos",
-                        drop: "Solte o arquivo aqui para fazer o upload",
-                        removeConfirmation: "Tem certeza de que deseja remover este arquivo?",
-                        errors: {
-                            filesType: "Apenas imagens podem ser carregadas.",
-                        }
-                    }
+                var content = $(this).data('target');
+
+                $('.' + content).text('');
+
+                $.each(files.target.files, function (key, value) {
+
+                    var reader = new FileReader();
+                    reader.onload = function (value) {
+                        $('.' + content).append(
+                            `
+                            <div class="file-box">
+                                 <div class="file">
+                                     <a href="#">
+                                         <div class="image">
+                                            <img alt="image" class="img-fluid" src="${value.target.result}">
+                                         </div>
+                                         <div class="file-name">
+
+                                         </div>
+                                     </a>
+                                 </div>
+                             </div>
+                            `
+                        );
+                    };
+
+                    reader.readAsDataURL(value);
                 });
 
-            }
+            });
 
             // FORM SUBMIT
             $('form[name="form_edit"]').submit(function (event) {
@@ -594,8 +664,10 @@
                     data: form_data,
                     beforeSend: function () {
                         form_button.prop('disabled', true);
+                        $('.ajax_load').fadeIn();
                     },
                     success: function (response) {
+                        $('.ajax_load').fadeOut();
                         form_button.prop('disabled', false);
                         // swal('OK!', response.message, response.type);
                         swal({
@@ -612,7 +684,46 @@
                         });
                     }
                 });
-            })
+            });
+
+            // ACTION DELETE IMAGES
+            $('.btn-delete').on('click', function (e) {
+                e.preventDefault();
+
+                var button = $(this);
+
+                swal({
+                    title: '',
+                    text: 'Deseja realmente excluir este registro?',
+                    icon: 'warning',
+                    buttons: true,
+                    buttons: ['Não', 'Sim, excluir'],
+                    dangerMode: true,
+                    closeOnClickOutside: false
+                }).then(function (result) {
+                    if (result) {
+                        $.ajax({
+                            url: button.data('action'),
+                            type: 'DELETE',
+                            dataType: 'json',
+                            beforeSend: function () {
+                                $('.ajax_load').fadeIn();
+                            },
+                            success: function (response) {
+                                $('.ajax_load').fadeOut();
+                                if (response.error === false) {
+                                    swal('', response.message, response.type);
+                                    button.closest('.file-box').fadeOut(function () {
+                                        $(this).remove();
+                                    });
+                                }
+                            }
+                        });
+                    } else {
+                        return false;
+                    }
+                });
+            });
         });
     </script>
 @endsection

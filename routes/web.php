@@ -46,6 +46,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin.'], fu
         Route::get('home', 'AuthController@home')->name('home');
 
         /** Academies */
+        Route::delete('academies/document-delete', 'AcademyController@documentDelete')->name('academies.documentDelete');
         Route::resource('academies', 'AcademyController');
 
         /** Athletes */

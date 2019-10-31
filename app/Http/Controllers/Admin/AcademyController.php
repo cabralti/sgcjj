@@ -75,7 +75,7 @@ class AcademyController extends Controller
     public function edit($id)
     {
         $academy = Academy::where('id', $id)->first();
-        $teachers = Teacher::all();
+        $teachers = Teacher::where('status', '1')->get();
         $documentRecords = $academy->documents()->where('type_document', '1')->get();
         $documentCertificates = $academy->documents()->where('type_document', '2')->get();
 

@@ -16,6 +16,8 @@ class CreateTypeDocumentsTable extends Migration
         Schema::create('type_documents', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
+            $table->boolean('academy_has')->default(false);
+            $table->boolean('athlete_has')->default(false);
             $table->timestamps();
         });
     }

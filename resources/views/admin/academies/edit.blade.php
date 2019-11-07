@@ -68,7 +68,7 @@
                                                 </option>
                                                 <option
                                                     value="0" {{ (old('status') == '0') ? 'selected' : ($academy->status == '0') ? 'selected' : '' }}>
-                                                    Pendente
+                                                    Aguardando Homologação
                                                 </option>
                                             </select>
                                         </div>
@@ -406,137 +406,77 @@
                                     <div class="col-sm-12 col-md-12 form-group">
                                         <div id="vertical-timeline"
                                              class="vertical-container light-timeline no-margins">
-                                            <div class="vertical-timeline-block">
-                                                @if(count($documentRecords) > 0)
-                                                    <div class="vertical-timeline-icon bg-primary"
-                                                         title="Recebido" data-toggle="tooltip">
-                                                        <i class="fa fa-check"></i>
-                                                    </div>
-                                                @else
-                                                    <div class="vertical-timeline-icon bg-danger"
-                                                         title="Não recebido" data-toggle="tooltip">
-                                                        <i class="fa fa-close"></i>
-                                                    </div>
-                                                @endif
 
-                                                <div class="vertical-timeline-content">
-                                                    <h2>Ficha de Registro:</h2>
+                                            @foreach($typeDocuments as $typeDocument)
+                                                <div class="vertical-timeline-block">
+                                                    @if($typeDocument['qty_documents'] > 0)
+                                                        <div class="vertical-timeline-icon bg-primary"
+                                                             title="Recebido" data-toggle="tooltip">
+                                                            <i class="fa fa-check"></i>
+                                                        </div>
+                                                    @else
+                                                        <div class="vertical-timeline-icon bg-danger"
+                                                             title="Não recebido" data-toggle="tooltip">
+                                                            <i class="fa fa-close"></i>
+                                                        </div>
+                                                    @endif
 
-                                                    <p>
-                                                        <input type="file" name="document_record[]"
-                                                               id="document_record"
-                                                               class="form-control filer-input-multiple"
-                                                               data-target="content_records"
-                                                               multiple="multiple">
-                                                    </p>
+                                                    <div class="vertical-timeline-content">
+                                                        <h2>{{$typeDocument['name']}}:</h2>
 
-                                                    <div class="row">
-                                                        <div class="col-lg-9 animated fadeInRight">
-                                                            <div class="row">
-                                                                <div class="col-lg-12">
-                                                                    @if(count($documentRecords) > 0)
-                                                                        @foreach($documentRecords as $documentRecord)
-                                                                            <div class="file-box">
-                                                                                <div class="file">
-                                                                                    <a href="#">
-                                                                                        <div class="image">
-                                                                                            <img alt="image"
-                                                                                                 class="img-fluid"
-                                                                                                 src="{{$documentRecord->url_cropped}}">
+                                                        <p>
+                                                            <input type="hidden" name="type_document[]" id=""
+                                                                   class="form-control"
+                                                                   value="{{$typeDocument['id']}}">
+                                                            <input type="file" name="documents[]"
+                                                                   id="document_{{$typeDocument['id']}}"
+                                                                   class="form-control filer-input-multiple"
+                                                                   data-target="content_{{$typeDocument['id']}}">
+                                                        </p>
+
+                                                        <div class="row">
+                                                            <div class="col-lg-9 animated fadeInRight">
+                                                                <div class="row">
+                                                                    <div class="col-lg-12">
+                                                                        @foreach($academy->documents()->get() as $document)
+                                                                            @if($document['type_document'] == $typeDocument['id'])
+                                                                                <div class="file-box">
+                                                                                    <div class="file">
+                                                                                        <a href="#">
+                                                                                            <div class="image">
+                                                                                                <img alt="image" class="img-fluid"
+                                                                                                     src="{{$document['url_cropped']}}">
+                                                                                            </div>
+                                                                                        </a>
+                                                                                        <div
+                                                                                            class="file-action bg-light p-2">
+                                                                                            <button type="button"
+                                                                                                    class="btn btn-danger btn-delete"
+                                                                                                    data-action="{{route('admin.academies.documentDelete', ['document' => $document->id])}}"
+                                                                                                    title="Excluir">
+                                                                                                <i class="fa fa-trash"></i>
+                                                                                            </button>
                                                                                         </div>
-                                                                                    </a>
-                                                                                    <div
-                                                                                        class="file-action bg-light p-2">
-                                                                                        <button type="button"
-                                                                                                class="btn btn-danger btn-delete"
-                                                                                                data-action="{{route('admin.academies.documentDelete', ['document' => $documentRecord->id])}}"
-                                                                                                title="Excluir">
-                                                                                            <i class="fa fa-trash"></i>
-                                                                                        </button>
                                                                                     </div>
                                                                                 </div>
-                                                                            </div>
+                                                                            @endif
                                                                         @endforeach
-                                                                    @else
-{{--                                                                        <div class="alert alert-warning mb-0">--}}
-{{--                                                                            <h5> Nenhum documento anexado :( </h5>--}}
-{{--                                                                            Clique no botão 'Editar' para anexar o--}}
-{{--                                                                            documento pendente--}}
-{{--                                                                        </div>--}}
-                                                                    @endif
-                                                                </div>
-                                                                <div class="col-lg-12 content_records">
+                                                                        {{-- <div class="alert alert-warning mb-0">--}}
+                                                                        {{--    <h5> Nenhum documento anexado :( </h5>--}}
+                                                                        {{--        Clique no botão 'Editar' para anexar o--}}
+                                                                        {{--        documento pendente--}}
+                                                                        {{-- </div>--}}
+
+                                                                    </div>
+                                                                    <div class="col-lg-12 content_{{$typeDocument['id']}}">
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            @endforeach
 
-                                            <div class="vertical-timeline-block">
-                                                @if(count($documentCertificates) > 0)
-                                                    <div class="vertical-timeline-icon bg-primary"
-                                                         title="Recebido" data-toggle="tooltip">
-                                                        <i class="fa fa-check"></i>
-                                                    </div>
-                                                @else
-                                                    <div class="vertical-timeline-icon bg-danger"
-                                                         title="Não recebido" data-toggle="tooltip">
-                                                        <i class="fa fa-close"></i>
-                                                    </div>
-                                                @endif
-
-                                                <div class="vertical-timeline-content">
-                                                    <h2>Certificado de faixa do professor responsável</h2>
-                                                    <p>
-                                                        <input type="file" name="document_certificate[]"
-                                                               id="document_certificate"
-                                                               class="form-control filer-input-multiple"
-                                                               data-target="content_certificates"
-                                                               multiple="multiple">
-                                                    </p>
-                                                    <div class="row">
-                                                        <div class="col-lg-9 animated fadeInRight">
-                                                            <div class="row">
-                                                                <div class="col-lg-12">
-                                                                    @if(count($documentCertificates) > 0)
-                                                                        @foreach($documentCertificates as $documentCertificate)
-                                                                            <div class="file-box">
-                                                                                <div class="file">
-                                                                                    <a href="#">
-                                                                                        <div class="image">
-                                                                                            <img alt="image"
-                                                                                                 class="img-fluid"
-                                                                                                 src="{{$documentCertificate->url_cropped}}">
-                                                                                        </div>
-                                                                                    </a>
-                                                                                    <div
-                                                                                        class="file-action bg-light p-2">
-                                                                                        <button type="button"
-                                                                                                class="btn btn-danger btn-delete"
-                                                                                                data-action="{{route('admin.academies.documentDelete', ['document' => $documentCertificate->id])}}"
-                                                                                                title="Excluir">
-                                                                                            <i class="fa fa-trash"></i>
-                                                                                        </button>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        @endforeach
-                                                                    @else
-{{--                                                                        <div class="alert alert-warning mb-0">--}}
-{{--                                                                            <h5> Nenhum documento anexado :( </h5>--}}
-{{--                                                                            Clique no botão 'Editar' para anexar o--}}
-{{--                                                                            documento pendente--}}
-{{--                                                                        </div>--}}
-                                                                    @endif
-                                                                </div>
-                                                                <div class="col-lg-12 content_certificates">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>

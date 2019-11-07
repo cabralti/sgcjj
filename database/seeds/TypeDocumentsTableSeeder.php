@@ -12,11 +12,14 @@ class TypeDocumentsTableSeeder extends Seeder
     public function run()
     {
         DB::table('type_documents')->insert([
-            'name' => 'Ficha de Registro'
+            'name' => 'Ficha de Registro',
+            'academy_has' => true,
+            'athlete_has' => true
         ]);
 
         DB::table('type_documents')->insert([
-            'name' => 'Certificado de faixa do professor responsável'
+            'name' => 'Certificado de faixa do professor responsável',
+            'academy_has' => true
         ]);
     }
 }

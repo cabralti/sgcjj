@@ -67,7 +67,7 @@
                                             @if($academy->status == 1)
                                                 <span class="badge badge-primary">Ativo</span>
                                             @else
-                                                <span class="badge badge-default">Pendente</span>
+                                                <span class="badge badge-default">Aguardando Homologação</span>
                                             @endif
                                         </td>
                                         <td class="align-middle text-right">

@@ -31,7 +31,7 @@
                     <h2 class="border-bottom">{{$academy->name}}</h2>
 
                     @if($academy->status == 0)
-                        <span class="badge badge-secondary">PENDENTE</span>
+                        <span class="badge badge-secondary">AGUARDANDO HOMOLOGAÇÃO</span>
                     @elseif($academy->status == 1)
                         <span class="badge badge-primary">ATIVO</span>
                     @else
@@ -219,128 +219,74 @@
                                     <div class="col-sm-12 col-md-12 form-group">
                                         <div id="vertical-timeline"
                                              class="vertical-container light-timeline no-margins">
-                                            <div class="vertical-timeline-block">
-                                                @if(count($documentRecords) > 0)
-                                                    <div class="vertical-timeline-icon bg-primary"
-                                                         title="Recebido" data-toggle="tooltip">
-                                                        <i class="fa fa-check"></i>
-                                                    </div>
-                                                @else
-                                                    <div class="vertical-timeline-icon bg-danger"
-                                                         title="Não recebido" data-toggle="tooltip">
-                                                        <i class="fa fa-close"></i>
-                                                    </div>
-                                                @endif
 
-                                                <div class="vertical-timeline-content">
-                                                    <h2>Ficha de Registro:</h2>
-                                                    <div class="row">
-                                                        <div class="col-lg-9 animated fadeInRight">
-                                                            <div class="row">
-                                                                <div class="col-lg-12">
-                                                                    @if(count($documentRecords) > 0)
-                                                                        @foreach($documentRecords as $documentRecord)
-                                                                            <div class="file-box">
-                                                                                <div class="file">
-                                                                                    <a href="#">
-                                                                                        <div class="image">
-                                                                                            <img alt="image"
-                                                                                                 class="img-fluid"
-                                                                                                 src="{{$documentRecord->url_cropped}}">
+                                            @foreach($typeDocuments as $typeDocument)
+                                                <div class="vertical-timeline-block">
+                                                    @if($typeDocument['qty_documents'] > 0)
+                                                        <div class="vertical-timeline-icon bg-primary"
+                                                             title="Recebido" data-toggle="tooltip">
+                                                            <i class="fa fa-check"></i>
+                                                        </div>
+                                                    @else
+                                                        <div class="vertical-timeline-icon bg-danger"
+                                                             title="Não recebido" data-toggle="tooltip">
+                                                            <i class="fa fa-close"></i>
+                                                        </div>
+                                                    @endif
+
+                                                    <div class="vertical-timeline-content">
+                                                        <h2>{{$typeDocument['name']}}:</h2>
+
+                                                        <div class="row">
+                                                            <div class="col-lg-9 animated fadeInRight">
+                                                                <div class="row">
+                                                                    <div class="col-lg-12">
+                                                                        @if($typeDocument['qty_documents'] > 0)
+                                                                            @foreach($academy->documents()->get() as $document)
+                                                                                @if($document['type_document'] == $typeDocument['id'])
+                                                                                    <div class="file-box">
+                                                                                        <div class="file">
+                                                                                            <a href="#">
+                                                                                                <div class="image">
+                                                                                                    <img alt="image"
+                                                                                                         class="img-fluid"
+                                                                                                         src="{{$document['url_cropped']}}">
+                                                                                                </div>
+                                                                                            </a>
+                                                                                            <div
+                                                                                                class="file-action bg-light p-2">
+                                                                                                <a href="{{$document['url_cropped']}}"
+                                                                                                   target="_blank"
+                                                                                                   class="btn btn-outline-secondary btn-sm"
+                                                                                                   title="Ver anexo">
+                                                                                                    <i class="fa fa-eye"></i>
+                                                                                                </a>
+                                                                                                <a href="{{$document['url_cropped']}}"
+                                                                                                   download=""
+                                                                                                   class="btn btn-outline-primary btn-sm"
+                                                                                                   title="Download">
+                                                                                                    <i class="fa fa-download"></i>
+                                                                                                </a>
+                                                                                            </div>
                                                                                         </div>
-                                                                                    </a>
-                                                                                    <div
-                                                                                        class="file-action bg-light p-2">
-                                                                                        <a href="#" target="_blank"
-                                                                                           class="btn btn-outline-secondary btn-sm"
-                                                                                           title="Ver anexo">
-                                                                                            <i class="fa fa-eye"></i>
-                                                                                        </a>
-                                                                                        <a href="#" download=""
-                                                                                           class="btn btn-outline-primary btn-sm"
-                                                                                           title="Download">
-                                                                                            <i class="fa fa-download"></i>
-                                                                                        </a>
                                                                                     </div>
-                                                                                </div>
+                                                                                @endif
+                                                                            @endforeach
+                                                                        @else
+                                                                            <div class="alert alert-warning mb-0">
+                                                                                <h5> Nenhum documento anexado :( </h5>
+                                                                                Clique no botão 'Editar' para anexar o
+                                                                                documento pendente
                                                                             </div>
-                                                                        @endforeach
-                                                                    @else
-                                                                        <div class="alert alert-warning mb-0">
-                                                                            <h5> Nenhum documento anexado :( </h5>
-                                                                            Clique no botão 'Editar' para anexar o
-                                                                            documento pendente
-                                                                        </div>
-                                                                    @endif
+                                                                        @endif
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            @endforeach
 
-                                            <div class="vertical-timeline-block">
-                                                @if(count($documentCertificates) > 0)
-                                                    <div class="vertical-timeline-icon bg-primary"
-                                                         title="Recebido" data-toggle="tooltip">
-                                                        <i class="fa fa-check"></i>
-                                                    </div>
-                                                @else
-                                                    <div class="vertical-timeline-icon bg-danger"
-                                                         title="Não recebido" data-toggle="tooltip">
-                                                        <i class="fa fa-close"></i>
-                                                    </div>
-                                                @endif
-
-                                                <div class="vertical-timeline-content">
-                                                    <h2>Certificado de faixa do professor responsável</h2>
-
-                                                    <div class="row">
-                                                        <div class="col-lg-9 animated fadeInRight">
-                                                            <div class="row">
-                                                                <div class="col-lg-12">
-                                                                    @if(count($documentCertificates) > 0)
-                                                                        @foreach($documentCertificates as $documentCertificate)
-                                                                            <div class="file-box">
-                                                                                <div class="file">
-                                                                                    <a href="#">
-                                                                                        <div class="image">
-                                                                                            <img alt="image"
-                                                                                                 class="img-fluid"
-                                                                                                 src="{{$documentCertificate->url_cropped}}">
-                                                                                        </div>
-                                                                                    </a>
-                                                                                    <div
-                                                                                        class="file-action bg-light p-2">
-                                                                                        <a href="{{$documentCertificate->url_cropped}}"
-                                                                                           target="_blank"
-                                                                                           class="btn btn-outline-secondary btn-sm"
-                                                                                           title="Ver anexo">
-                                                                                            <i class="fa fa-eye"></i>
-                                                                                        </a>
-                                                                                        <a href="{{$documentCertificate->url_cropped}}"
-                                                                                           download=""
-                                                                                           class="btn btn-outline-primary btn-sm"
-                                                                                           title="Download">
-                                                                                            <i class="fa fa-download"></i>
-                                                                                        </a>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        @endforeach
-                                                                    @else
-                                                                        <div class="alert alert-warning mb-0">
-                                                                            <h5> Nenhum documento anexado :( </h5>
-                                                                            Clique no botão 'Editar' para anexar o
-                                                                            documento pendente
-                                                                        </div>
-                                                                    @endif
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>

@@ -31,7 +31,7 @@
                     <h2 class="border-bottom">{{$academy->name}}</h2>
 
                     @if($academy->status()->first()->id == 2)
-1                        <span class="badge badge-primary">{{$academy->status()->first()->name}}</span>
+                        <span class="badge badge-primary">{{$academy->status()->first()->name}}</span>
                     @else
                         <span class="badge badge-default">{{$academy->status()->first()->name}}</span>
                     @endif

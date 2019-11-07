@@ -34,6 +34,11 @@ class Athlete extends Model
         return $this->hasMany(Document::class, 'athlete', 'id');
     }
 
+    public function status()
+    {
+        return $this->belongsTo(Status::class, 'status', 'id');
+    }
+
     public function setDateOfBirthAttribute($value)
     {
         $this->attributes['date_of_birth'] = $this->convertStringToDate($value);

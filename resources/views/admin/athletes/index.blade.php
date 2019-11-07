@@ -70,10 +70,12 @@
                                             </a>
                                         </td>
                                         <td class="align-middle">
-                                            @if($athlete->status == 1)
-                                                <span class="badge badge-primary">Ativo</span>
+                                            @if($athlete->status()->first()->id == 2)
+                                                <span
+                                                    class="badge badge-primary">{{$athlete->status()->first()->name}}</span>
                                             @else
-                                                <span class="badge badge-default">Aguardando Homologação</span>
+                                                <span
+                                                    class="badge badge-default">{{$athlete->status()->first()->name}}</span>
                                             @endif
                                         </td>
                                         <td class="align-middle text-right">

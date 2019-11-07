@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Academy;
 use App\Athlete;
 use App\Document;
+use App\Status;
 use App\TypeDocument;
 use Illuminate\Http\Request;
 use App\Http\Requests\Admin\Athlete as AthleteRequest;
@@ -62,6 +63,7 @@ class AthleteController extends Controller
     {
         $athlete = Athlete::where('id', $id)->first();
         $academies = Academy::all();
+        $status = Status::all();
 
         $count_documents = Document::select('type_document', DB::raw('COUNT(id) as qty_documents'))
             ->where('athlete', $athlete->id)
@@ -77,6 +79,7 @@ class AthleteController extends Controller
         return view('admin.athletes.edit', [
             'athlete' => $athlete,
             'academies' => $academies,
+            'status' => $status,
             'typeDocuments' => $typeDocuments
         ]);
     }

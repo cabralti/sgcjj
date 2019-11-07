@@ -29,12 +29,10 @@
                     <span class="fa fa-user-circle-o fa-5x text-muted"></span>
                     <h2 class="border-bottom">{{$athlete->name}}</h2>
 
-                    @if($athlete->status == 0)
-                        <span class="badge badge-secondary">AGUARDANDO HOMOLOGAÇÃO</span>
-                    @elseif($athlete->status == 1)
-                        <span class="badge badge-primary">ATIVO</span>
+                    @if($athlete->status()->first()->id == 2)
+                        <span class="badge badge-primary">{{$athlete->status()->first()->name}}</span>
                     @else
-                        <span class="badge badge-danger">INATIVO</span>
+                        <span class="badge badge-default">{{$athlete->status()->first()->name}}</span>
                     @endif
                 </div>
                 <h5>Informações</h5>

@@ -53,14 +53,13 @@
                                     <div class="col-sm-12 col-md-6 form-group">
                                         <label class="col-form-label font-weight-bold">Status:</label>
                                         <select name="status" id="status" class="form-control">
-                                            <option
-                                                value="0" {{ (old('status') == '0') ? 'selected' : ($athlete->status == '0') ? 'selected' : '' }}>
-                                                Aguardando Homologação
-                                            </option>
-                                            <option
-                                                value="1" {{ (old('status') == '1') ? 'selected' : ($athlete->status == '1') ? 'selected' : '' }}>
-                                                Ativo
-                                            </option>
+                                            @foreach($status as $value)
+                                                <option
+                                                    value="{{$value->id}}"
+                                                    {{ (old('status') == $value->id) ? 'selected' : ($athlete->status == $value->id) ? 'selected' : '' }}>
+                                                    {{$value->name}}
+                                                </option>
+                                            @endforeach
                                         </select>
                                     </div>
                                 </div>
@@ -85,10 +84,12 @@
                                         <label class="col-form-label font-weight-bold">Sexo:</label>
                                         <select name="sex" id="sex" class="form-control" required>
                                             <option value="">Selecione</option>
-                                            <option  value="F" {{old('sex') == 'F' || $athlete->sex == 'F' ? 'selected' : '' }}>
+                                            <option
+                                                value="F" {{old('sex') == 'F' || $athlete->sex == 'F' ? 'selected' : '' }}>
                                                 Feminino
                                             </option>
-                                            <option value="M" {{old('sex') == 'M' || $athlete->sex == 'M' ? 'selected' : '' }}>
+                                            <option
+                                                value="M" {{old('sex') == 'M' || $athlete->sex == 'M' ? 'selected' : '' }}>
                                                 Masculino
                                             </option>
                                         </select>
@@ -305,7 +306,8 @@
                                                                                     <div class="file">
                                                                                         <a href="#">
                                                                                             <div class="image">
-                                                                                                <img alt="image" class="img-fluid"
+                                                                                                <img alt="image"
+                                                                                                     class="img-fluid"
                                                                                                      src="{{$document['url_cropped']}}">
                                                                                             </div>
                                                                                         </a>
@@ -329,7 +331,8 @@
                                                                         {{-- </div>--}}
 
                                                                     </div>
-                                                                    <div class="col-lg-12 content_{{$typeDocument['id']}}">
+                                                                    <div
+                                                                        class="col-lg-12 content_{{$typeDocument['id']}}">
                                                                     </div>
                                                                 </div>
                                                             </div>

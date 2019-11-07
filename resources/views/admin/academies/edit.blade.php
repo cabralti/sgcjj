@@ -62,14 +62,13 @@
                                         <div class="col-sm-12 col-md-6 form-group">
                                             <label class="col-form-label font-weight-bold">Status:</label>
                                             <select name="status" id="status" class="form-control">
-                                                <option
-                                                    value="0" {{ (old('status') == '0') ? 'selected' : ($academy->status == '0') ? 'selected' : '' }}>
-                                                    Aguardando Homologação
-                                                </option>
-                                                <option
-                                                    value="1" {{ (old('status') == '1') ? 'selected' : ($academy->status == '1') ? 'selected' : '' }}>
-                                                    Ativo
-                                                </option>
+                                                @foreach($status as $value)
+                                                    <option
+                                                        value="{{$value->id}}"
+                                                        {{ (old('status') == $value->id) ? 'selected' : ($academy->status == $value->id) ? 'selected' : '' }}>
+                                                        {{$value->name}}
+                                                    </option>
+                                                @endforeach
                                             </select>
                                         </div>
                                     </div>

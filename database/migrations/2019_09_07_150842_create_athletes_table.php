@@ -36,7 +36,7 @@ class CreateAthletesTable extends Migration
             /** athlete data */
             $table->string('band')->nullable();
 
-            $table->unsignedInteger('status')->default(0);
+            $table->unsignedInteger('status')->default(1);
             $table->timestamps();
 
             $table->foreign('academy')->references('id')->on('academies');

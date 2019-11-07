@@ -31,6 +31,11 @@ class Academy extends Model
         return $this->hasMany(Document::class, 'academy', 'id');
     }
 
+    public function status()
+    {
+        return $this->belongsTo(Status::class, 'status', 'id');
+    }
+
     public function setAcademyDocumentAttribute($value)
     {
         $this->attributes['academy_document'] = $this->clearField($value);

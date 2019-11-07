@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Academy;
 use App\Document;
 use App\Http\Requests\Admin\Academy as AcademyRequest;
+use App\Status;
 use App\Support\Cropper;
 use App\Teacher;
 use App\TypeDocument;
@@ -86,6 +87,7 @@ class AcademyController extends Controller
     {
         $academy = Academy::where('id', $id)->first();
         $teachers = Teacher::all();
+        $status = Status::all();
 
         $count_documents = Document::select('type_document', DB::raw('COUNT(id) as qty_documents'))
             ->where('academy', $academy->id)
@@ -101,6 +103,7 @@ class AcademyController extends Controller
         return view('admin.academies.edit', [
             'academy' => $academy,
             'teachers' => $teachers,
+            'status' => $status,
             'typeDocuments' => $typeDocuments
         ]);
     }

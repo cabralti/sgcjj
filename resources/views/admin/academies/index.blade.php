@@ -64,10 +64,12 @@
                                         <td class="align-middle">{{$academy->teacher()->first()->name}}</td>
                                         <td class="align-middle">{{$academy->teacher()->first()->cell}}</td>
                                         <td class="align-middle">
-                                            @if($academy->status == 1)
-                                                <span class="badge badge-primary">Ativo</span>
+                                            @if($academy->status()->first()->id == 2)
+                                                <span
+                                                    class="badge badge-primary">{{$academy->status()->first()->name}}</span>
                                             @else
-                                                <span class="badge badge-default">Aguardando Homologação</span>
+                                                <span
+                                                    class="badge badge-default">{{$academy->status()->first()->name}}</span>
                                             @endif
                                         </td>
                                         <td class="align-middle text-right">

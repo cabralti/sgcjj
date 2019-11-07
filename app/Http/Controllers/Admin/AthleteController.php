@@ -4,9 +4,12 @@ namespace App\Http\Controllers\Admin;
 
 use App\Academy;
 use App\Athlete;
+use App\Document;
+use App\TypeDocument;
 use Illuminate\Http\Request;
 use App\Http\Requests\Admin\Athlete as AthleteRequest;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 
 class AthleteController extends Controller
 {
@@ -32,8 +35,20 @@ class AthleteController extends Controller
     public function show($id)
     {
         $athlete = Athlete::where('id', $id)->first();
+        $count_documents = Document::select('type_document', DB::raw('COUNT(id) as qty_documents'))
+            ->where('athlete', $athlete->id)
+            ->groupBy('type_document');
+
+        $typeDocuments = TypeDocument::select()
+            ->where('athlete_has', true)
+            ->leftJoinSub($count_documents, 'count_documents', function ($join) {
+                $join->on('type_documents.id', '=', 'count_documents.type_document');
+            })
+            ->get();
+
         return view('admin.athletes.show', [
-            'athlete' => $athlete
+            'athlete' => $athlete,
+            'typeDocuments' => $typeDocuments
         ]);
     }
 
@@ -48,9 +63,21 @@ class AthleteController extends Controller
         $athlete = Athlete::where('id', $id)->first();
         $academies = Academy::all();
 
+        $count_documents = Document::select('type_document', DB::raw('COUNT(id) as qty_documents'))
+            ->where('athlete', $athlete->id)
+            ->groupBy('type_document');
+
+        $typeDocuments = TypeDocument::select()
+            ->where('athlete_has', true)
+            ->leftJoinSub($count_documents, 'count_documents', function ($join) {
+                $join->on('type_documents.id', '=', 'count_documents.type_document');
+            })
+            ->get();
+
         return view('admin.athletes.edit', [
             'athlete' => $athlete,
             'academies' => $academies,
+            'typeDocuments' => $typeDocuments
         ]);
     }
 
@@ -68,6 +95,18 @@ class AthleteController extends Controller
 
         if (!$athlete->save()) {
             return redirect()->back()->withInput()->withErrors();
+        }
+
+        if ($request->hasFile('documents')) {
+            foreach ($request->documents as $key => $document) {
+                $documents = new Document();
+                $documents->athlete = $id;
+                $documents->type_document = $request->type_document[$key];
+                $documents->name = $document->getClientOriginalName();
+                $documents->path = $document->store('athletes/' . $id);
+                $documents->save();
+                unset($documents);
+            }
         }
 
         $json = [

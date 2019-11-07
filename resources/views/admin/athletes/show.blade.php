@@ -30,7 +30,7 @@
                     <h2 class="border-bottom">{{$athlete->name}}</h2>
 
                     @if($athlete->status == 0)
-                        <span class="badge badge-secondary">PENDENTE</span>
+                        <span class="badge badge-secondary">AGUARDANDO HOMOLOGAÇÃO</span>
                     @elseif($athlete->status == 1)
                         <span class="badge badge-primary">ATIVO</span>
                     @else
@@ -221,50 +221,83 @@
                     </div>
                     <div id="tab-4" class="tab-pane">
                         <div class="panel-body">
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-12 form-group">
+                                        <div id="vertical-timeline"
+                                             class="vertical-container light-timeline no-margins">
 
-                            <div class="table-responsive">
-                                <table class="table table-bordered table-stripped">
-                                    <thead>
-                                    <tr>
-                                        <th>Tipo</th>
-                                        <th>Ações</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr>
-                                        <td>
-                                            Ficha de Registro
-                                        </td>
-                                        <td>
-                                            <a href="#" class="btn btn-outline-secondary" data-toggle="tooltip"
-                                               title="Ver anexo">
-                                                <i class="fa fa-eye"></i>
-                                            </a>
-                                            <a href="#" class="btn btn-outline-primary" data-toggle="tooltip"
-                                               title="Download">
-                                                <i class="fa fa-download"></i>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            Certificado de faixa do professor
-                                        </td>
-                                        <td>
-                                            <a href="#" class="btn btn-outline-secondary" data-toggle="tooltip"
-                                               title="Ver anexo">
-                                                <i class="fa fa-eye"></i>
-                                            </a>
-                                            <a href="#" class="btn btn-outline-primary" data-toggle="tooltip"
-                                               title="Download">
-                                                <i class="fa fa-download"></i>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                    </tbody>
-                                </table>
+                                            @foreach($typeDocuments as $typeDocument)
+                                                <div class="vertical-timeline-block">
+                                                    @if($typeDocument['qty_documents'] > 0)
+                                                        <div class="vertical-timeline-icon bg-primary"
+                                                             title="Recebido" data-toggle="tooltip">
+                                                            <i class="fa fa-check"></i>
+                                                        </div>
+                                                    @else
+                                                        <div class="vertical-timeline-icon bg-danger"
+                                                             title="Não recebido" data-toggle="tooltip">
+                                                            <i class="fa fa-close"></i>
+                                                        </div>
+                                                    @endif
+
+                                                    <div class="vertical-timeline-content">
+                                                        <h2>{{$typeDocument['name']}}:</h2>
+
+                                                        <div class="row">
+                                                            <div class="col-lg-9 animated fadeInRight">
+                                                                <div class="row">
+                                                                    <div class="col-lg-12">
+                                                                        @if($typeDocument['qty_documents'] > 0)
+                                                                            @foreach($athlete->documents()->get() as $document)
+                                                                                @if($document['type_document'] == $typeDocument['id'])
+                                                                                    <div class="file-box">
+                                                                                        <div class="file">
+                                                                                            <a href="#">
+                                                                                                <div class="image">
+                                                                                                    <img alt="image"
+                                                                                                         class="img-fluid"
+                                                                                                         src="{{$document['url_cropped']}}">
+                                                                                                </div>
+                                                                                            </a>
+                                                                                            <div
+                                                                                                class="file-action bg-light p-2">
+                                                                                                <a href="{{$document['url_cropped']}}"
+                                                                                                   target="_blank"
+                                                                                                   class="btn btn-outline-secondary btn-sm"
+                                                                                                   title="Ver anexo">
+                                                                                                    <i class="fa fa-eye"></i>
+                                                                                                </a>
+                                                                                                <a href="{{$document['url_cropped']}}"
+                                                                                                   download=""
+                                                                                                   class="btn btn-outline-primary btn-sm"
+                                                                                                   title="Download">
+                                                                                                    <i class="fa fa-download"></i>
+                                                                                                </a>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                @endif
+                                                                            @endforeach
+                                                                        @else
+                                                                            <div class="alert alert-warning mb-0">
+                                                                                <h5> Nenhum documento anexado :( </h5>
+                                                                                Clique no botão 'Editar' para anexar o
+                                                                                documento pendente
+                                                                            </div>
+                                                                        @endif
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            @endforeach
+
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-
                         </div>
                     </div>
                 </div>

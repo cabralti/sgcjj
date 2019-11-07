@@ -69,14 +69,19 @@
                                                 {{$athlete->academy()->first()->name}}
                                             </a>
                                         </td>
-                                        <td class="align-middle"><span class="badge badge-secondary">Pendente</span>
+                                        <td class="align-middle">
+                                            @if($athlete->status == 1)
+                                                <span class="badge badge-primary">Ativo</span>
+                                            @else
+                                                <span class="badge badge-default">Aguardando Homologação</span>
+                                            @endif
                                         </td>
                                         <td class="align-middle text-right">
                                             <a href="{{route('admin.athletes.show', ['athlete' => $athlete->id])}}"
                                                class="btn btn-default" data-toggle="tooltip" title="Visualizar">
                                                 <i class="fa fa-search"></i>
                                             </a>
-                                            <a href="{{route('admin.athletes.show', ['athlete' => $athlete->id])}}"
+                                            <a href="{{route('admin.athletes.edit', ['athlete' => $athlete->id])}}"
                                                class="btn btn-default" data-toggle="tooltip" title="Editar">
                                                 <i class="fa fa-edit"></i>
                                             </a>

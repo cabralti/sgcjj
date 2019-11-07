@@ -21,5 +21,20 @@ class TypeDocumentsTableSeeder extends Seeder
             'name' => 'Certificado de faixa do professor responsável',
             'academy_has' => true
         ]);
+
+        DB::table('type_documents')->insert([
+            'name' => 'Foto 3X4',
+            'athlete_has' => true
+        ]);
+
+        DB::table('type_documents')->insert([
+            'name' => 'RG ou CNH do atleta',
+            'athlete_has' => true
+        ]);
+
+        DB::table('type_documents')->insert([
+            'name' => 'RG ou CNH do responsável',
+            'athlete_has' => true
+        ]);
     }
 }

@@ -42,13 +42,29 @@
                 </ul>
 
                 <form name="form_edit" action="{{route('admin.athletes.update', ['athlete' => $athlete->id])}}"
-                      method="post">
+                      method="post" enctype="multipart/form-data">
                     @method('PUT')
                     <input type="hidden" name="id" value="{{$athlete->id}}">
 
                     <div class="tab-content">
                         <div id="tab-1" class="tab-pane active">
                             <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-6 form-group">
+                                        <label class="col-form-label font-weight-bold">Status:</label>
+                                        <select name="status" id="status" class="form-control">
+                                            <option
+                                                value="0" {{ (old('status') == '0') ? 'selected' : ($athlete->status == '0') ? 'selected' : '' }}>
+                                                Aguardando Homologação
+                                            </option>
+                                            <option
+                                                value="1" {{ (old('status') == '1') ? 'selected' : ($athlete->status == '1') ? 'selected' : '' }}>
+                                                Ativo
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+
                                 <div class="row">
                                     <div class="col-sm-12 col-md-6 form-group">
                                         <label class="col-form-label font-weight-bold">Nome do Atleta:</label>
@@ -247,50 +263,84 @@
                         </div>
                         <div id="tab-4" class="tab-pane">
                             <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-12 form-group">
+                                        <div id="vertical-timeline"
+                                             class="vertical-container light-timeline no-margins">
 
-                                <div class="table-responsive">
-                                    <table class="table table-bordered table-stripped">
-                                        <thead>
-                                        <tr>
-                                            <th>Tipo</th>
-                                            <th>Ações</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        <tr>
-                                            <td>
-                                                Ficha de Registro
-                                            </td>
-                                            <td>
-                                                <a href="#" class="btn btn-outline-secondary" data-toggle="tooltip"
-                                                   title="Ver anexo">
-                                                    <i class="fa fa-eye"></i>
-                                                </a>
-                                                <a href="#" class="btn btn-outline-primary" data-toggle="tooltip"
-                                                   title="Download">
-                                                    <i class="fa fa-download"></i>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                Certificado de faixa do professor
-                                            </td>
-                                            <td>
-                                                <a href="#" class="btn btn-outline-secondary" data-toggle="tooltip"
-                                                   title="Ver anexo">
-                                                    <i class="fa fa-eye"></i>
-                                                </a>
-                                                <a href="#" class="btn btn-outline-primary" data-toggle="tooltip"
-                                                   title="Download">
-                                                    <i class="fa fa-download"></i>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
+                                            @foreach($typeDocuments as $typeDocument)
+                                                <div class="vertical-timeline-block">
+                                                    @if($typeDocument['qty_documents'] > 0)
+                                                        <div class="vertical-timeline-icon bg-primary"
+                                                             title="Recebido" data-toggle="tooltip">
+                                                            <i class="fa fa-check"></i>
+                                                        </div>
+                                                    @else
+                                                        <div class="vertical-timeline-icon bg-danger"
+                                                             title="Não recebido" data-toggle="tooltip">
+                                                            <i class="fa fa-close"></i>
+                                                        </div>
+                                                    @endif
+
+                                                    <div class="vertical-timeline-content">
+                                                        <h2>{{$typeDocument['name']}}:</h2>
+
+                                                        <p>
+                                                            <input type="hidden" name="type_document[]" id=""
+                                                                   class="form-control"
+                                                                   value="{{$typeDocument['id']}}">
+                                                            <input type="file" name="documents[]"
+                                                                   id="document_{{$typeDocument['id']}}"
+                                                                   class="form-control filer-input-multiple"
+                                                                   data-target="content_{{$typeDocument['id']}}">
+                                                        </p>
+
+                                                        <div class="row">
+                                                            <div class="col-lg-9 animated fadeInRight">
+                                                                <div class="row">
+                                                                    <div class="col-lg-12">
+                                                                        @foreach($athlete->documents()->get() as $document)
+                                                                            @if($document['type_document'] == $typeDocument['id'])
+                                                                                <div class="file-box">
+                                                                                    <div class="file">
+                                                                                        <a href="#">
+                                                                                            <div class="image">
+                                                                                                <img alt="image" class="img-fluid"
+                                                                                                     src="{{$document['url_cropped']}}">
+                                                                                            </div>
+                                                                                        </a>
+                                                                                        <div
+                                                                                            class="file-action bg-light p-2">
+                                                                                            <button type="button"
+                                                                                                    class="btn btn-danger btn-delete"
+                                                                                                    data-action="{{route('admin.academies.documentDelete', ['document' => $document->id])}}"
+                                                                                                    title="Excluir">
+                                                                                                <i class="fa fa-trash"></i>
+                                                                                            </button>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            @endif
+                                                                        @endforeach
+                                                                        {{-- <div class="alert alert-warning mb-0">--}}
+                                                                        {{--    <h5> Nenhum documento anexado :( </h5>--}}
+                                                                        {{--        Clique no botão 'Editar' para anexar o--}}
+                                                                        {{--        documento pendente--}}
+                                                                        {{-- </div>--}}
+
+                                                                    </div>
+                                                                    <div class="col-lg-12 content_{{$typeDocument['id']}}">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            @endforeach
+
+                                        </div>
+                                    </div>
                                 </div>
-
                             </div>
                         </div>
                     </div>
@@ -317,6 +367,7 @@
     <script>
         $(function () {
 
+            // AJAX SETUP
             $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -329,6 +380,79 @@
                 theme: 'bootstrap4'
             });
 
+            // FILER UPLOAD
+            $('.filer-input-multiple').on('change', function (files) {
+
+                var content = $(this).data('target');
+
+                $('.' + content).text('');
+
+                $.each(files.target.files, function (key, value) {
+
+                    var reader = new FileReader();
+                    reader.onload = function (value) {
+                        $('.' + content).append(
+                            `
+                            <div class="file-box">
+                                 <div class="file">
+                                     <a href="#">
+                                         <div class="image">
+                                            <img alt="image" class="img-fluid" src="${value.target.result}">
+                                         </div>
+                                         <div class="file-name">
+
+                                         </div>
+                                     </a>
+                                 </div>
+                             </div>
+                            `
+                        );
+                    };
+
+                    reader.readAsDataURL(value);
+                });
+
+            });
+
+            // ACTION DELETE IMAGES
+            $('.btn-delete').on('click', function (e) {
+                e.preventDefault();
+
+                var button = $(this);
+
+                swal({
+                    title: '',
+                    text: 'Deseja realmente excluir este documento?',
+                    icon: 'warning',
+                    buttons: true,
+                    buttons: ['Não', 'Sim, excluir'],
+                    dangerMode: true,
+                    closeOnClickOutside: false
+                }).then(function (result) {
+                    if (result) {
+                        $.ajax({
+                            url: button.data('action'),
+                            type: 'DELETE',
+                            dataType: 'json',
+                            beforeSend: function () {
+                                $('.ajax_load').fadeIn();
+                            },
+                            success: function (response) {
+                                $('.ajax_load').fadeOut();
+                                if (response.error === false) {
+                                    swal('', response.message, response.type);
+                                    button.closest('.file-box').fadeOut(function () {
+                                        $(this).remove();
+                                    });
+                                }
+                            }
+                        });
+                    } else {
+                        return false;
+                    }
+                });
+            });
+
             // FORM SUBMIT
             $('form[name="form_edit"]').submit(function (event) {
                 event.preventDefault();
@@ -336,18 +460,24 @@
                 const form = $(this);
                 const form_action = form.attr('action');
                 const form_button = form.find('button[type="submit"]');
-                let form_data = form.serialize();
+                // let form_data = form.serialize();
+                var form_data = new FormData($(this)[0]);
 
                 $.ajax({
                     url: form_action,
-                    type: 'PUT',
+                    type: 'POST',
                     dataType: 'json',
+                    contentType: false,
+                    cache: false,
+                    processData: false,
                     data: form_data,
                     beforeSend: function () {
                         form_button.prop('disabled', true);
+                        $('.ajax_load').fadeIn();
                     },
                     success: function (response) {
                         form_button.prop('disabled', false);
+                        $('.ajax_load').fadeOut();
 
                         swal({
                             title: '',
@@ -363,7 +493,7 @@
                         });
                     }
                 });
-            })
+            });
 
         });
     </script>

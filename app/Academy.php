@@ -19,8 +19,6 @@ class Academy extends Model
         'city',
         'state',
         'status',
-        'document_record[]',
-        'document_certificate[]',
     ];
 
     public function teacher()

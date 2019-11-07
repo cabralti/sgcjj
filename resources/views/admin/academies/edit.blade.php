@@ -63,12 +63,12 @@
                                             <label class="col-form-label font-weight-bold">Status:</label>
                                             <select name="status" id="status" class="form-control">
                                                 <option
-                                                    value="1" {{ (old('status') == '1') ? 'selected' : ($academy->status == '1') ? 'selected' : '' }}>
-                                                    Ativo
-                                                </option>
-                                                <option
                                                     value="0" {{ (old('status') == '0') ? 'selected' : ($academy->status == '0') ? 'selected' : '' }}>
                                                     Aguardando Homologação
+                                                </option>
+                                                <option
+                                                    value="1" {{ (old('status') == '1') ? 'selected' : ($academy->status == '1') ? 'selected' : '' }}>
+                                                    Ativo
                                                 </option>
                                             </select>
                                         </div>
@@ -584,48 +584,6 @@
 
             });
 
-            // FORM SUBMIT
-            $('form[name="form_edit"]').submit(function (event) {
-                event.preventDefault();
-
-                const form = $(this);
-                const form_action = form.attr('action');
-                const form_button = form.find('button[type="submit"]');
-                // let form_data = form.serialize();
-                var form_data = new FormData($(this)[0]);
-
-                $.ajax({
-                    url: form_action,
-                    type: 'POST',
-                    dataType: 'json',
-                    contentType: false,
-                    cache: false,
-                    processData: false,
-                    data: form_data,
-                    beforeSend: function () {
-                        form_button.prop('disabled', true);
-                        $('.ajax_load').fadeIn();
-                    },
-                    success: function (response) {
-                        $('.ajax_load').fadeOut();
-                        form_button.prop('disabled', false);
-                        // swal('OK!', response.message, response.type);
-                        swal({
-                            title: '',
-                            text: response.message,
-                            icon: response.type,
-                            closeOnClickOutside: false
-                        }).then((result) => {
-                            if (result) {
-                                window.location.href = response.redirect;
-                            } else {
-                                return false;
-                            }
-                        });
-                    }
-                });
-            });
-
             // ACTION DELETE IMAGES
             $('.btn-delete').on('click', function (e) {
                 e.preventDefault();
@@ -634,7 +592,7 @@
 
                 swal({
                     title: '',
-                    text: 'Deseja realmente excluir este registro?',
+                    text: 'Deseja realmente excluir este documento?',
                     icon: 'warning',
                     buttons: true,
                     buttons: ['Não', 'Sim, excluir'],
@@ -664,6 +622,49 @@
                     }
                 });
             });
+
+            // FORM SUBMIT
+            $('form[name="form_edit"]').submit(function (event) {
+                event.preventDefault();
+
+                const form = $(this);
+                const form_action = form.attr('action');
+                const form_button = form.find('button[type="submit"]');
+                // let form_data = form.serialize();
+                var form_data = new FormData($(this)[0]);
+
+                $.ajax({
+                    url: form_action,
+                    type: 'POST',
+                    dataType: 'json',
+                    contentType: false,
+                    cache: false,
+                    processData: false,
+                    data: form_data,
+                    beforeSend: function () {
+                        form_button.prop('disabled', true);
+                        $('.ajax_load').fadeIn();
+                    },
+                    success: function (response) {
+                        form_button.prop('disabled', false);
+                        $('.ajax_load').fadeOut();
+
+                        swal({
+                            title: '',
+                            text: response.message,
+                            icon: response.type,
+                            closeOnClickOutside: false
+                        }).then((result) => {
+                            if (result) {
+                                window.location.href = response.redirect;
+                            } else {
+                                return false;
+                            }
+                        });
+                    }
+                });
+            });
+
         });
     </script>
 @endsection

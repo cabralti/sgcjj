@@ -311,9 +311,15 @@
     <script>
         $(function () {
 
+            // SELECT 2
             $('.select2').select2({
                 language: "pt-BR",
                 theme: 'bootstrap4'
+            });
+
+            // AJAX LOAD
+            $('form').on('submit', function () {
+                $('.ajax_load').fadeIn();
             });
 
         });

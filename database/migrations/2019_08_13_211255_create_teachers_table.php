@@ -21,9 +21,10 @@ class CreateTeachersTable extends Migration
             $table->string('document_secondary', 20)->nullable();
             $table->string('cell')->nullable();
             $table->string('email');
-            $table->string('status')->default(0);
-
+            $table->unsignedInteger('status')->default(0);
             $table->timestamps();
+
+            $table->foreign('status')->references('id')->on('status');
         });
     }
 

@@ -29,6 +29,14 @@
 {{--    <div class="line-preloader"></div>--}}
 {{--</div>--}}
 <!-- stop: preloader -->
+<div class="ajax_load">
+    <div class="w-100 h-100 d-flex justify-content-center align-items-center">
+        <div class="ajax_load_box">
+            <div class="ajax_load_box_circle"></div>
+            <p class="ajax_load_box_title">Aguarde, carregando...</p>
+        </div>
+    </div>
+</div>
 
 @include('site._layouts._header')
 

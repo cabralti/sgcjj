@@ -370,17 +370,20 @@
     <script>
         $(function () {
 
+            // AJAX SETUP
             $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
             });
 
+            // SELECT 2
             $('.select2').select2({
                 language: "pt-BR",
                 theme: 'bootstrap4'
             });
 
+            // CHANGER TEACHER
             $('#teacher_id').on('change', function () {
 
                 // $('#dadosResponsavel :input').prop('disabled', true);
@@ -416,6 +419,11 @@
             });
 
             // $('#dadosResponsavel :input').prop('readonly', true);
+
+            // AJAX LOAD
+            $('form').on('submit', function () {
+                $('.ajax_load').fadeIn();
+            });
         });
 
         function enableFields() {

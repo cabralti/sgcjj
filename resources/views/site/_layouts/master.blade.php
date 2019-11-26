@@ -8,18 +8,19 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-{!! $head ?? '' !!}
+    {!! $head ?? '' !!}
 
-<!-- Favicon -->
+    <!-- Favicon -->
     <link rel="icon" href="{{asset('images/favicon.ico')}}">
 
     <link rel="stylesheet" href="{{url('frontend/assets/css/libs.css')}}">
     <link rel="stylesheet" href="{{url('frontend/assets/css/style.css')}}">
-    <link rel="stylesheet" href="{{url('frontend/assets/css/custom.css')}}">
 
     @hasSection('css')
         @yield('css')
     @endif
+
+    <link rel="stylesheet" href="{{url('frontend/assets/css/custom.css')}}">
 </head>
 
 <body>

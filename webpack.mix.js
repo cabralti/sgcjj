@@ -60,6 +60,7 @@ mix
 
     // LIBS
     .scripts(['resources/views/libs/jquery.mask.js'], 'public/libs/jquery.mask.js')
+    .copyDirectory('resources/views/libs/dataTables', 'public/libs/dataTables')
 
     .options({
         processCssUrls: false

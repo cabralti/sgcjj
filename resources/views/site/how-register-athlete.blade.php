@@ -2,7 +2,7 @@
 @section('title', ' | Como Registar Atletas')
 
 @section('css')
-    <link href="{{ url('backend/assets/css/plugins/dataTables/datatables.min.css') }}" rel="stylesheet">
+    <link href="{{ url('libs/dataTables/datatables.min.css') }}" rel="stylesheet">
 @endsection
 
 @section('content')
@@ -221,6 +221,6 @@
 
 @section('js')
     <!-- DataTables -->
-    <script src="{{url('backend/assets/js/plugins/dataTables/datatables.min.js')}}"></script>
-    <script src="{{url('backend/assets/js/plugins/dataTables/dataTables.bootstrap4.min.js')}}"></script>
+    <script src="{{url('libs/dataTables/datatables.min.js')}}"></script>
+    <script src="{{url('libs/dataTables/js/dataTables.bootstrap4.min.js')}}"></script>
 @endsection

@@ -64,4 +64,56 @@ $(function () {
             alert("Formato de CEP inválido.");
         }
     });
+
+    // DATATABLES
+    if ($(".dataTable").length) {
+        $('.dataTable').DataTable({
+            responsive: true,
+            "pageLength": 10,
+            "pagingType": "full_numbers",
+            // dom: '<"html5buttons"B>lTfgitp',
+            buttons: [
+                // {extend: 'copy'},
+                // {extend: 'csv'},
+                // {extend: 'excel', title: 'ExampleFile'},
+                // {extend: 'pdf', title: 'Academias'},
+
+                {
+                    extend: 'print',
+                    customize: function (win) {
+                        // $(win.document.body).addClass('white-bg');
+                        $(win.document.body).css('font-size', '10px');
+
+                        $(win.document.body).find('table')
+                            .addClass('compact')
+                            .css('font-size', 'inherit');
+                    }
+                }
+            ],
+            "language": {
+                "sEmptyTable": "Nenhum registro encontrado",
+                "sInfo": "Total: _MAX_ registro(s) | Página _PAGE_ de _PAGES_",
+                "sInfoEmpty": "Mostrando 0 até 0 de 0 registros",
+                "sInfoFiltered": "(Filtrados de _MAX_ registros)",
+                "sInfoPostFix": "",
+                "sInfoThousands": ".",
+                "sLengthMenu": "_MENU_ registros por página",
+                "sLoadingRecords": "Carregando...",
+                "sProcessing": "Processando...",
+                "sZeroRecords": "Nenhum registro encontrado",
+                "sSearch": "Pesquisar",
+                "pagingType": "full_numbers",
+                "paginate": {
+                    "first": "<i class='fa fa-angle-double-left'></i>",
+                    "last": "<i class='fa fa-angle-double-right'></i>",
+                    "next": "<i class='fa fa-angle-right'></i>",
+                    "previous": "<i class='fa fa-angle-left'></i>"
+                },
+                "oAria": {
+                    "sSortAscending": ": Ordenar colunas de forma ascendente",
+                    "sSortDescending": ": Ordenar colunas de forma descendente"
+                }
+            }
+        });
+    }
 });

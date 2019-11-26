@@ -57,11 +57,12 @@
 <script src="{{ url('frontend/assets/js/active.js') }}"></script>
 <!-- Mask -->
 <script src="{{ url('libs/jquery.mask.js') }}"></script>
-<!-- Custom script -->
-<script src="{{ url('frontend/assets/js/scripts.js') }}"></script>
 
 @hasSection('js')
     @yield('js')
 @endif
+
+<!-- Custom script -->
+<script src="{{ url('frontend/assets/js/scripts.js') }}"></script>
 </body>
 </html>

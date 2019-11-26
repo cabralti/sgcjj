@@ -64,7 +64,7 @@
                                         <td class="align-middle">{{$academy->teacher()->first()->name}}</td>
                                         <td class="align-middle">{{$academy->teacher()->first()->cell}}</td>
                                         <td class="align-middle">
-                                            @if($academy->status()->first()->id == 2)
+                                            @if($academy->status()->first()->id == 1)
                                                 <span
                                                     class="badge badge-primary">{{$academy->status()->first()->name}}</span>
                                             @else

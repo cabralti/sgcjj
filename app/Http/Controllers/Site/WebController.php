@@ -67,8 +67,12 @@ class WebController extends Controller
             route('site.atletas.como-registrar-atleta'),
             asset('images/lpjj_oficial.png')
         );
+
+        $academies = Academy::select()->get();
+
         return view('site.how-register-athlete', [
-            'head' => $head
+            'head' => $head,
+            'academies' => $academies
         ]);
     }
 

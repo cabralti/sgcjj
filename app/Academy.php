@@ -61,6 +61,11 @@ class Academy extends Model
         return substr($value, 0, 5) . '-' . substr($value, 5, 3);
     }
 
+    public function getCreatedAtAttribute($value)
+    {
+        return date('d/m/Y', strtotime($value));
+    }
+
     private function clearField(?string $param)
     {
         if (empty($param)) {

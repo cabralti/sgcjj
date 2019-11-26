@@ -12,12 +12,12 @@ class StatusTableSeeder extends Seeder
     public function run()
     {
         DB::table('status')->insert([
-            'name' => 'Aguardando Homologação',
+            'name' => 'Ativo',
             'created_at' => \Illuminate\Support\Carbon::now()
         ]);
 
         DB::table('status')->insert([
-            'name' => 'Ativo',
+            'name' => 'Aguardando Homologação',
             'created_at' => \Illuminate\Support\Carbon::now()
         ]);
 

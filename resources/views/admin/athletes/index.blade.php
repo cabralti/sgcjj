@@ -70,7 +70,7 @@
                                             </a>
                                         </td>
                                         <td class="align-middle">
-                                            @if($athlete->status()->first()->id == 2)
+                                            @if($athlete->status()->first()->id == 1)
                                                 <span
                                                     class="badge badge-primary">{{$athlete->status()->first()->name}}</span>
                                             @else

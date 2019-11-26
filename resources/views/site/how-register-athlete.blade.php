@@ -1,6 +1,10 @@
 @extends('site._layouts.master')
 @section('title', ' | Como Registar Atletas')
 
+@section('css')
+    <link href="{{ url('backend/assets/css/plugins/dataTables/datatables.min.css') }}" rel="stylesheet">
+@endsection
+
 @section('content')
 
     <!-- start: breadcrumb area -->
@@ -56,9 +60,10 @@
                                     Verificar se a academia a qual o atleta pertence está devidamente agremiada a esta
                                     organização
                                 </p>
-                                <a href="#" class="btn btn-outline-danger">
+                                <button type="button" class="btn btn-outline-danger" data-toggle="modal"
+                                        data-target="#modalListAcademies">
                                     Academias Registradas
-                                </a>
+                                </button>
 
                                 <div class="alert alert-warning bounceInDown animated mt-4">
                                     <code>IMPORTANTE:</code> Os atletas só poderão efetivar a sua filiação na <b>Liga
@@ -162,4 +167,60 @@
     </div>
     <!-- end: step -->
 
+    <!-- start: modal list academies -->
+    <div class="modal inmodal" id="modalListAcademies" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content animated bounceInRight">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span
+                            aria-hidden="true">&times;</span><span
+                            class="sr-only">Fechar</span></button>
+                    <h4 class="modal-title">Modal title</h4>
+                </div>
+                <div class="modal-body">
+                    <table class="table table-striped dataTable">
+                        <thead>
+                        <tr>
+                            <th>Nº Registro</th>
+                            <th>Nome</th>
+                            <th>Professor Responsável</th>
+                            <th>Data Registro</th>
+                            <th>Situação</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @foreach($academies as $academy)
+                            <tr>
+                                <td>{{$academy->id}}</td>
+                                <td>{{$academy->name}}</td>
+                                <td>{{$academy->teacher()->first()->name}}</td>
+                                <td>{{$academy->created_at}}</td>
+                                <td>
+                                    @if($academy->status()->first()->id == 1)
+                                        <span
+                                            class="badge badge-success">{{$academy->status()->first()->name}}</span>
+                                    @else
+                                        <span
+                                            class="badge badge-light">{{$academy->status()->first()->name}}</span>
+                                    @endif
+                                </td>
+                            </tr>
+                        @endforeach
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-white" data-dismiss="modal">Fechar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end: modal list academies -->
+
+@endsection
+
+@section('js')
+    <!-- DataTables -->
+    <script src="{{url('backend/assets/js/plugins/dataTables/datatables.min.js')}}"></script>
+    <script src="{{url('backend/assets/js/plugins/dataTables/dataTables.bootstrap4.min.js')}}"></script>
 @endsection

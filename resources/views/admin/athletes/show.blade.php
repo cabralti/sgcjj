@@ -29,7 +29,7 @@
                     <span class="fa fa-user-circle-o fa-5x text-muted"></span>
                     <h2 class="border-bottom">{{$athlete->name}}</h2>
 
-                    @if($athlete->status()->first()->id == 2)
+                    @if($athlete->status()->first()->id == 1)
                         <span class="badge badge-primary">{{$athlete->status()->first()->name}}</span>
                     @else
                         <span class="badge badge-default">{{$athlete->status()->first()->name}}</span>

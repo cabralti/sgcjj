@@ -34,7 +34,7 @@ class AcademyController extends Controller
             $teacher->document_secondary = $dataForm['teacher_document_secondary'];
             $teacher->cell = $dataForm['teacher_cell'];
             $teacher->email = $dataForm['teacher_email'];
-            $teacher->status = 1;
+            $teacher->status = 2;
             $teacher->save();
         }
 

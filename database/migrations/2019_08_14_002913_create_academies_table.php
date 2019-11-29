@@ -30,7 +30,7 @@ class CreateAcademiesTable extends Migration
             $table->string('city')->nullable();
             $table->string('state')->nullable();
 
-            $table->unsignedInteger('status')->default(1);
+            $table->unsignedInteger('status')->default(2);
             $table->timestamps();
 
             $table->foreign('teacher')->references('id')->on('teachers');

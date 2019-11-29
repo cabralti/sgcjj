@@ -85,7 +85,7 @@ class WebController extends Controller
             asset('images/lpjj_oficial.png')
         );
 
-        $academies = Academy::where('status', '2')->get();
+        $academies = Academy::where('status', '1')->get();
         return view('site.register-athlete', [
             'head' => $head,
             'academies' => $academies

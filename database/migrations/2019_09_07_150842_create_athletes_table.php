@@ -26,6 +26,12 @@ class CreateAthletesTable extends Migration
             $table->string('cell')->nullable();
             $table->string('email')->unique();
 
+            /** responsible data */
+            $table->string('responsible_name')->nullable();
+            $table->string('responsible_document_secondary', 20)->nullable();
+            $table->string('responsible_cell')->nullable();
+            $table->string('responsible_email')->nullable();
+
             /** address */
             $table->string('zipcode')->nullable();
             $table->string('street')->nullable();
@@ -36,7 +42,7 @@ class CreateAthletesTable extends Migration
             /** athlete data */
             $table->string('band')->nullable();
 
-            $table->unsignedInteger('status')->default(1);
+            $table->unsignedInteger('status')->default(2);
             $table->timestamps();
 
             $table->foreign('academy')->references('id')->on('academies');

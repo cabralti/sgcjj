@@ -21,7 +21,11 @@ class Athlete extends Model
         'city',
         'state',
         'band',
-        'status'
+        'status',
+        'responsible_name',
+        'responsible_document_secondary',
+        'responsible_cell',
+        'responsible_email'
     ];
 
     public function academy()
@@ -67,6 +71,16 @@ class Athlete extends Model
     public function getCreatedAtAttribute($value)
     {
         return date('d/m/Y', strtotime($value));
+    }
+
+    public function setResponsibleCellAttribute($value)
+    {
+        $this->attributes['responsible_cell'] = $this->clearField($value);
+    }
+
+    public function getResponsibleCellAttribute($value)
+    {
+        return "(" . substr($value, 0, 2) . ") " . substr($value, 2, 5) . "-" . substr($value, 7, 4);
     }
 
     public function convertStringToDate(?string $param)

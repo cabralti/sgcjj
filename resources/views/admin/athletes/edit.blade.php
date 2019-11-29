@@ -35,8 +35,13 @@
                             Dados do Atleta</a></li>
                     <li><a class="nav-link" data-toggle="tab" href="#tab-2"><i class="fa fa-map-marker"></i>
                             Endereço</a></li>
-                    <li><a class="nav-link" data-toggle="tab" href="#tab-3"><i class="fa fa-user-secret"></i> Dados do
-                            Responsável</a></li>
+                    @if(!empty($athlete->responsible_name))
+                        <li>
+                            <a class="nav-link" data-toggle="tab" href="#tab-3"><i class="fa fa-user-secret"></i>
+                                Dados do Responsável
+                            </a>
+                        </li>
+                    @endif
                     <li><a class="nav-link" data-toggle="tab" href="#tab-4"><i class="fa fa-paperclip"></i> Documentos
                             Anexados</a></li>
                 </ul>
@@ -234,34 +239,47 @@
 
                             </div>
                         </div>
-                        <div id="tab-3" class="tab-pane">
-                            <div class="panel-body">
-                                <div class="row">
-                                    <div class="col-sm-12 col-md-6 form-group">
-                                        <label class="col-form-label font-weight-bold">Nome:</label>
-                                        <input type="text" name="responsible_name" id="responsible_name"
-                                               class="form-control" placeholder="Informe o nome do responsável"
-                                               value="">
+
+                        @if(!empty($athlete->responsible_name))
+                            <div id="tab-3" class="tab-pane">
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <div class="col-sm-12 col-md-6 form-group">
+                                            <label class="col-form-label font-weight-bold">Nome:</label>
+                                            <input type="text" name="responsible_name" id="responsible_name"
+                                                   class="form-control" placeholder="Informe o nome do responsável"
+                                                   value="{{ $athlete->responsible_name }}">
+                                        </div>
+
+                                        <div class="col-sm-12 col-md-6 form-group">
+                                            <label class="col-form-label font-weight-bold">RG:</label>
+                                            <input type="text" name="responsible_document_secondary"
+                                                   id="responsible_document_secondary"
+                                                   class="form-control" placeholder="Informe o número do rg"
+                                                   value="{{ $athlete->responsible_document_secondary }}" required>
+                                        </div>
                                     </div>
 
-                                    <div class="col-sm-12 col-md-6 form-group">
-                                        <label class="col-form-label font-weight-bold">CPF:</label>
-                                        <input type="text" name="responsible_document" id="responsible_document"
-                                               class="form-control mask-doc" placeholder="___.___.___-__"
-                                               value="">
-                                    </div>
-                                </div>
+                                    <div class="row">
+                                        <div class="col-sm-12 col-md-6 form-group">
+                                            <label class="col-form-label font-weight-bold">Celular:</label>
+                                            <input type="tel" name="responsible_cell" id="responsible_cell"
+                                                   class="form-control mask-cell" placeholder="(xx) xxxxx-xxxx"
+                                                   value="{{ $athlete->responsible_cell }}" required>
+                                        </div>
 
-                                <div class="row">
-                                    <div class="col-sm-12 col-md-6 form-group">
-                                        <label class="col-form-label font-weight-bold">Celular:</label>
-                                        <input type="tel" name="responsible_cell" id="responsible_cell"
-                                               class="form-control mask-cell" placeholder="(xx) xxxxx-xxxx"
-                                               value="">
+                                        <div class="col-sm-12 col-md-6 form-group">
+                                            <label class="col-form-label font-weight-bold">E-mail:</label>
+                                            <input type="email" name="responsible_email" id="responsible_email"
+                                                   class="form-control"
+                                                   placeholder="Informe o melhor e-mail"
+                                                   value="{{ $athlete->responsible_email }}" required>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        @endif
+
                         <div id="tab-4" class="tab-pane">
                             <div class="panel-body">
                                 <div class="row">

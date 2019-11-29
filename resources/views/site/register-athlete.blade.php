@@ -71,7 +71,7 @@
                                     <label for="date_of_birth" class="col-form-label font-bold">Data de Nascimento:
                                         <span class="text-danger">*</span></label>
                                     <input type="text" name="date_of_birth" id="date_of_birth"
-                                           class="form-control mask-date" placeholder="__/__/____"
+                                           class="form-control mask-date check-date" placeholder="__/__/____"
                                            value="{{old('date_of_birth')}}" required>
 
                                     @if($errors->has('date_of_birth'))
@@ -143,6 +143,68 @@
                                 </div>
                             </div>
 
+                        </fieldset>
+
+                        <fieldset id="responsible_box" class="my-4" style="display: none;">
+                            <legend class="border-bottom">Dados do Responsável</legend>
+
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="responsible_name" class="col-form-label font-bold">Nome do
+                                        Responsável: <span
+                                            class="text-danger">*</span></label>
+                                    <input type="text" name="responsible_name" id="responsible_name"
+                                           class="form-control {{$errors->has('responsible_name') ? 'is-invalid' : ''}}"
+                                           placeholder="Informe o nome completo"
+                                           value="{{ old('responsible_name') }}" required>
+
+                                    @if($errors->has('responsible_name'))
+                                        <div class="invalid-feedback">{{$errors->first('responsible_name')}}</div>
+                                    @endif
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label for="responsible_document_secondary" class="col-form-label font-bold">RG:
+                                        <span class="text-danger">*</span></label>
+                                    <input type="text" name="responsible_document_secondary"
+                                           id="responsible_document_secondary"
+                                           class="form-control" placeholder="Informe o RG"
+                                           value="{{old('responsible_document_secondary')}}" required>
+
+                                    @if($errors->has('responsible_document_secondary'))
+                                        <div
+                                            class="invalid-feedback">{{$errors->first('responsible_document_secondary')}}</div>
+                                    @endif
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="responsible_cell" class="col-form-label font-bold">Celular: <span
+                                            class="text-danger">*</span></label>
+                                    <input type="tel" name="responsible_cell" id="responsible_cell"
+                                           class="form-control mask-cell"
+                                           placeholder="(xx) xxxxx-xxxx" value="{{old('responsible_cell')}}"
+                                           required>
+                                    <small>Somente números</small>
+
+                                    @if($errors->has('responsible_cell'))
+                                        <div class="invalid-feedback">{{$errors->first('responsible_cell')}}</div>
+                                    @endif
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="responsible_email" class="col-form-label font-bold">E-mail: <span
+                                            class="text-danger">*</span></label>
+                                    <input type="email" name="responsible_email" id="responsible_email"
+                                           class="form-control"
+                                           placeholder="Informe o melhor e-mail"
+                                           value="{{old('responsible_email')}}" required>
+
+                                    @if($errors->has('responsible_email'))
+                                        <div class="invalid-feedback">{{$errors->first('responsible_email')}}</div>
+                                    @endif
+                                </div>
+                            </div>
                         </fieldset>
 
                         <fieldset class="my-4">
@@ -321,6 +383,38 @@
             $('form').on('submit', function () {
                 $('.ajax_load').fadeIn();
             });
+
+            // CHECK DATE OF BIRTH
+            $('.check-date').on('keyup', function () {
+                var date = $(this).val();
+                var count = date.length;
+                var dateOfBirth;
+                var dateNow = new Date();
+
+                if (count === 10) {
+                    date = date.substr(0, 10).split('/').reverse().join('-');
+                    dateOfBirth = new Date(date);
+
+                    if (idade(dateOfBirth, dateNow) >= 18) {
+                        $('#responsible_box').find('input').prop('readonly', true);
+                        $('#responsible_box').fadeOut();
+                    } else {
+                        $('#responsible_box').find('input').prop('readonly', false);
+                        $('#responsible_box').fadeIn();
+                    }
+                }
+            });
+
+            function idade(dateOfBirth, dateNow) {
+                var diffDate = dateNow.getFullYear() - dateOfBirth.getFullYear();
+
+                if (new Date(dateNow.getFullYear(), dateNow.getMonth(), dateNow.getDate())
+                    < new Date(dateNow.getFullYear(), dateOfBirth.getMonth(), dateOfBirth.getDate())) {
+                    diffDate--;
+                }
+
+                return diffDate;
+            }
 
         });
     </script>

@@ -66,6 +66,11 @@ class Academy extends Model
         return date('d/m/Y', strtotime($value));
     }
 
+    public function setEmailAttribute($value)
+    {
+        return strtolower(trim($value));
+    }
+
     private function clearField(?string $param)
     {
         if (empty($param)) {

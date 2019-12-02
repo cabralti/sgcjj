@@ -1,15 +1,16 @@
-<h1>Parabéns por registrar sua Academia!</h1>
+<h1>Parabéns pelo registro Atleta!</h1>
 
-<p>Para concluir a filiação da academia <b>{{$academy->name}}</b> é necessário escanear os seguintes documentos:</p>
+<p><b>{{$athlete->name}}</b>, para concluir sua filiação é necessário escanear os seguintes documentos:</p>
 
 <ul>
-    <li>Ficha de registro de academia (em anexo) devidamente assinada pelo professor responsável</li>
-    <li>Certificado de faixa do professor responsável</li>
+    <li>Ficha de registro de atleta (em anexo) devidamente assinada pelo professor responsável</li>
+    <li>1 Foto 3x4</li>
+    <li>RG/CNH</li>
 </ul>
 
 <p>
-    Enviar todos os documentos escaneados para o e-mail: <b>registro@lpjj.com.br</b>, com o seguinte assunto: <b>
-        Registro Academia - {{$academy->name}} </b>
+    Enviar todos os documentos escaneados para o e-mail: <b>registro@lpjj.com.br</b>, com o seguinte assunto:
+    <b>Registro Atleta - {{$athlete->name}} </b>
 </p>
 
 <code>

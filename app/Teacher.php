@@ -40,6 +40,11 @@ class Teacher extends Model
         return '(' . substr($value, 0, 2) . ') ' . substr($value, 2, 5) . '-' . substr($value, 7, 4);
     }
 
+    public function setEmailAttribute($value)
+    {
+        return strtolower(trim($value));
+    }
+
     private function clearField(?string $param)
     {
         if (empty($param)) {

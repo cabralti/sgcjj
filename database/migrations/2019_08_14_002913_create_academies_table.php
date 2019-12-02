@@ -17,9 +17,9 @@ class CreateAcademiesTable extends Migration
             /** data */
             $table->increments('id');
             $table->unsignedInteger('teacher');
-            $table->string('social_name')->unique();
+            $table->string('social_name')->unique()->nullable(true);
             $table->string('name');
-            $table->string('academy_document')->unique();
+            $table->string('academy_document')->unique()->nullable(true);
             $table->string('email')->unique();
             $table->string('telephone')->nullable();
 

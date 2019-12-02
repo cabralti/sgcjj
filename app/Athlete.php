@@ -69,6 +69,11 @@ class Athlete extends Model
         return date('d/m/Y', strtotime($value));
     }
 
+    public function setEmailAttribute($value)
+    {
+        return strtolower(trim($value));
+    }
+
     public function convertStringToDate(?string $param)
     {
         if (empty($param)) {

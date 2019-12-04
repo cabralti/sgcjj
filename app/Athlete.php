@@ -81,6 +81,11 @@ class Athlete extends Model
     public function getResponsibleCellAttribute($value)
     {
         return "(" . substr($value, 0, 2) . ") " . substr($value, 2, 5) . "-" . substr($value, 7, 4);
+	}
+	
+    public function setEmailAttribute($value)
+    {
+        return strtolower(trim($value));
     }
 
     public function convertStringToDate(?string $param)
